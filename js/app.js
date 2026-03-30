@@ -341,3 +341,28 @@ window.toggleMobileMenu = function() {
         setTimeout(() => overlay.classList.add('hidden'), 300);
     }
 };
+
+
+window.showToast = function(message) {
+    let toast = document.getElementById('global-toast');
+    if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'global-toast';
+        toast.className = 'fixed bottom-24 left-1/2 -translate-x-1/2 z-[200] bg-surface-container-high text-on-surface text-sm font-bold px-6 py-3 rounded-full shadow-2xl border border-outline-variant/30 flex items-center gap-2 transition-all duration-300 transform translate-y-10 opacity-0 pointer-events-none';
+    }
+    toast.innerHTML = `<span class="material-symbols-outlined text-primary text-[18px]">info</span> ${message}`;
+    
+    // Animate in
+    toast.style.display = 'flex';
+    setTimeout(() => {
+        toast.classList.remove('translate-y-10', 'opacity-0');
+        toast.classList.add('translate-y-0', 'opacity-100');
+    }, 10);
+    
+    // Animate out
+    setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-10', 'opacity-0');
+        setTimeout(() => toast.style.display = 'none', 300);
+    }, 2500);
+};
