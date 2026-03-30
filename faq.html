@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>FAQ | DOCTORLOAN</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script src="js/tailwind-config.js"></script>
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/app.js"></script>
+</head>
+<body class="bg-surface text-on-surface min-h-screen pb-28">
+<main class="space-y-6">
+    <div class="flex items-center gap-3 pt-4">
+        <a href="profile.html" class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center hover:bg-surface-container-high transition-colors">
+            <span class="material-symbols-outlined">arrow_back</span>
+        </a>
+        <h1 class="font-extrabold text-xl tracking-tight">Câu hỏi thường gặp</h1>
+    </div>
+
+    <div class="relative">
+        <span class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant/60 text-xl pointer-events-none">search</span>
+        <input type="text" placeholder="Tìm câu hỏi..." class="w-full pl-11 pr-4 py-3 text-sm bg-white border border-outline-variant/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/30 shadow-sm">
+    </div>
+
+    <div class="space-y-3">
+        <p class="text-[10px] font-black uppercase tracking-[0.15em] text-on-surface-variant/60">Hoa hồng & Thanh toán</p>
+        <div class="bg-white rounded-2xl border border-outline-variant/10 shadow-sm overflow-hidden divide-y divide-outline-variant/10">
+            <details class="group">
+                <summary class="flex items-center gap-3 p-4 cursor-pointer list-none hover:bg-surface-container-low transition-colors">
+                    <span class="material-symbols-outlined text-primary text-lg flex-shrink-0">help</span>
+                    <span class="font-semibold text-sm flex-1">Hoa hồng được tính như thế nào?</span>
+                    <span class="material-symbols-outlined text-on-surface-variant text-lg group-open:rotate-180 transition-transform flex-shrink-0">expand_more</span>
+                </summary>
+                <div class="px-4 pb-4 text-sm text-tertiary leading-relaxed pl-12">
+                    Hoa hồng được tính theo % doanh thu bán hàng trực tiếp của bạn. Cấp 2 được hưởng 5% trên mỗi đơn hàng. Ngoài ra, bạn còn nhận thêm 1-2% hoa hồng từ doanh số của cộng tác viên cấp dưới.
+                </div>
+            </details>
+            <details class="group">
+                <summary class="flex items-center gap-3 p-4 cursor-pointer list-none hover:bg-surface-container-low transition-colors">
+                    <span class="material-symbols-outlined text-primary text-lg flex-shrink-0">help</span>
+                    <span class="font-semibold text-sm flex-1">Khi nào được rút hoa hồng?</span>
+                    <span class="material-symbols-outlined text-on-surface-variant text-lg group-open:rotate-180 transition-transform flex-shrink-0">expand_more</span>
+                </summary>
+                <div class="px-4 pb-4 text-sm text-tertiary leading-relaxed pl-12">
+                    Hoa hồng được cộng vào ví ngay sau khi đơn hàng hoàn thành và được xác nhận giao hàng thành công. Bạn có thể rút tiền về tài khoản ngân hàng bất kỳ lúc nào, tối thiểu 200,000đ/lần. Thời gian xử lý 1-3 ngày làm việc.
+                </div>
+            </details>
+        </div>
+
+        <p class="text-[10px] font-black uppercase tracking-[0.15em] text-on-surface-variant/60 pt-2">Sản phẩm & Đơn hàng</p>
+        <div class="bg-white rounded-2xl border border-outline-variant/10 shadow-sm overflow-hidden divide-y divide-outline-variant/10">
+            <details class="group">
+                <summary class="flex items-center gap-3 p-4 cursor-pointer list-none hover:bg-surface-container-low transition-colors">
+                    <span class="material-symbols-outlined text-primary text-lg flex-shrink-0">help</span>
+                    <span class="font-semibold text-sm flex-1">Đơn hàng bị khách huỷ thì sao?</span>
+                    <span class="material-symbols-outlined text-on-surface-variant text-lg group-open:rotate-180 transition-transform flex-shrink-0">expand_more</span>
+                </summary>
+                <div class="px-4 pb-4 text-sm text-tertiary leading-relaxed pl-12">
+                    Nếu khách hủy đơn trước khi hàng giao, hoa hồng sẽ không được tính. Nếu hủy sau khi giao hàng thành công và có hoàn trả sản phẩm, hoa hồng sẽ bị trừ lại từ số dư ví.
+                </div>
+            </details>
+            <details class="group">
+                <summary class="flex items-center gap-3 p-4 cursor-pointer list-none hover:bg-surface-container-low transition-colors">
+                    <span class="material-symbols-outlined text-primary text-lg flex-shrink-0">help</span>
+                    <span class="font-semibold text-sm flex-1">Thời gian giao hàng là bao lâu?</span>
+                    <span class="material-symbols-outlined text-on-surface-variant text-lg group-open:rotate-180 transition-transform flex-shrink-0">expand_more</span>
+                </summary>
+                <div class="px-4 pb-4 text-sm text-tertiary leading-relaxed pl-12">
+                    Thông thường 3-5 ngày làm việc cho nội thành, 5-7 ngày cho ngoại thành và tỉnh thành. Đại lý Cấp 2 trở lên được ưu tiên giao hàng nhanh hơn 1-2 ngày.
+                </div>
+            </details>
+        </div>
+
+        <p class="text-[10px] font-black uppercase tracking-[0.15em] text-on-surface-variant/60 pt-2">Tài khoản & Bảo mật</p>
+        <div class="bg-white rounded-2xl border border-outline-variant/10 shadow-sm overflow-hidden divide-y divide-outline-variant/10">
+            <details class="group">
+                <summary class="flex items-center gap-3 p-4 cursor-pointer list-none hover:bg-surface-container-low transition-colors">
+                    <span class="material-symbols-outlined text-primary text-lg flex-shrink-0">help</span>
+                    <span class="font-semibold text-sm flex-1">Làm sao để nâng cấp lên Cấp 3?</span>
+                    <span class="material-symbols-outlined text-on-surface-variant text-lg group-open:rotate-180 transition-transform flex-shrink-0">expand_more</span>
+                </summary>
+                <div class="px-4 pb-4 text-sm text-tertiary leading-relaxed pl-12">
+                    Để lên Cấp 3, bạn cần đạt doanh số tối thiểu 5 tỷ đồng/tháng hoặc duy trì 3 tỷ/tháng liên tiếp trong 3 tháng. Hệ thống sẽ tự động nâng hạng và thông báo cho bạn.
+                </div>
+            </details>
+        </div>
+    </div>
+
+    <!-- Contact support -->
+    <div class="bg-primary/5 border border-primary/20 rounded-2xl p-4 flex items-center gap-4">
+        <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+            <span class="material-symbols-outlined text-primary" style="font-variation-settings:'FILL' 1;">support_agent</span>
+        </div>
+        <div class="flex-1">
+            <p class="font-bold text-sm">Không tìm thấy câu trả lời?</p>
+            <p class="text-xs text-tertiary">Liên hệ hỗ trợ trực tiếp</p>
+        </div>
+        <a href="chat-ai.html" class="flex-shrink-0 px-3 py-2 brand-gradient text-white text-xs font-bold rounded-xl hover:opacity-90 transition-opacity">Chat ngay</a>
+    </div>
+</main>
+</body>
+</html>

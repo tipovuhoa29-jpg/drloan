@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>CEO Dashboard | DOCTORLOAN</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script src="js/tailwind-config.js"></script>
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/app.js"></script>
+    <style>
+        .kpi-card { transition: transform .18s, box-shadow .18s; }
+        .kpi-card:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(156,69,0,.12); }
+        .sparkline { height: 48px; }
+        @keyframes count-up { from { opacity:0; transform:translateY(6px);} to { opacity:1; transform:none;} }
+        .animate-count { animation: count-up .5s ease both; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen pb-28">
+<main class="space-y-8">
+
+    <!-- Header -->
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 pt-4">
+        <div>
+            <p class="text-xs font-bold uppercase tracking-widest text-tertiary">Tổng quan điều hành</p>
+            <h1 class="font-extrabold text-2xl lg:text-3xl tracking-tight mt-1">CEO Dashboard</h1>
+        </div>
+        <div class="flex items-center gap-3">
+            <select class="text-sm px-4 py-2.5 bg-white border border-outline-variant/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/30 font-medium shadow-sm text-on-surface-variant">
+                <option>Tháng 3 / 2026</option>
+                <option>Tháng 2 / 2026</option>
+                <option>Quý 1 / 2026</option>
+            </select>
+            <button class="p-2.5 bg-white border border-outline-variant/20 rounded-xl shadow-sm hover:bg-surface-container transition-colors">
+                <span class="material-symbols-outlined text-on-surface-variant text-xl">refresh</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- KPI Row -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+        <div class="kpi-card bg-white rounded-2xl p-5 border border-outline-variant/10 shadow-sm">
+            <div class="flex justify-between items-start mb-4">
+                <div class="w-10 h-10 brand-gradient rounded-xl flex items-center justify-center">
+                    <span class="material-symbols-outlined text-white text-xl" style="font-variation-settings:'FILL' 1;">payments</span>
+                </div>
+                <span class="text-[10px] font-bold text-green-600 bg-green-50 px-2 py-1 rounded-full">▲ +12.5%</span>
+            </div>
+            <p class="text-3xl font-black tracking-tight animate-count">4.2B</p>
+            <p class="text-xs text-tertiary mt-1 font-medium">Doanh thu tháng (VNĐ)</p>
+        </div>
+        <div class="kpi-card bg-white rounded-2xl p-5 border border-outline-variant/10 shadow-sm">
+            <div class="flex justify-between items-start mb-4">
+                <div class="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center">
+                    <span class="material-symbols-outlined text-green-700 text-xl" style="font-variation-settings:'FILL' 1;">supervisor_account</span>
+                </div>
+                <span class="text-[10px] font-bold text-green-600 bg-green-50 px-2 py-1 rounded-full">▲ +8</span>
+            </div>
+            <p class="text-3xl font-black tracking-tight animate-count">128</p>
+            <p class="text-xs text-tertiary mt-1 font-medium">Khách hàng phục hồi thành công</p>
+        </div>
+        <div class="kpi-card bg-white rounded-2xl p-5 border border-outline-variant/10 shadow-sm">
+            <div class="flex justify-between items-start mb-4">
+                <div class="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center">
+                    <span class="material-symbols-outlined text-blue-700 text-xl" style="font-variation-settings:'FILL' 1;">receipt_long</span>
+                </div>
+                <span class="text-[10px] font-bold text-green-600 bg-green-50 px-2 py-1 rounded-full">▲ +22%</span>
+            </div>
+            <p class="text-3xl font-black tracking-tight animate-count">347</p>
+            <p class="text-xs text-tertiary mt-1 font-medium">Đơn hàng tháng này</p>
+        </div>
+        <div class="kpi-card bg-white rounded-2xl p-5 border border-outline-variant/10 shadow-sm">
+            <div class="flex justify-between items-start mb-4">
+                <div class="w-10 h-10 bg-yellow-100 rounded-xl flex items-center justify-center">
+                    <span class="material-symbols-outlined text-yellow-700 text-xl" style="font-variation-settings:'FILL' 1;">gavel</span>
+                </div>
+                <span class="text-[10px] font-bold text-orange-500 bg-orange-50 px-2 py-1 rounded-full">1 sắp hết hạn</span>
+            </div>
+            <p class="text-3xl font-black tracking-tight animate-count">62</p>
+            <p class="text-xs text-tertiary mt-1 font-medium">Bằng sáng chế toàn cầu</p>
+        </div>
+    </div>
+
+    <!-- Charts Row -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <!-- Revenue Chart (2/3 width) -->
+        <div class="lg:col-span-2 bg-white rounded-2xl p-5 border border-outline-variant/10 shadow-sm">
+            <div class="flex items-center justify-between mb-5">
+                <div>
+                    <h2 class="font-bold text-base">Doanh thu theo tháng</h2>
+                    <p class="text-xs text-tertiary mt-0.5">So sánh 2025 vs 2026</p>
+                </div>
+                <div class="flex items-center gap-3 text-[10px] font-bold">
+                    <span class="flex items-center gap-1"><span class="w-3 h-3 rounded-full bg-primary inline-block"></span>2026</span>
+                    <span class="flex items-center gap-1"><span class="w-3 h-3 rounded-full bg-primary/20 inline-block"></span>2025</span>
+                </div>
+            </div>
+            <!-- Simple bar chart visual -->
+            <div class="flex items-end gap-2 h-36 mt-4">
+                <div class="flex-1 flex flex-col items-center gap-1">
+                    <div class="w-full flex items-end justify-center gap-1 h-32">
+                        <div class="w-2/5 bg-primary/20 rounded-t-lg" style="height:55%"></div>
+                        <div class="w-2/5 bg-primary rounded-t-lg" style="height:70%"></div>
+                    </div>
+                    <span class="text-[9px] text-tertiary">Th.1</span>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-1">
+                    <div class="w-full flex items-end justify-center gap-1 h-32">
+                        <div class="w-2/5 bg-primary/20 rounded-t-lg" style="height:65%"></div>
+                        <div class="w-2/5 bg-primary rounded-t-lg" style="height:80%"></div>
+                    </div>
+                    <span class="text-[9px] text-tertiary">Th.2</span>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-1">
+                    <div class="w-full flex items-end justify-center gap-1 h-32">
+                        <div class="w-2/5 bg-primary/20 rounded-t-lg" style="height:58%"></div>
+                        <div class="w-2/5 bg-primary rounded-t-lg relative" style="height:100%">
+                            <span class="absolute -top-5 left-1/2 -translate-x-1/2 text-[9px] font-black text-primary whitespace-nowrap">4.2B</span>
+                        </div>
+                    </div>
+                    <span class="text-[9px] text-tertiary font-bold text-primary">Th.3</span>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-1 opacity-30">
+                    <div class="w-full flex items-end justify-center gap-1 h-32">
+                        <div class="w-2/5 bg-primary/20 rounded-t-lg" style="height:70%"></div>
+                        <div class="w-2/5 rounded-t-lg border-2 border-dashed border-primary/40" style="height:85%"></div>
+                    </div>
+                    <span class="text-[9px] text-tertiary">Th.4</span>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-1 opacity-20">
+                    <div class="w-full flex items-end justify-center gap-1 h-32">
+                        <div class="w-2/5 bg-primary/20 rounded-t-lg" style="height:75%"></div>
+                        <div class="w-2/5 rounded-t-lg border-2 border-dashed border-primary/40" style="height:90%"></div>
+                    </div>
+                    <span class="text-[9px] text-tertiary">Th.5</span>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-1 opacity-10">
+                    <div class="w-full flex items-end justify-center gap-1 h-32">
+                        <div class="w-2/5 bg-primary/20 rounded-t-lg" style="height:80%"></div>
+                    </div>
+                    <span class="text-[9px] text-tertiary">Th.6</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pie/Donut: Sản phẩm -->
+        <div class="bg-white rounded-2xl p-5 border border-outline-variant/10 shadow-sm flex flex-col">
+            <h2 class="font-bold text-base mb-4">Cơ cấu doanh thu</h2>
+            <!-- Donut chart simulation -->
+            <div class="flex-1 flex items-center justify-center">
+                <div class="relative w-36 h-36">
+                    <svg viewBox="0 0 36 36" class="w-full h-full -rotate-90">
+                        <circle cx="18" cy="18" r="15.9" fill="none" stroke="#f0ebe6" stroke-width="3"/>
+                        <circle cx="18" cy="18" r="15.9" fill="none" stroke="#ff7500" stroke-width="3" stroke-dasharray="55 45" stroke-dashoffset="0"/>
+                        <circle cx="18" cy="18" r="15.9" fill="none" stroke="#9c4500" stroke-width="3" stroke-dasharray="25 75" stroke-dashoffset="-55"/>
+                        <circle cx="18" cy="18" r="15.9" fill="none" stroke="#ffd5b0" stroke-width="3" stroke-dasharray="15 85" stroke-dashoffset="-80"/>
+                        <circle cx="18" cy="18" r="15.9" fill="none" stroke="#ff9940" stroke-width="3" stroke-dasharray="5 95" stroke-dashoffset="-95"/>
+                    </svg>
+                    <div class="absolute inset-0 flex flex-col items-center justify-center">
+                        <p class="text-xl font-black">4.2B</p>
+                        <p class="text-[9px] text-tertiary">Tổng DT</p>
+                    </div>
+                </div>
+            </div>
+            <div class="space-y-2 mt-4">
+                <div class="flex items-center justify-between text-xs">
+                    <span class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-[#ff7500] inline-block"></span>Ghế sáng chế</span>
+                    <span class="font-bold">55%</span>
+                </div>
+                <div class="flex items-center justify-between text-xs">
+                    <span class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-[#9c4500] inline-block"></span>Gối cổ</span>
+                    <span class="font-bold">25%</span>
+                </div>
+                <div class="flex items-center justify-between text-xs">
+                    <span class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-[#ffd5b0] inline-block"></span>Đệm thiền</span>
+                    <span class="font-bold">15%</span>
+                </div>
+                <div class="flex items-center justify-between text-xs">
+                    <span class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-[#ff9940] inline-block"></span>Khác</span>
+                    <span class="font-bold">5%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Row -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <!-- Top Agents -->
+        <div class="bg-white rounded-2xl p-5 border border-outline-variant/10 shadow-sm">
+            <h2 class="font-bold text-base mb-4">Top Đại lý tháng này</h2>
+            <div class="space-y-3">
+                <div class="flex items-center gap-3">
+                    <span class="w-7 h-7 rounded-full bg-yellow-100 text-yellow-700 font-black text-xs flex items-center justify-center flex-shrink-0">1</span>
+                    <img class="w-8 h-8 rounded-full flex-shrink-0" src="https://ui-avatars.com/api/?name=Minh+Tuan&background=ff7500&color=fff" alt="">
+                    <div class="flex-1 min-w-0"><p class="text-sm font-semibold truncate">Nguyễn Minh Tuấn</p><p class="text-[10px] text-tertiary">Cấp 2</p></div>
+                    <span class="text-sm font-black text-primary">850tr</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="w-7 h-7 rounded-full bg-surface-container text-on-surface-variant font-black text-xs flex items-center justify-center flex-shrink-0">2</span>
+                    <img class="w-8 h-8 rounded-full flex-shrink-0" src="https://ui-avatars.com/api/?name=Thu+Hang&background=9c4500&color=fff" alt="">
+                    <div class="flex-1 min-w-0"><p class="text-sm font-semibold truncate">Nguyễn Thu Hằng</p><p class="text-[10px] text-tertiary">Cấp 1</p></div>
+                    <span class="text-sm font-black text-primary">620tr</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="w-7 h-7 rounded-full bg-surface-container text-on-surface-variant font-black text-xs flex items-center justify-center flex-shrink-0">3</span>
+                    <img class="w-8 h-8 rounded-full flex-shrink-0" src="https://ui-avatars.com/api/?name=Duc+Anh&background=ff9940&color=fff" alt="">
+                    <div class="flex-1 min-w-0"><p class="text-sm font-semibold truncate">Trần Đức Anh</p><p class="text-[10px] text-tertiary">Cấp 1</p></div>
+                    <span class="text-sm font-black text-primary">410tr</span>
+                </div>
+                <div class="flex items-center gap-3 opacity-60">
+                    <span class="w-7 h-7 rounded-full bg-surface-container text-on-surface-variant font-black text-xs flex items-center justify-center flex-shrink-0">4</span>
+                    <img class="w-8 h-8 rounded-full flex-shrink-0" src="https://ui-avatars.com/api/?name=Lan+Anh&background=e06200&color=fff" alt="">
+                    <div class="flex-1 min-w-0"><p class="text-sm font-semibold truncate">Phạm Lan Anh</p><p class="text-[10px] text-tertiary">Cấp 2</p></div>
+                    <span class="text-sm font-black">280tr</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kho cảnh báo -->
+        <div class="bg-white rounded-2xl p-5 border border-outline-variant/10 shadow-sm">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="font-bold text-base">Cảnh báo kho</h2>
+                <a href="warehouse.html" class="text-xs font-bold text-primary hover:underline">Xem kho →</a>
+            </div>
+            <div class="space-y-3">
+                <div class="flex items-center gap-3 p-3 bg-red-50 rounded-xl border border-red-200">
+                    <span class="material-symbols-outlined text-red-600 flex-shrink-0" style="font-variation-settings:'FILL' 1;">error</span>
+                    <div class="flex-1 min-w-0">
+                        <p class="text-sm font-bold text-red-800 truncate">Ghế 95 — Hết hàng</p>
+                        <p class="text-[10px] text-red-600">Tồn: 0 / Tối thiểu: 5</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3 p-3 bg-orange-50 rounded-xl border border-orange-200">
+                    <span class="material-symbols-outlined text-orange-500 flex-shrink-0" style="font-variation-settings:'FILL' 1;">warning</span>
+                    <div class="flex-1 min-w-0">
+                        <p class="text-sm font-bold text-orange-800 truncate">Ghế 135 — Sắp hết</p>
+                        <p class="text-[10px] text-orange-600">Tồn: 6 / Tối thiểu: 10</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3 p-3 bg-orange-50 rounded-xl border border-orange-200">
+                    <span class="material-symbols-outlined text-orange-500 flex-shrink-0" style="font-variation-settings:'FILL' 1;">warning</span>
+                    <div class="flex-1 min-w-0">
+                        <p class="text-sm font-bold text-orange-800 truncate">Gối F4/09 — Sắp hết</p>
+                        <p class="text-[10px] text-orange-600">Tồn: 2 / Tối thiểu: 5</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Patent alerts -->
+        <div class="bg-white rounded-2xl p-5 border border-outline-variant/10 shadow-sm">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="font-bold text-base">Bằng sáng chế</h2>
+                <a href="patent-manager.html" class="text-xs font-bold text-primary hover:underline">Xem tất cả →</a>
+            </div>
+            <div class="flex items-center gap-3 mb-4">
+                <div class="flex-1 text-center">
+                    <p class="text-2xl font-black text-green-700">59</p>
+                    <p class="text-[10px] text-tertiary">Còn hạn</p>
+                </div>
+                <div class="w-px h-12 bg-outline-variant/20"></div>
+                <div class="flex-1 text-center">
+                    <p class="text-2xl font-black text-orange-500">2</p>
+                    <p class="text-[10px] text-tertiary">Sắp hết hạn</p>
+                </div>
+                <div class="w-px h-12 bg-outline-variant/20"></div>
+                <div class="flex-1 text-center">
+                    <p class="text-2xl font-black text-red-600">1</p>
+                    <p class="text-[10px] text-tertiary">Cần gia hạn</p>
+                </div>
+            </div>
+            <div class="bg-orange-50 border border-orange-200 rounded-xl p-3 flex gap-2 items-start">
+                <span class="material-symbols-outlined text-orange-500 text-lg flex-shrink-0">notification_important</span>
+                <div>
+                    <p class="text-xs font-bold text-orange-800">Châu Âu (EP2847315)</p>
+                    <p class="text-[10px] text-orange-600">Hết hạn: 15/05/2026 — còn 45 ngày</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== BUSINESS HEALTH REPORT ===== -->
+    <div class="space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+            <div>
+                <p class="text-xs font-bold uppercase tracking-widest text-tertiary">CEO</p>
+                <h2 class="font-bold text-xl tracking-tight mt-0.5">Báo cáo sức khỏe doanh nghiệp</h2>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="text-[10px] font-bold text-green-700 bg-green-100 border border-green-200 px-3 py-1.5 rounded-full flex items-center gap-1">
+                    <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse inline-block"></span>
+                    Cập nhật: 31/03/2026 04:56
+                </span>
+                <button onclick="document.getElementById('health-agent').classList.toggle('hidden')"
+                    class="flex items-center gap-2 px-3 py-2 border border-primary text-primary rounded-xl text-xs font-bold hover:bg-primary/5 transition-colors">
+                    <span class="material-symbols-outlined text-sm">smart_toy</span>Hỏi AI Agent
+                </button>
+            </div>
+        </div>
+
+        <!-- Health Scorecard -->
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+            <!-- Revenue Health -->
+            <div class="bg-white rounded-2xl p-4 border border-green-100 shadow-sm text-center hover:-translate-y-1 transition-transform cursor-pointer">
+                <div class="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center mx-auto mb-2">
+                    <span class="material-symbols-outlined text-green-700 text-xl" style="font-variation-settings:'FILL' 1;">trending_up</span>
+                </div>
+                <p class="text-xs font-black text-green-700">TỐTỐT</p>
+                <p class="text-[10px] text-tertiary mt-0.5">Doanh thu</p>
+                <p class="text-lg font-black mt-1">4.2B</p>
+                <p class="text-[9px] text-green-600 font-bold">▲ +12.5%</p>
+            </div>
+            <!-- Order Health -->
+            <div class="bg-white rounded-2xl p-4 border border-green-100 shadow-sm text-center hover:-translate-y-1 transition-transform cursor-pointer">
+                <div class="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center mx-auto mb-2">
+                    <span class="material-symbols-outlined text-green-700 text-xl" style="font-variation-settings:'FILL' 1;">receipt_long</span>
+                </div>
+                <p class="text-xs font-black text-green-700">TỐT</p>
+                <p class="text-[10px] text-tertiary mt-0.5">Đơn hàng</p>
+                <p class="text-lg font-black mt-1">347</p>
+                <p class="text-[9px] text-green-600 font-bold">▲ +22%</p>
+            </div>
+            <!-- Agent Health -->
+            <div class="bg-white rounded-2xl p-4 border border-green-100 shadow-sm text-center hover:-translate-y-1 transition-transform cursor-pointer">
+                <div class="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center mx-auto mb-2">
+                    <span class="material-symbols-outlined text-green-700 text-xl" style="font-variation-settings:'FILL' 1;">groups</span>
+                </div>
+                <p class="text-xs font-black text-green-700">TỐT</p>
+                <p class="text-[10px] text-tertiary mt-0.5">Đại lý</p>
+                <p class="text-lg font-black mt-1">128</p>
+                <p class="text-[9px] text-green-600 font-bold">▲ +8 tháng này</p>
+            </div>
+            <!-- Customer Health -->
+            <div class="bg-white rounded-2xl p-4 border border-yellow-100 shadow-sm text-center hover:-translate-y-1 transition-transform cursor-pointer">
+                <div class="w-10 h-10 bg-yellow-100 rounded-xl flex items-center justify-center mx-auto mb-2">
+                    <span class="material-symbols-outlined text-yellow-700 text-xl" style="font-variation-settings:'FILL' 1;">person_check</span>
+                </div>
+                <p class="text-xs font-black text-yellow-700">TRUNG BÌNH</p>
+                <p class="text-[10px] text-tertiary mt-0.5">KH phục hồi</p>
+                <p class="text-lg font-black mt-1">38%</p>
+                <p class="text-[9px] text-red-500 font-bold">▼ -2% vs T2</p>
+            </div>
+            <!-- Inventory Health -->
+            <div class="bg-white rounded-2xl p-4 border border-red-100 shadow-sm text-center hover:-translate-y-1 transition-transform cursor-pointer">
+                <div class="w-10 h-10 bg-red-100 rounded-xl flex items-center justify-center mx-auto mb-2">
+                    <span class="material-symbols-outlined text-red-600 text-xl" style="font-variation-settings:'FILL' 1;">inventory_2</span>
+                </div>
+                <p class="text-xs font-black text-red-600">CẦN XỬ LÝ</p>
+                <p class="text-[10px] text-tertiary mt-0.5">Kho hàng</p>
+                <p class="text-lg font-black mt-1">3</p>
+                <p class="text-[9px] text-red-500 font-bold">Cảnh báo hết hàng</p>
+            </div>
+            <!-- IP Health -->
+            <div class="bg-white rounded-2xl p-4 border border-yellow-100 shadow-sm text-center hover:-translate-y-1 transition-transform cursor-pointer">
+                <div class="w-10 h-10 bg-yellow-100 rounded-xl flex items-center justify-center mx-auto mb-2">
+                    <span class="material-symbols-outlined text-yellow-700 text-xl" style="font-variation-settings:'FILL' 1;">gavel</span>
+                </div>
+                <p class="text-xs font-black text-yellow-700">CHÚ Ý</p>
+                <p class="text-[10px] text-tertiary mt-0.5">Bằng sáng chế</p>
+                <p class="text-lg font-black mt-1">62</p>
+                <p class="text-[9px] text-orange-500 font-bold">1 cần gia hạn</p>
+            </div>
+        </div>
+
+        <!-- Detail table -->
+        <div class="bg-white rounded-2xl border border-outline-variant/10 shadow-sm overflow-hidden">
+            <div class="p-4 border-b border-outline-variant/10 flex items-center justify-between">
+                <h3 class="font-bold text-sm">Xu hướng 3 tháng gần nhất</h3>
+                <a href="analytics.html" class="text-xs font-bold text-primary hover:underline">Báo cáo chi tiết →</a>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm">
+                    <thead class="bg-surface-container-low">
+                        <tr>
+                            <th class="text-left py-3 px-4 font-bold text-on-surface-variant/60 text-[10px] uppercase tracking-widest">Chỉ số</th>
+                            <th class="text-right py-3 px-4 font-bold text-on-surface-variant/60 text-[10px] uppercase">Tháng 1</th>
+                            <th class="text-right py-3 px-4 font-bold text-on-surface-variant/60 text-[10px] uppercase">Tháng 2</th>
+                            <th class="text-right py-3 px-4 font-bold text-on-surface/80 text-[10px] uppercase">Tháng 3</th>
+                            <th class="text-right py-3 px-4 font-bold text-on-surface-variant/60 text-[10px] uppercase">Xu hướng</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-outline-variant/10">
+                        <tr class="hover:bg-surface-container-low transition-colors">
+                            <td class="py-3 px-4 font-semibold">Doanh thu</td>
+                            <td class="py-3 px-4 text-right text-tertiary">2.9B</td>
+                            <td class="py-3 px-4 text-right text-tertiary">3.7B</td>
+                            <td class="py-3 px-4 text-right font-black">4.2B</td>
+                            <td class="py-3 px-4 text-right"><span class="text-[10px] font-black text-green-600 bg-green-50 px-2 py-0.5 rounded-full">▲ +44.8%</span></td>
+                        </tr>
+                        <tr class="hover:bg-surface-container-low transition-colors">
+                            <td class="py-3 px-4 font-semibold">Đơn hàng</td>
+                            <td class="py-3 px-4 text-right text-tertiary">201</td>
+                            <td class="py-3 px-4 text-right text-tertiary">284</td>
+                            <td class="py-3 px-4 text-right font-black">347</td>
+                            <td class="py-3 px-4 text-right"><span class="text-[10px] font-black text-green-600 bg-green-50 px-2 py-0.5 rounded-full">▲ +72.6%</span></td>
+                        </tr>
+                        <tr class="hover:bg-surface-container-low transition-colors">
+                            <td class="py-3 px-4 font-semibold">Đại lý hoạt động</td>
+                            <td class="py-3 px-4 text-right text-tertiary">104</td>
+                            <td class="py-3 px-4 text-right text-tertiary">120</td>
+                            <td class="py-3 px-4 text-right font-black">128</td>
+                            <td class="py-3 px-4 text-right"><span class="text-[10px] font-black text-green-600 bg-green-50 px-2 py-0.5 rounded-full">▲ +23%</span></td>
+                        </tr>
+                        <tr class="hover:bg-surface-container-low transition-colors">
+                            <td class="py-3 px-4 font-semibold">Tỉ lệ chuyển đổi</td>
+                            <td class="py-3 px-4 text-right text-tertiary">36%</td>
+                            <td class="py-3 px-4 text-right text-tertiary">40%</td>
+                            <td class="py-3 px-4 text-right font-black">38%</td>
+                            <td class="py-3 px-4 text-right"><span class="text-[10px] font-black text-red-500 bg-red-50 px-2 py-0.5 rounded-full">▼ -2pp</span></td>
+                        </tr>
+                        <tr class="hover:bg-surface-container-low transition-colors">
+                            <td class="py-3 px-4 font-semibold">Tỉ suất lợi nhuận</td>
+                            <td class="py-3 px-4 text-right text-tertiary">24%</td>
+                            <td class="py-3 px-4 text-right text-tertiary">26%</td>
+                            <td class="py-3 px-4 text-right font-black">28%</td>
+                            <td class="py-3 px-4 text-right"><span class="text-[10px] font-black text-green-600 bg-green-50 px-2 py-0.5 rounded-full">▲ +4pp</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Key Insights -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div class="bg-green-50 border border-green-200 rounded-2xl p-4 flex gap-3">
+                <span class="material-symbols-outlined text-green-700 flex-shrink-0 mt-0.5" style="font-variation-settings:'FILL' 1;">check_circle</span>
+                <div>
+                    <p class="text-xs font-black text-green-800 uppercase tracking-wide">Điểm mạnh</p>
+                    <p class="text-sm text-green-800 mt-1">Doanh thu tăng trưởng 3 tháng liên tiếp. Tỉ suất lợi nhuận cải thiện rõ rệt lên 28%.</p>
+                </div>
+            </div>
+            <div class="bg-yellow-50 border border-yellow-200 rounded-2xl p-4 flex gap-3">
+                <span class="material-symbols-outlined text-yellow-700 flex-shrink-0 mt-0.5" style="font-variation-settings:'FILL' 1;">warning</span>
+                <div>
+                    <p class="text-xs font-black text-yellow-800 uppercase tracking-wide">Cần chú ý</p>
+                    <p class="text-sm text-yellow-800 mt-1">Tỉ lệ chuyển đổi giảm 2pp. Kho Ghế 95 hết hàng — cần nhập ngay trong tuần.</p>
+                </div>
+            </div>
+            <div class="bg-primary/5 border border-primary/20 rounded-2xl p-4 flex gap-3">
+                <span class="material-symbols-outlined text-primary flex-shrink-0 mt-0.5" style="font-variation-settings:'FILL' 1;">lightbulb</span>
+                <div>
+                    <p class="text-xs font-black text-primary uppercase tracking-wide">Khuyến nghị</p>
+                    <p class="text-sm text-on-surface mt-1">Tập trung cải thiện quy trình tư vấn để đưa tỉ lệ chuyển đổi trở lại 40%+.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== AI AGENT PANEL ===== -->
+    <div id="health-agent" class="hidden fixed bottom-24 right-4 lg:right-8 z-50 w-80 md:w-96 flex flex-col shadow-2xl rounded-2xl overflow-hidden border border-outline-variant/20" style="max-height: 70vh;">
+        <!-- Agent Header -->
+        <div class="brand-gradient p-4 flex items-center gap-3 flex-shrink-0">
+            <div class="w-9 h-9 bg-white/20 rounded-xl flex items-center justify-center">
+                <span class="material-symbols-outlined text-white" style="font-variation-settings:'FILL' 1;">smart_toy</span>
+            </div>
+            <div class="flex-1">
+                <p class="font-bold text-white text-sm">AI Agent — Sức khỏe DN</p>
+                <p class="text-white/70 text-[10px]">Phân tích dữ liệu CEO Dashboard</p>
+            </div>
+            <button onclick="document.getElementById('health-agent').classList.add('hidden')" class="w-7 h-7 bg-white/20 hover:bg-white/30 rounded-lg flex items-center justify-center transition-colors">
+                <span class="material-symbols-outlined text-white text-base">close</span>
+            </button>
+        </div>
+
+        <!-- Chat Messages -->
+        <div id="agent-messages" class="bg-white flex-1 overflow-y-auto p-4 space-y-3" style="min-height: 240px; max-height: 380px;">
+            <!-- AI welcome message -->
+            <div class="flex gap-2">
+                <div class="w-7 h-7 brand-gradient rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <span class="material-symbols-outlined text-white text-xs" style="font-variation-settings:'FILL' 1;">smart_toy</span>
+                </div>
+                <div class="bg-surface-container-low rounded-2xl rounded-tl-none px-3 py-2.5 max-w-[85%]">
+                    <p class="text-xs text-on-surface leading-relaxed">Xin chào CEO! Tôi đã phân tích dữ liệu tháng 3/2026. Doanh nghiệp đang <strong>tăng trưởng tốt</strong> nhưng có 2 điểm cần chú ý: <span class="text-red-600 font-bold">kho Ghế 95 hết hàng</span> và <span class="text-orange-600 font-bold">tỉ lệ chuyển đổi giảm 2pp</span>. Bạn muốn phân tích sâu vấn đề nào?</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick suggestions -->
+        <div id="agent-suggestions" class="bg-white border-t border-outline-variant/10 p-3 flex flex-wrap gap-1.5 flex-shrink-0">
+            <button onclick="agentAsk(this, 'Phân tích nguyên nhân tỉ lệ chuyển đổi giảm')" class="text-[10px] font-bold text-primary border border-primary/30 px-2.5 py-1.5 rounded-full hover:bg-primary/5 transition-colors">Tỉ lệ chuyển đổi</button>
+            <button onclick="agentAsk(this, 'Kế hoạch nhập kho khẩn cấp Ghế 95')" class="text-[10px] font-bold text-primary border border-primary/30 px-2.5 py-1.5 rounded-full hover:bg-primary/5 transition-colors">Kho khẩn cấp</button>
+            <button onclick="agentAsk(this, 'Dự báo doanh thu Quý 2/2026')" class="text-[10px] font-bold text-primary border border-primary/30 px-2.5 py-1.5 rounded-full hover:bg-primary/5 transition-colors">Dự báo Q2/2026</button>
+            <button onclick="agentAsk(this, 'Đại lý nào cần được hỗ trợ tăng hiệu suất?')" class="text-[10px] font-bold text-primary border border-primary/30 px-2.5 py-1.5 rounded-full hover:bg-primary/5 transition-colors">Hiệu suất đại lý</button>
+        </div>
+
+        <!-- Input -->
+        <div class="bg-white border-t border-outline-variant/10 p-3 flex gap-2 flex-shrink-0">
+            <input id="agent-input" type="text" placeholder="Hỏi AI về sức khỏe doanh nghiệp..." class="flex-1 px-3 py-2 text-xs bg-surface-container-low border border-outline-variant/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/30">
+            <button onclick="agentSend()" class="w-9 h-9 brand-gradient rounded-xl flex items-center justify-center hover:opacity-90 active:scale-95 transition-all flex-shrink-0">
+                <span class="material-symbols-outlined text-white text-base">send</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- AI Agent FAB (mobile / always visible) -->
+    <button onclick="document.getElementById('health-agent').classList.toggle('hidden')"
+        class="fixed bottom-24 right-4 z-40 w-14 h-14 brand-gradient rounded-2xl flex items-center justify-center shadow-xl hover:opacity-90 active:scale-95 transition-all lg:hidden">
+        <span class="material-symbols-outlined text-white text-2xl" style="font-variation-settings:'FILL' 1;">smart_toy</span>
+    </button>
+
+    <script>
+    const agentResponses = {
+        'Phân tích nguyên nhân tỉ lệ chuyển đổi giảm': 'Tỉ lệ chuyển đổi giảm từ 40% (T2) xuống 38% (T3). Nguyên nhân có thể: (1) Tháng 3 có nhiều khách hàng mới chưa quen sản phẩm, (2) Ghế 95 hết hàng khiến mất cơ hội chốt. Khuyến nghị: tổ chức training kịch bản tư vấn cho đại lý cấp 1.',
+        'Kế hoạch nhập kho khẩn cấp Ghế 95': 'Ghế 95 đã hết 0 đơn vị (tối thiểu 5). Ước tính nhu cầu: ~18 chiếc/tháng dựa trên đơn tháng 3. Đề xuất nhập khẩn 20 chiếc trong tuần tới. Liên hệ nhà cung cấp: Dr. Minh factory — thời gian giao 3-5 ngày.',
+        'Dự báo doanh thu Quý 2/2026': 'Dựa trên tăng trưởng 3 tháng gần đây (+44.8%), dự báo Q2/2026: Tháng 4: ~5.1B | Tháng 5: ~5.6B | Tháng 6: ~6.2B. Tổng Q2: ~16.9B. Mức tăng trưởng này cần đảm bảo 15+ đại lý mới và giải quyết vấn đề kho.',
+        'Đại lý nào cần được hỗ trợ tăng hiệu suất?': 'Theo phân tích top 4 đại lý: Nguyễn Minh Tuấn (850tr - xuất sắc), Thu Hằng (620tr - tốt), Trần Đức Anh (410tr - trung bình), Lan Anh (280tr - cần hỗ trợ). Khuyến nghị: cử Đại lý Cấp 2 kèm cặp Phạm Lan Anh để đạt 400tr/tháng.'
+    };
+
+    function addMessage(text, isUser = false) {
+        const container = document.getElementById('agent-messages');
+        const div = document.createElement('div');
+        div.className = 'flex gap-2' + (isUser ? ' justify-end' : '');
+        if (isUser) {
+            div.innerHTML = `<div class="bg-primary/10 text-on-surface rounded-2xl rounded-tr-none px-3 py-2.5 max-w-[85%]"><p class="text-xs leading-relaxed">${text}</p></div>`;
+        } else {
+            div.innerHTML = `<div class="w-7 h-7 brand-gradient rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"><span class="material-symbols-outlined text-white text-xs" style="font-variation-settings:'FILL' 1;">smart_toy</span></div><div class="bg-surface-container-low rounded-2xl rounded-tl-none px-3 py-2.5 max-w-[85%]"><p class="text-xs text-on-surface leading-relaxed">${text}</p></div>`;
+        }
+        container.appendChild(div);
+        container.scrollTop = container.scrollHeight;
+    }
+
+    function agentAsk(btn, question) {
+        addMessage(question, true);
+        document.getElementById('agent-suggestions').style.display = 'none';
+        setTimeout(() => {
+            const resp = agentResponses[question] || 'Tôi đang phân tích dữ liệu. Vui lòng thử lại sau.';
+            addMessage(resp);
+        }, 800);
+    }
+
+    function agentSend() {
+        const input = document.getElementById('agent-input');
+        const text = input.value.trim();
+        if (!text) return;
+        addMessage(text, true);
+        input.value = '';
+        document.getElementById('agent-suggestions').style.display = 'none';
+        setTimeout(() => {
+            addMessage('Cảm ơn câu hỏi của bạn! Tôi đang truy xuất dữ liệu từ hệ thống. Dựa trên báo cáo tháng 3/2026: doanh thu 4.2B (+12.5%), 347 đơn hàng, tỉ suất lợi nhuận 28%. Bạn có muốn tôi xuất báo cáo chi tiết không?');
+        }, 1000);
+    }
+
+    document.getElementById('agent-input').addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') agentSend();
+    });
+    </script>
+
+</main>
+</body>
+</html>
+

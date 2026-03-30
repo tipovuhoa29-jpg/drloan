@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Livestream | DOCTORLOAN</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script src="js/tailwind-config.js"></script>
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/app.js"></script>
+    <style>
+        @keyframes live-pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.85); }
+        }
+        .live-dot { animation: live-pulse 1.4s ease-in-out infinite; }
+        .chat-bubble { animation: fadeInUp 0.3s ease both; }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(8px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased min-h-screen pb-32" data-hide-header data-hide-bottom-nav>
+
+    <!-- Custom App Bar -->
+    <header class="fixed top-0 w-full lg:w-[calc(100%-250px)] md:ml-[250px] z-50 bg-black flex justify-between items-center px-4 h-14 gap-3">
+        <div class="flex items-center gap-3">
+            <a href="learning.html" class="p-1.5 text-white/70 hover:text-white transition-colors">
+                <span class="material-symbols-outlined">arrow_back</span>
+            </a>
+            <div class="flex items-center gap-2">
+                <span class="live-dot w-2.5 h-2.5 bg-red-500 rounded-full flex-shrink-0"></span>
+                <span class="text-white font-bold text-sm tracking-tight">TRỰC TIẾP</span>
+                <span class="bg-white/10 text-white/80 text-[10px] px-2 py-0.5 rounded-full">1.243 đang xem</span>
+            </div>
+        </div>
+        <div class="flex items-center gap-2">
+            <button class="p-2 text-white/70 hover:text-white transition-colors">
+                <span class="material-symbols-outlined text-xl">share</span>
+            </button>
+            <button class="p-2 text-white/70 hover:text-white transition-colors">
+                <span class="material-symbols-outlined text-xl">more_vert</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="pt-14">
+        <!-- Live Video Player -->
+        <div class="relative w-full bg-black" style="aspect-ratio: 16/9; max-height: 50vh;">
+            <img class="w-full h-full object-cover opacity-80" src="https://medlatec.vn/media/2818/content/20230113_phuong-phap-chriopractic-la-gi-2.jpg" alt="Livestream chỉnh hình cột sống">
+            <!-- Video Overlay -->
+            <div class="absolute inset-0 flex flex-col justify-between p-4 bg-gradient-to-t from-black/80 via-transparent to-transparent">
+                <div></div>
+                <div class="flex justify-between items-end">
+                    <div class="flex flex-col gap-1">
+                        <div class="flex items-center gap-2">
+                            <img class="w-8 h-8 rounded-full border-2 border-primary" src="https://ui-avatars.com/api/?name=Dr+Minh&background=ff7500&color=fff" alt="Host">
+                            <div>
+                                <p class="text-white font-bold text-sm">Dr. Nguyễn Minh</p>
+                                <p class="text-white/70 text-[11px]">Chuyên khoa cột sống</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex gap-3">
+                        <button class="p-2 bg-white/10 backdrop-blur-md rounded-full text-white hover:bg-white/20 transition-colors">
+                            <span class="material-symbols-outlined text-lg">fullscreen</span>
+                        </button>
+                        <button class="p-2 bg-white/10 backdrop-blur-md rounded-full text-white hover:bg-white/20 transition-colors">
+                            <span class="material-symbols-outlined text-lg">volume_up</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Viewer count floating badge -->
+            <div class="absolute top-4 right-4 bg-red-600/90 backdrop-blur-md text-white text-[10px] font-bold px-2.5 py-1 rounded-full flex items-center gap-1.5">
+                <span class="live-dot w-1.5 h-1.5 bg-white rounded-full"></span> LIVE
+            </div>
+        </div>
+
+        <!-- Content Area: Info + Chat side by side on Desktop -->
+        <div class="lg:flex lg:gap-0 lg:h-[calc(50vh-56px)]">
+
+            <!-- Left: Info + Reactions -->
+            <div class="lg:flex-1 p-5 space-y-5 overflow-y-auto hide-scrollbar">
+                <div class="space-y-2">
+                    <h1 class="text-lg font-bold leading-snug">Kỹ thuật nắn chỉnh cột sống chuyên sâu — Phần 2: Ứng dụng thực tế</h1>
+                    <div class="flex flex-wrap items-center gap-3 text-xs text-tertiary">
+                        <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">schedule</span> Bắt đầu 13:00</span>
+                        <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">school</span> Chứng chỉ Y khoa</span>
+                        <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">people</span> 1.243 người xem</span>
+                    </div>
+                </div>
+
+                <!-- Reaction Row -->
+                <div class="flex items-center gap-3">
+                    <button class="flex items-center gap-2 px-4 py-2.5 bg-primary-container/15 text-primary rounded-full font-bold text-sm hover:bg-primary-container/30 transition-colors active:scale-95">
+                        <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">thumb_up</span> 2.4k
+                    </button>
+                    <button class="flex items-center gap-2 px-4 py-2.5 bg-surface-container rounded-full font-semibold text-sm hover:bg-surface-container-high transition-colors">
+                        <span class="material-symbols-outlined text-lg">favorite</span> Yêu thích
+                    </button>
+                    <button class="flex items-center gap-2 px-4 py-2.5 bg-surface-container rounded-full font-semibold text-sm hover:bg-surface-container-high transition-colors">
+                        <span class="material-symbols-outlined text-lg">share</span> Chia sẻ
+                    </button>
+                </div>
+
+                <!-- Upcoming Lives -->
+                <div class="space-y-3">
+                    <h2 class="font-bold text-sm text-on-surface/70 uppercase tracking-widest">Phiên tiếp theo</h2>
+                    <div class="flex gap-3 overflow-x-auto hide-scrollbar pb-1">
+                        <a href="learning-live.html" class="flex-shrink-0 w-52 bg-white rounded-xl overflow-hidden border border-outline-variant/10 group cursor-pointer">
+                            <div class="relative h-28">
+                                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform" src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=300" alt="next live">
+                                <div class="absolute bottom-1.5 left-1.5 bg-black/60 text-white text-[10px] px-2 py-0.5 rounded">14:00 hôm nay</div>
+                            </div>
+                            <div class="p-2.5">
+                                <p class="text-xs font-bold line-clamp-2">Giải đáp thắc mắc ghế DrLoan N85</p>
+                                <p class="text-[10px] text-tertiary mt-1">Phòng Kinh doanh</p>
+                            </div>
+                        </a>
+                        <a href="learning-live.html" class="flex-shrink-0 w-52 bg-white rounded-xl overflow-hidden border border-outline-variant/10 group cursor-pointer">
+                            <div class="relative h-28">
+                                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform" src="https://images.unsplash.com/photo-1581093806997-124204d9fa9d?auto=format&fit=crop&q=80&w=300" alt="next live">
+                                <div class="absolute bottom-1.5 left-1.5 bg-black/60 text-white text-[10px] px-2 py-0.5 rounded">Thứ 4 08:30</div>
+                            </div>
+                            <div class="p-2.5">
+                                <p class="text-xs font-bold line-clamp-2">Kỹ năng bán hàng y tế 2024</p>
+                                <p class="text-[10px] text-tertiary mt-1">Phòng Đào tạo</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Live Chat Panel (Desktop) -->
+            <aside class="hidden lg:flex flex-col w-[330px] bg-surface-container-low border-l border-surface-variant h-full">
+                <div class="p-3 border-b border-surface-variant flex items-center justify-between">
+                    <h3 class="font-bold text-sm">Chat trực tiếp</h3>
+                    <span class="text-[10px] text-tertiary">1.243 người xem</span>
+                </div>
+                <div class="flex-1 overflow-y-auto p-3 space-y-3 hide-scrollbar">
+                    <div class="chat-bubble flex gap-2">
+                        <img src="https://ui-avatars.com/api/?name=A&background=ffdbcb&color=9c4500&size=32" class="w-7 h-7 rounded-full flex-shrink-0" alt="">
+                        <div><span class="font-bold text-xs text-primary">Minh Hạnh</span><p class="text-xs mt-0.5">Cảm ơn Dr. Minh, rất hay ạ!</p></div>
+                    </div>
+                    <div class="chat-bubble flex gap-2">
+                        <img src="https://ui-avatars.com/api/?name=T&background=ece1d6&color=594236&size=32" class="w-7 h-7 rounded-full flex-shrink-0" alt="">
+                        <div><span class="font-bold text-xs text-on-surface-variant">Trung Hiếu</span><p class="text-xs mt-0.5">Phần L4-L5 bác có thể giải thích thêm không ạ?</p></div>
+                    </div>
+                    <div class="chat-bubble flex gap-2">
+                        <img src="https://ui-avatars.com/api/?name=L&background=ffdbcb&color=9c4500&size=32" class="w-7 h-7 rounded-full flex-shrink-0" alt="">
+                        <div><span class="font-bold text-xs text-primary">Lan Phương</span><p class="text-xs mt-0.5">Buổi này quá hay! 👏</p></div>
+                    </div>
+                    <div class="chat-bubble flex gap-2">
+                        <img src="https://ui-avatars.com/api/?name=H&background=ece1d6&color=594236&size=32" class="w-7 h-7 rounded-full flex-shrink-0" alt="">
+                        <div><span class="font-bold text-xs text-on-surface-variant">Huy Đức</span><p class="text-xs mt-0.5">Xin hỏi ghế DrLoan 135 phù hợp cho bệnh nhân thoát vị không ạ?</p></div>
+                    </div>
+                    <div class="chat-bubble flex gap-2">
+                        <img src="https://ui-avatars.com/api/?name=N&background=ffdbcb&color=9c4500&size=32" class="w-7 h-7 rounded-full flex-shrink-0" alt="">
+                        <div><span class="font-bold text-xs text-primary">Nam Khánh</span><p class="text-xs mt-0.5">👍 tuyệt vời</p></div>
+                    </div>
+                </div>
+                <div class="p-3 border-t border-surface-variant flex gap-2">
+                    <input type="text" placeholder="Đặt câu hỏi..." class="flex-1 text-sm px-3 py-2 bg-white border border-outline-variant/30 rounded-full focus:outline-none focus:ring-2 focus:ring-primary/30">
+                    <button class="w-9 h-9 brand-gradient rounded-full flex items-center justify-center text-white">
+                        <span class="material-symbols-outlined text-sm">send</span>
+                    </button>
+                </div>
+            </aside>
+        </div>
+
+        <!-- Mobile Chat (accordion style) -->
+        <div class="lg:hidden p-5 border-t border-surface-variant space-y-3">
+            <h2 class="font-bold text-sm text-on-surface/70 uppercase tracking-widest">Chat trực tiếp</h2>
+            <div class="space-y-3">
+                <div class="flex gap-2">
+                    <img src="https://ui-avatars.com/api/?name=A&background=ffdbcb&color=9c4500&size=32" class="w-7 h-7 rounded-full flex-shrink-0" alt="">
+                    <div><span class="font-bold text-xs text-primary">Minh Hạnh</span><p class="text-xs mt-0.5">Cảm ơn Dr. Minh, rất hay ạ!</p></div>
+                </div>
+                <div class="flex gap-2">
+                    <img src="https://ui-avatars.com/api/?name=T&background=ece1d6&color=594236&size=32" class="w-7 h-7 rounded-full flex-shrink-0" alt="">
+                    <div><span class="font-bold text-xs text-on-surface-variant">Trung Hiếu</span><p class="text-xs mt-0.5">Phần L4-L5 bác có thể giải thích thêm không ạ?</p></div>
+                </div>
+            </div>
+            <div class="flex gap-2 pt-2">
+                <input type="text" placeholder="Đặt câu hỏi..." class="flex-1 text-sm px-4 py-2.5 bg-white border border-outline-variant/30 rounded-full focus:outline-none focus:ring-2 focus:ring-primary/30">
+                <button class="w-10 h-10 brand-gradient rounded-full flex items-center justify-center text-white flex-shrink-0">
+                    <span class="material-symbols-outlined text-sm">send</span>
+                </button>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

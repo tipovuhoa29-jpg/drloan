@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Quản lý kho | DOCTORLOAN</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script src="js/tailwind-config.js"></script>
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/app.js"></script>
+    <style>
+        .stock-bar-track { background: #f0ebe6; border-radius: 99px; height: 6px; overflow: hidden; }
+        .stock-bar-fill { height: 100%; border-radius: 99px; transition: width 0.6s cubic-bezier(.4,0,.2,1); }
+        .status-ok   { background: linear-gradient(90deg, #4CAF50, #66BB6A); }
+        .status-low  { background: linear-gradient(90deg, #FF9800, #FFB74D); }
+        .status-out  { background: linear-gradient(90deg, #e53935, #EF5350); }
+        .card-hover  { transition: transform .18s cubic-bezier(.4,0,.2,1), box-shadow .18s; }
+        .card-hover:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(156,69,0,0.10); }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen pb-32">
+<main class="space-y-8">
+
+    <!-- Page Header -->
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3 pt-4">
+        <div>
+            <h1 class="font-extrabold tracking-tight text-xl lg:text-3xl">Quản lý kho</h1>
+            <p class="text-tertiary text-sm mt-1">Cập nhật lần cuối: 31/03/2024 lúc 03:45</p>
+        </div>
+        <div class="flex gap-2">
+            <button class="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-primary text-primary text-sm font-bold hover:bg-primary/5 active:scale-[0.98] transition-all">
+                <span class="material-symbols-outlined text-lg">download</span>
+                Xuất báo cáo
+            </button>
+            <button class="flex items-center gap-2 px-4 py-2.5 rounded-xl brand-gradient text-white text-sm font-bold shadow-md hover:opacity-90 active:scale-[0.98] transition-all">
+                <span class="material-symbols-outlined text-lg">add</span>
+                Nhập kho
+            </button>
+        </div>
+    </div>
+
+    <!-- Summary KPIs -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+        <div class="card-hover bg-white rounded-2xl p-4 md:p-5 border border-outline-variant/10 shadow-sm">
+            <div class="flex items-start justify-between gap-2 mb-3">
+                <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings:'FILL' 1;">inventory_2</span>
+                </div>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant/60">Tổng SKU</span>
+            </div>
+            <p class="text-3xl font-black text-on-surface tracking-tight">18</p>
+            <p class="text-[11px] text-tertiary mt-1">Sản phẩm đang theo dõi</p>
+        </div>
+        <div class="card-hover bg-white rounded-2xl p-4 md:p-5 border border-outline-variant/10 shadow-sm">
+            <div class="flex items-start justify-between gap-2 mb-3">
+                <div class="w-10 h-10 rounded-xl bg-green-100 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-green-700 text-xl" style="font-variation-settings:'FILL' 1;">check_circle</span>
+                </div>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant/60">Còn hàng</span>
+            </div>
+            <p class="text-3xl font-black text-green-700 tracking-tight">13</p>
+            <p class="text-[11px] text-tertiary mt-1">Đủ tồn kho tối thiểu</p>
+        </div>
+        <div class="card-hover bg-white rounded-2xl p-4 md:p-5 border border-outline-variant/10 shadow-sm">
+            <div class="flex items-start justify-between gap-2 mb-3">
+                <div class="w-10 h-10 rounded-xl bg-orange-100 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-orange-600 text-xl" style="font-variation-settings:'FILL' 1;">warning</span>
+                </div>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant/60">Sắp hết</span>
+            </div>
+            <p class="text-3xl font-black text-orange-600 tracking-tight">3</p>
+            <p class="text-[11px] text-tertiary mt-1">Dưới mức tồn kho tối thiểu</p>
+        </div>
+        <div class="card-hover bg-white rounded-2xl p-4 md:p-5 border border-outline-variant/10 shadow-sm">
+            <div class="flex items-start justify-between gap-2 mb-3">
+                <div class="w-10 h-10 rounded-xl bg-red-100 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-red-600 text-xl" style="font-variation-settings:'FILL' 1;">cancel</span>
+                </div>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant/60">Hết hàng</span>
+            </div>
+            <p class="text-3xl font-black text-red-600 tracking-tight">2</p>
+            <p class="text-[11px] text-tertiary mt-1">Cần nhập hàng ngay</p>
+        </div>
+    </div>
+
+    <!-- Alert Banner -->
+    <div class="bg-orange-50 border border-orange-200 rounded-2xl p-4 flex items-start gap-3">
+        <span class="material-symbols-outlined text-orange-500 flex-shrink-0 mt-0.5" style="font-variation-settings:'FILL' 1;">warning_amber</span>
+        <div class="flex-1">
+            <p class="font-bold text-sm text-orange-800">Cảnh báo tồn kho thấp</p>
+            <p class="text-xs text-orange-700 mt-1">Ghế N85 còn <strong>4 chiếc</strong>, Gối F4/09 còn <strong>2 chiếc</strong>. Vui lòng kiểm tra và đặt hàng bổ sung.</p>
+        </div>
+        <button class="text-orange-700 font-bold text-xs hover:text-orange-900 flex-shrink-0">Xử lý →</button>
+    </div>
+
+    <!-- Search & Filter -->
+    <div class="flex flex-col sm:flex-row gap-3">
+        <div class="flex-1 relative">
+            <span class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant/60 text-xl pointer-events-none">search</span>
+            <input type="text" placeholder="Tìm kiếm sản phẩm..." class="w-full pl-11 pr-4 py-3 text-sm bg-white border border-outline-variant/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/40 shadow-sm">
+        </div>
+        <div class="flex gap-2 flex-wrap">
+            <select class="text-sm px-4 py-3 bg-white border border-outline-variant/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/30 text-on-surface-variant font-medium shadow-sm">
+                <option>Tất cả loại</option>
+                <option>Ghế sáng chế</option>
+                <option>Gối cổ</option>
+                <option>Đệm thiền</option>
+            </select>
+            <select class="text-sm px-4 py-3 bg-white border border-outline-variant/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/30 text-on-surface-variant font-medium shadow-sm">
+                <option>Tất cả trạng thái</option>
+                <option>Còn hàng</option>
+                <option>Sắp hết</option>
+                <option>Hết hàng</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Inventory Table / Cards -->
+    <section class="space-y-3">
+        <!-- Section: Hết hàng -->
+        <div class="flex items-center gap-2 mb-1">
+            <span class="w-2 h-2 rounded-full bg-red-500"></span>
+            <p class="text-[10px] font-black uppercase tracking-[0.15em] text-on-surface-variant/60">Hết hàng — Cần nhập ngay</p>
+        </div>
+
+        <!-- OUT OF STOCK: Ghế 95 -->
+        <div class="card-hover bg-white rounded-2xl p-4 md:p-5 border border-red-200 shadow-sm">
+            <div class="flex gap-4 items-start">
+                <div class="w-16 h-16 rounded-xl overflow-hidden flex-shrink-0 bg-surface-container">
+                    <img class="w-full h-full object-cover" src="https://doctorloan-api.giathaidoctorloan.vn/DataFiles/product/0001/img-pd-brown-6_kl540vew.png" alt="Ghế 95">
+                </div>
+                <div class="flex-1 min-w-0">
+                    <div class="flex flex-wrap items-center gap-2 mb-1">
+                        <span class="text-[10px] font-bold bg-red-100 text-red-700 px-2 py-0.5 rounded-full">Hết hàng</span>
+                        <span class="text-[10px] text-tertiary">SKU: DRL-GHE-095</span>
+                    </div>
+                    <h3 class="font-bold text-sm">Ghế sáng chế DOCTORLOAN 95</h3>
+                    <div class="mt-2">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="text-[10px] text-tertiary">Tồn kho: 0 / tối thiểu 5</span>
+                            <span class="text-[10px] font-bold text-red-600">0%</span>
+                        </div>
+                        <div class="stock-bar-track"><div class="stock-bar-fill status-out" style="width:0%"></div></div>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-2 flex-shrink-0">
+                    <button class="px-3 py-2 brand-gradient text-white text-xs font-bold rounded-xl hover:opacity-90 active:scale-95 transition-all flex items-center gap-1">
+                        <span class="material-symbols-outlined text-sm">add_circle</span> Nhập kho
+                    </button>
+                    <div class="text-right">
+                        <p class="text-xs font-bold text-on-surface">4,500,000đ</p>
+                        <p class="text-[10px] text-tertiary">/ chiếc</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- OUT OF STOCK: Đệm thiền -->
+        <div class="card-hover bg-white rounded-2xl p-4 md:p-5 border border-red-200 shadow-sm">
+            <div class="flex gap-4 items-start">
+                <div class="w-16 h-16 rounded-xl overflow-hidden flex-shrink-0 bg-surface-container">
+                    <img class="w-full h-full object-cover" src="https://doctorloan-api.giathaidoctorloan.vn/DataFiles/product/0002/img-pd-brown-3_fvy5d5jh.png" alt="Đệm thiền">
+                </div>
+                <div class="flex-1 min-w-0">
+                    <div class="flex flex-wrap items-center gap-2 mb-1">
+                        <span class="text-[10px] font-bold bg-red-100 text-red-700 px-2 py-0.5 rounded-full">Hết hàng</span>
+                        <span class="text-[10px] text-tertiary">SKU: DRL-DEM-001</span>
+                    </div>
+                    <h3 class="font-bold text-sm">Đệm thiền sáng chế DOCTORLOAN</h3>
+                    <div class="mt-2">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="text-[10px] text-tertiary">Tồn kho: 0 / tối thiểu 3</span>
+                            <span class="text-[10px] font-bold text-red-600">0%</span>
+                        </div>
+                        <div class="stock-bar-track"><div class="stock-bar-fill status-out" style="width:0%"></div></div>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-2 flex-shrink-0">
+                    <button class="px-3 py-2 brand-gradient text-white text-xs font-bold rounded-xl hover:opacity-90 active:scale-95 transition-all flex items-center gap-1">
+                        <span class="material-symbols-outlined text-sm">add_circle</span> Nhập kho
+                    </button>
+                    <div class="text-right">
+                        <p class="text-xs font-bold text-on-surface">1,200,000đ</p>
+                        <p class="text-[10px] text-tertiary">/ chiếc</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section: Sắp hết -->
+        <div class="flex items-center gap-2 mt-6 mb-1">
+            <span class="w-2 h-2 rounded-full bg-orange-500"></span>
+            <p class="text-[10px] font-black uppercase tracking-[0.15em] text-on-surface-variant/60">Sắp hết hàng — Cần theo dõi</p>
+        </div>
+
+        <!-- LOW: Ghế 135 -->
+        <div class="card-hover bg-white rounded-2xl p-4 md:p-5 border border-orange-200 shadow-sm">
+            <div class="flex gap-4 items-start">
+                <div class="w-16 h-16 rounded-xl overflow-hidden flex-shrink-0 bg-surface-container">
+                    <img class="w-full h-full object-cover" src="https://doctorloan-api.giathaidoctorloan.vn/DataFiles/product/0001/img-pd-brown-6_kl540vew.png" alt="Ghế 135">
+                </div>
+                <div class="flex-1 min-w-0">
+                    <div class="flex flex-wrap items-center gap-2 mb-1">
+                        <span class="text-[10px] font-bold bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full">Sắp hết (6 chiếc)</span>
+                        <span class="text-[10px] text-tertiary">SKU: DRL-GHE-135</span>
+                    </div>
+                    <h3 class="font-bold text-sm">Ghế sáng chế DOCTORLOAN 135</h3>
+                    <div class="mt-2">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="text-[10px] text-tertiary">Tồn kho: 6 / tối thiểu 10</span>
+                            <span class="text-[10px] font-bold text-orange-600">60%</span>
+                        </div>
+                        <div class="stock-bar-track"><div class="stock-bar-fill status-low" style="width:60%"></div></div>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-2 flex-shrink-0">
+                    <button class="px-3 py-2 border border-primary text-primary text-xs font-bold rounded-xl hover:bg-primary/5 active:scale-95 transition-all flex items-center gap-1">
+                        <span class="material-symbols-outlined text-sm">add_circle</span> Nhập thêm
+                    </button>
+                    <div class="text-right">
+                        <p class="text-xs font-bold text-on-surface">6,800,000đ</p>
+                        <p class="text-[10px] text-tertiary">/ chiếc</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LOW: Gối N85 -->
+        <div class="card-hover bg-white rounded-2xl p-4 md:p-5 border border-orange-200 shadow-sm">
+            <div class="flex gap-4 items-start">
+                <div class="w-16 h-16 rounded-xl overflow-hidden flex-shrink-0 bg-surface-container bg-gradient-to-br from-amber-50 to-orange-50 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-on-surface-variant/40 text-3xl">chair</span>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <div class="flex flex-wrap items-center gap-2 mb-1">
+                        <span class="text-[10px] font-bold bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full">Sắp hết (4 chiếc)</span>
+                        <span class="text-[10px] text-tertiary">SKU: DRL-GHE-N85</span>
+                    </div>
+                    <h3 class="font-bold text-sm">Ghế sáng chế DOCTORLOAN N85</h3>
+                    <div class="mt-2">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="text-[10px] text-tertiary">Tồn kho: 4 / tối thiểu 8</span>
+                            <span class="text-[10px] font-bold text-orange-600">50%</span>
+                        </div>
+                        <div class="stock-bar-track"><div class="stock-bar-fill status-low" style="width:50%"></div></div>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-2 flex-shrink-0">
+                    <button class="px-3 py-2 border border-primary text-primary text-xs font-bold rounded-xl hover:bg-primary/5 active:scale-95 transition-all flex items-center gap-1">
+                        <span class="material-symbols-outlined text-sm">add_circle</span> Nhập thêm
+                    </button>
+                    <div class="text-right">
+                        <p class="text-xs font-bold text-on-surface">5,200,000đ</p>
+                        <p class="text-[10px] text-tertiary">/ chiếc</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LOW: Gối F4/09 -->
+        <div class="card-hover bg-white rounded-2xl p-4 md:p-5 border border-orange-200 shadow-sm">
+            <div class="flex gap-4 items-start">
+                <div class="w-16 h-16 rounded-xl overflow-hidden flex-shrink-0 bg-gradient-to-br from-amber-50 to-orange-50 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-on-surface-variant/40 text-3xl">airline_seat_flat</span>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <div class="flex flex-wrap items-center gap-2 mb-1">
+                        <span class="text-[10px] font-bold bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full">Sắp hết (2 chiếc)</span>
+                        <span class="text-[10px] text-tertiary">SKU: DRL-GOI-F409</span>
+                    </div>
+                    <h3 class="font-bold text-sm">Gối cổ sáng chế DOCTORLOAN F4/09</h3>
+                    <div class="mt-2">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="text-[10px] text-tertiary">Tồn kho: 2 / tối thiểu 5</span>
+                            <span class="text-[10px] font-bold text-orange-600">40%</span>
+                        </div>
+                        <div class="stock-bar-track"><div class="stock-bar-fill status-low" style="width:40%"></div></div>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-2 flex-shrink-0">
+                    <button class="px-3 py-2 border border-primary text-primary text-xs font-bold rounded-xl hover:bg-primary/5 active:scale-95 transition-all flex items-center gap-1">
+                        <span class="material-symbols-outlined text-sm">add_circle</span> Nhập thêm
+                    </button>
+                    <div class="text-right">
+                        <p class="text-xs font-bold text-on-surface">850,000đ</p>
+                        <p class="text-[10px] text-tertiary">/ chiếc</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section: Còn hàng -->
+        <div class="flex items-center gap-2 mt-6 mb-1">
+            <span class="w-2 h-2 rounded-full bg-green-500"></span>
+            <p class="text-[10px] font-black uppercase tracking-[0.15em] text-on-surface-variant/60">Còn hàng — Tình trạng tốt</p>
+        </div>
+
+        <!-- OK: Gối AU/N -->
+        <div class="card-hover bg-white rounded-2xl p-4 md:p-5 border border-outline-variant/10 shadow-sm">
+            <div class="flex gap-4 items-start">
+                <div class="w-16 h-16 rounded-xl overflow-hidden flex-shrink-0 bg-gradient-to-br from-amber-50 to-orange-50 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-on-surface-variant/40 text-3xl">airline_seat_flat</span>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <div class="flex flex-wrap items-center gap-2 mb-1">
+                        <span class="text-[10px] font-bold bg-green-100 text-green-700 px-2 py-0.5 rounded-full">Còn hàng (24 chiếc)</span>
+                        <span class="text-[10px] text-tertiary">SKU: DRL-GOI-AUN</span>
+                    </div>
+                    <h3 class="font-bold text-sm">Gối cổ người lớn DOCTORLOAN AU/N</h3>
+                    <div class="mt-2">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="text-[10px] text-tertiary">Tồn kho: 24 / tối thiểu 10</span>
+                            <span class="text-[10px] font-bold text-green-600">100%</span>
+                        </div>
+                        <div class="stock-bar-track"><div class="stock-bar-fill status-ok" style="width:100%"></div></div>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-2 flex-shrink-0 items-end">
+                    <button class="px-3 py-2 text-on-surface-variant border border-outline-variant/20 text-xs font-medium rounded-xl hover:bg-surface-container transition-colors">
+                        Chi tiết
+                    </button>
+                    <div class="text-right">
+                        <p class="text-xs font-bold text-on-surface">690,000đ</p>
+                        <p class="text-[10px] text-tertiary">/ chiếc</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-hover bg-white rounded-2xl p-4 md:p-5 border border-outline-variant/10 shadow-sm">
+            <div class="flex gap-4 items-start">
+                <div class="w-16 h-16 rounded-xl overflow-hidden flex-shrink-0 bg-gradient-to-br from-amber-50 to-orange-50 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-on-surface-variant/40 text-3xl">airline_seat_flat</span>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <div class="flex flex-wrap items-center gap-2 mb-1">
+                        <span class="text-[10px] font-bold bg-green-100 text-green-700 px-2 py-0.5 rounded-full">Còn hàng (18 chiếc)</span>
+                        <span class="text-[10px] text-tertiary">SKU: DRL-GOI-F5S</span>
+                    </div>
+                    <h3 class="font-bold text-sm">Gối cổ sáng chế DOCTORLOAN F5/S</h3>
+                    <div class="mt-2">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="text-[10px] text-tertiary">Tồn kho: 18 / tối thiểu 8</span>
+                            <span class="text-[10px] font-bold text-green-600">100%</span>
+                        </div>
+                        <div class="stock-bar-track"><div class="stock-bar-fill status-ok" style="width:100%"></div></div>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-2 flex-shrink-0 items-end">
+                    <button class="px-3 py-2 text-on-surface-variant border border-outline-variant/20 text-xs font-medium rounded-xl hover:bg-surface-container transition-colors">Chi tiết</button>
+                    <div class="text-right">
+                        <p class="text-xs font-bold text-on-surface">780,000đ</p>
+                        <p class="text-[10px] text-tertiary">/ chiếc</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Load more link -->
+        <div class="pt-2 text-center">
+            <button class="text-sm font-bold text-primary px-4 py-2 rounded-xl hover:bg-primary/5 transition-colors inline-flex items-center gap-1">
+                <span class="material-symbols-outlined text-sm">expand_more</span>
+                Xem thêm 11 sản phẩm còn hàng
+            </button>
+        </div>
+    </section>
+
+    <!-- Recent Activity -->
+    <section class="space-y-3">
+        <h2 class="text-sm font-bold uppercase tracking-widest text-on-surface/60">Nhật ký nhập/xuất kho gần đây</h2>
+        <div class="bg-white rounded-2xl border border-outline-variant/10 overflow-hidden shadow-sm divide-y divide-outline-variant/10">
+            <div class="flex items-center gap-4 p-4 hover:bg-surface-container-low transition-colors">
+                <div class="w-9 h-9 rounded-xl bg-green-100 flex items-center justify-center flex-shrink-0">
+                    <span class="material-symbols-outlined text-green-700 text-lg" style="font-variation-settings:'FILL' 1;">add_circle</span>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <p class="font-semibold text-sm">Nhập kho: Ghế 135 (+10 chiếc)</p>
+                    <p class="text-[10px] text-tertiary mt-0.5">30/03/2024 09:15 • Admin: Nguyễn Minh Tuấn</p>
+                </div>
+                <span class="text-xs font-bold text-green-700">+10</span>
+            </div>
+            <div class="flex items-center gap-4 p-4 hover:bg-surface-container-low transition-colors">
+                <div class="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <span class="material-symbols-outlined text-primary text-lg" style="font-variation-settings:'FILL' 1;">remove_circle</span>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <p class="font-semibold text-sm">Xuất kho: Gối AU/N (–3 chiếc)</p>
+                    <p class="text-[10px] text-tertiary mt-0.5">30/03/2024 14:20 • Đơn hàng #DRL031501</p>
+                </div>
+                <span class="text-xs font-bold text-primary">-3</span>
+            </div>
+            <div class="flex items-center gap-4 p-4 hover:bg-surface-container-low transition-colors">
+                <div class="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <span class="material-symbols-outlined text-primary text-lg" style="font-variation-settings:'FILL' 1;">remove_circle</span>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <p class="font-semibold text-sm">Xuất kho: Đệm thiền (–2 chiếc)</p>
+                    <p class="text-[10px] text-tertiary mt-0.5">29/03/2024 10:05 • Đơn hàng #DRL031402</p>
+                </div>
+                <span class="text-xs font-bold text-primary">-2</span>
+            </div>
+            <div class="flex items-center gap-4 p-4 hover:bg-surface-container-low transition-colors">
+                <div class="w-9 h-9 rounded-xl bg-green-100 flex items-center justify-center flex-shrink-0">
+                    <span class="material-symbols-outlined text-green-700 text-lg" style="font-variation-settings:'FILL' 1;">add_circle</span>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <p class="font-semibold text-sm">Nhập kho: Gối F5/S (+20 chiếc)</p>
+                    <p class="text-[10px] text-tertiary mt-0.5">28/03/2024 08:30 • Admin: Nguyễn Minh Tuấn</p>
+                </div>
+                <span class="text-xs font-bold text-green-700">+20</span>
+            </div>
+        </div>
+    </section>
+
+</main>
+</body>
+</html>

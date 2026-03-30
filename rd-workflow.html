@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>AI R&D Workflow | DOCTORLOAN</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script src="js/tailwind-config.js"></script>
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/app.js"></script>
+    <style>
+        html, body { height: 100%; overflow: hidden; }
+        .chat-scroll { overflow-y: auto; }
+        .chat-scroll::-webkit-scrollbar { width: 4px; }
+        .chat-scroll::-webkit-scrollbar-thumb { background: rgba(156,69,0,0.2); border-radius: 2px; }
+        .result-scroll { overflow-y: auto; }
+        .result-scroll::-webkit-scrollbar { width: 4px; }
+        .result-scroll::-webkit-scrollbar-thumb { background: rgba(156,69,0,0.2); border-radius: 2px; }
+        @keyframes pulse-dot { 0%,100%{opacity:.3;transform:scale(.8)} 50%{opacity:1;transform:scale(1)} }
+        .typing span { animation: pulse-dot 1.2s infinite; }
+        .typing span:nth-child(2) { animation-delay:.2s; }
+        .typing span:nth-child(3) { animation-delay:.4s; }
+        @keyframes slide-in { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:none} }
+        .msg-new { animation: slide-in .3s ease; }
+        @keyframes spin-slow { to{transform:rotate(360deg)} }
+        .spin-slow { animation: spin-slow 3s linear infinite; }
+        .step-active .step-dot { background: linear-gradient(135deg,#FF7500,#9C4500); }
+        .step-done .step-dot { background: #16a34a; }
+        .step-pending .step-dot { background: #e5e7eb; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased" data-hide-header data-hide-bottom-nav>
+
+<!-- ── TOP BAR ── -->
+<header class="fixed top-0 left-0 right-0 lg:left-[250px] z-50 bg-white border-b border-outline-variant/15 flex items-center justify-between px-4 h-14 gap-3">
+    <div class="flex items-center gap-3 min-w-0">
+        <a href="index.html" class="p-1.5 -ml-1.5 text-primary hover:bg-primary/5 rounded-full transition-colors flex-shrink-0">
+            <span class="material-symbols-outlined">arrow_back</span>
+        </a>
+        <div class="flex items-center gap-2 min-w-0">
+            <div class="w-7 h-7 brand-gradient rounded-lg flex items-center justify-center flex-shrink-0">
+                <span class="material-symbols-outlined text-white text-sm" style="font-variation-settings:'FILL' 1;">biotech</span>
+            </div>
+            <div class="min-w-0">
+                <h1 class="font-extrabold text-sm tracking-tight truncate">AI R&amp;D Workflow</h1>
+                <p class="text-[9px] text-tertiary hidden sm:block">DoctorLoan · Phòng Nghiên cứu &amp; Phát triển</p>
+            </div>
+        </div>
+    </div>
+    <div class="flex items-center gap-2 flex-shrink-0">
+        <div class="flex items-center gap-1.5 bg-surface-container px-3 py-1.5 rounded-full">
+            <span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings:'FILL' 1;">manage_accounts</span>
+            <span class="text-xs font-bold hidden sm:inline">Trưởng phòng R&amp;D</span>
+        </div>
+        <button id="btn-new-session" class="p-2 text-on-surface-variant hover:bg-surface-container rounded-full transition-colors" title="Phiên mới">
+            <span class="material-symbols-outlined text-lg">add_circle</span>
+        </button>
+        <button class="p-2 text-on-surface-variant hover:bg-surface-container rounded-full transition-colors" title="Cài đặt">
+            <span class="material-symbols-outlined text-lg">settings</span>
+        </button>
+    </div>
+</header>
+
+<!-- ── MAIN 3-PANEL LAYOUT ── -->
+<div class="flex h-screen pt-14 lg:pl-[250px]">
+
+    <!-- ═══ LEFT: R&D PROGRESS SIDEBAR ═══ -->
+    <aside class="hidden lg:flex flex-col w-[220px] flex-shrink-0 bg-surface-container-low border-r border-outline-variant/15 overflow-auto">
+        <div class="p-4 border-b border-outline-variant/10">
+            <p class="text-[9px] font-black uppercase tracking-[0.15em] text-on-surface-variant/50">Tiến trình R&amp;D</p>
+            <p class="text-xs text-tertiary mt-1" id="session-label">Phiên #001 — Sản phẩm mới</p>
+        </div>
+
+        <div class="flex-1 p-3 space-y-1" id="step-list">
+            <!-- Steps rendered by JS -->
+        </div>
+
+        <!-- Phase label -->
+        <div class="p-3 border-t border-outline-variant/10 space-y-2">
+            <p class="text-[9px] font-black uppercase tracking-[0.15em] text-on-surface-variant/50">Sản phẩm đang R&amp;D</p>
+            <div class="bg-white rounded-xl p-3 border border-outline-variant/10 shadow-sm">
+                <p class="text-xs font-bold" id="product-label">Gối cổ C5-C6</p>
+                <p class="text-[10px] text-tertiary mt-0.5" id="product-target">Phân khúc: Dân văn phòng</p>
+                <div class="mt-2 h-1.5 bg-surface-container rounded-full overflow-hidden">
+                    <div class="h-full bg-primary rounded-full transition-all duration-700" id="progress-bar" style="width:20%"></div>
+                </div>
+                <p class="text-[9px] text-tertiary mt-1" id="progress-text">Bước 1/5 · 20%</p>
+            </div>
+        </div>
+    </aside>
+
+    <!-- ═══ CENTER: AI CHAT WORKSPACE ═══ -->
+    <div class="flex-1 flex flex-col min-w-0 border-r border-outline-variant/15">
+
+        <!-- Agent status bar -->
+        <div class="flex-shrink-0 flex items-center gap-3 px-4 py-2.5 bg-white border-b border-outline-variant/10">
+            <div class="relative flex-shrink-0">
+                <div class="w-9 h-9 brand-gradient rounded-xl flex items-center justify-center">
+                    <span class="material-symbols-outlined text-white text-lg" style="font-variation-settings:'FILL' 1;">smart_toy</span>
+                </div>
+                <span class="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-500 rounded-full border-2 border-white"></span>
+            </div>
+            <div class="flex-1 min-w-0">
+                <p class="text-sm font-bold">Dr. AI Agent</p>
+                <p class="text-[10px] text-green-600 font-bold flex items-center gap-1">
+                    <span class="w-1.5 h-1.5 bg-green-500 rounded-full inline-block animate-pulse"></span>Online · Sẵn sàng phân tích
+                </p>
+            </div>
+            <div class="flex items-center gap-1 text-[10px] font-bold text-primary bg-primary/10 px-2.5 py-1 rounded-full flex-shrink-0" id="current-step-badge">
+                Bước 1: Phân tích
+            </div>
+        </div>
+
+        <!-- Messages -->
+        <div class="chat-scroll flex-1 overflow-y-auto p-4 space-y-4 bg-surface-container-low/30" id="chat-messages">
+
+            <!-- ── BƯỚC 1 (đã hoàn thành) ── -->
+            <div class="flex items-center gap-3 py-1">
+                <div class="flex-1 h-px bg-outline-variant/20"></div>
+                <span class="text-[9px] font-black uppercase tracking-[0.15em] text-green-600 bg-green-50 border border-green-200 px-2.5 py-1 rounded-full flex items-center gap-1"><span class="material-symbols-outlined text-xs" style="font-variation-settings:'FILL' 1;">check_circle</span>Bước 1 — Phân tích &amp; Nhu cầu</span>
+                <div class="flex-1 h-px bg-outline-variant/20"></div>
+            </div>
+
+            <div class="flex gap-3">
+                <div class="w-8 h-8 brand-gradient rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5 shadow-sm">
+                    <span class="material-symbols-outlined text-white text-sm" style="font-variation-settings:'FILL' 1;">smart_toy</span>
+                </div>
+                <div class="flex-1 min-w-0 space-y-1.5">
+                    <p class="text-[10px] font-bold text-tertiary">Dr. AI Agent · 08:30</p>
+                    <div class="bg-white rounded-2xl rounded-tl-none px-4 py-3 shadow-sm border border-outline-variant/10 max-w-xl">
+                        <p class="text-sm leading-relaxed">Chào đội ngũ R&amp;D DoctorLoan! 👋 Tôi là <strong>AI Agent</strong>. Dữ liệu y khoa tháng 3/2026 ghi nhận sự gia tăng <span class="text-red-600 font-bold">+15%</span> bệnh lý cột sống cổ <strong>C5–C6</strong> ở dân văn phòng. Bạn muốn phân tích phân khúc này?</p>
+                    </div>
+                </div>
+            </div>
+            <div class="flex gap-3 justify-end">
+                <div class="flex-1 min-w-0 flex flex-col items-end gap-1">
+                    <p class="text-[10px] font-bold text-tertiary">Trưởng phòng R&amp;D · 08:31</p>
+                    <div class="bg-primary/10 border border-primary/15 rounded-2xl rounded-tr-none px-4 py-3 max-w-xl">
+                        <p class="text-sm leading-relaxed">Phân tích phân khúc dân văn phòng C5-C6 và cho tôi biết nhu cầu thị trường chi tiết</p>
+                    </div>
+                </div>
+                <div class="w-8 h-8 bg-surface-container rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5"><span class="material-symbols-outlined text-on-surface-variant text-sm" style="font-variation-settings:'FILL' 1;">person</span></div>
+            </div>
+            <div class="flex gap-3">
+                <div class="w-8 h-8 brand-gradient rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5 shadow-sm"><span class="material-symbols-outlined text-white text-sm" style="font-variation-settings:'FILL' 1;">smart_toy</span></div>
+                <div class="flex-1 min-w-0 space-y-1.5">
+                    <p class="text-[10px] font-bold text-tertiary">Dr. AI Agent · 08:32</p>
+                    <div class="bg-white rounded-2xl rounded-tl-none px-4 py-3 shadow-sm border border-outline-variant/10 max-w-xl">
+                        <p class="text-sm leading-relaxed">📊 <strong>Kết quả phân tích — Dân văn phòng C5-C6:</strong><br><br>
+                        • <strong>Quy mô:</strong> 4.2 triệu lao động văn phòng tại VN (2026)<br>
+                        • <strong>Tỉ lệ mắc đau cổ mãn tính:</strong> 38% (C5-C6)<br>
+                        • <strong>Tăng trưởng bệnh lý:</strong> +15% so tháng trước<br>
+                        • <strong>Ngân sách trung bình:</strong> 2.5–4.5 triệu đ/sản phẩm sức khỏe<br><br>
+                        ✅ <strong>Kết luận:</strong> Phân khúc ưu tiên cao nhất Q2/2026. Tiến sang Bước 2!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── BƯỚC 2 (đã hoàn thành) ── -->
+            <div class="flex items-center gap-3 py-1">
+                <div class="flex-1 h-px bg-outline-variant/20"></div>
+                <span class="text-[9px] font-black uppercase tracking-[0.15em] text-green-600 bg-green-50 border border-green-200 px-2.5 py-1 rounded-full flex items-center gap-1"><span class="material-symbols-outlined text-xs" style="font-variation-settings:'FILL' 1;">check_circle</span>Bước 2 — Thiết kế Concept</span>
+                <div class="flex-1 h-px bg-outline-variant/20"></div>
+            </div>
+
+            <div class="flex gap-3 justify-end">
+                <div class="flex-1 min-w-0 flex flex-col items-end gap-1">
+                    <p class="text-[10px] font-bold text-tertiary">Trưởng phòng R&amp;D · 09:10</p>
+                    <div class="bg-primary/10 border border-primary/15 rounded-2xl rounded-tr-none px-4 py-3 max-w-xl">
+                        <p class="text-sm leading-relaxed">Thiết kế concept gối cổ cho người ngồi văn phòng 8h+, cần hỗ trợ tư thế cổ tự nhiên và trọng lượng dưới 300g</p>
+                    </div>
+                </div>
+                <div class="w-8 h-8 bg-surface-container rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5"><span class="material-symbols-outlined text-on-surface-variant text-sm" style="font-variation-settings:'FILL' 1;">person</span></div>
+            </div>
+            <div class="flex gap-3">
+                <div class="w-8 h-8 brand-gradient rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5 shadow-sm"><span class="material-symbols-outlined text-white text-sm" style="font-variation-settings:'FILL' 1;">smart_toy</span></div>
+                <div class="flex-1 min-w-0 space-y-1.5">
+                    <p class="text-[10px] font-bold text-tertiary">Dr. AI Agent · 09:11</p>
+                    <div class="bg-white rounded-2xl rounded-tl-none px-4 py-3 shadow-sm border border-outline-variant/10 max-w-xl">
+                        <p class="text-sm leading-relaxed">✏️ <strong>Concept Design — Gối cổ C5-C6 Pro:</strong><br><br>
+                        • <strong>Hình dáng:</strong> Contour ergonomic lõm giữa, nâng 2 bên — hỗ trợ đường cong cổ sinh lý 15–20°<br>
+                        • <strong>Kích thước:</strong> 40×25×10cm (W×H×D) · Trọng lượng &lt;280g<br>
+                        • <strong>Cơ chế:</strong> Lớp foam 2 tầng — top soft 20mm + base firm 80mm<br>
+                        • <strong>Tính năng:</strong> Tháo rời, giặt được, vận chuyển gấp<br><br>
+                        ✅ Concept đã phê duyệt. Tiến sang <strong>Bước 3: Mô phỏng Cơ sinh học!</strong></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── BƯỚC 3 (đang thực hiện) ── -->
+            <div class="flex items-center gap-3 py-1">
+                <div class="flex-1 h-px bg-primary/20"></div>
+                <span class="text-[9px] font-black uppercase tracking-[0.15em] text-primary bg-primary/5 border border-primary/30 px-2.5 py-1 rounded-full flex items-center gap-1"><span class="w-1.5 h-1.5 bg-primary rounded-full inline-block animate-pulse"></span>Bước 3 — Mô phỏng Cơ sinh học</span>
+                <div class="flex-1 h-px bg-primary/20"></div>
+            </div>
+
+            <div class="flex gap-3 justify-end">
+                <div class="flex-1 min-w-0 flex flex-col items-end gap-1">
+                    <p class="text-[10px] font-bold text-tertiary">Trưởng phòng R&amp;D · 10:05</p>
+                    <div class="bg-primary/10 border border-primary/15 rounded-2xl rounded-tr-none px-4 py-3 max-w-xl">
+                        <p class="text-sm leading-relaxed">Mô phỏng áp lực phân bổ lên C5-C6 với 2 thiết kế foam khác nhau, góc nghiêng 15° và 20°</p>
+                    </div>
+                </div>
+                <div class="w-8 h-8 bg-surface-container rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5"><span class="material-symbols-outlined text-on-surface-variant text-sm" style="font-variation-settings:'FILL' 1;">person</span></div>
+            </div>
+            <div class="flex gap-3">
+                <div class="w-8 h-8 brand-gradient rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5 shadow-sm"><span class="material-symbols-outlined text-white text-sm" style="font-variation-settings:'FILL' 1;">smart_toy</span></div>
+                <div class="flex-1 min-w-0 space-y-1.5">
+                    <p class="text-[10px] font-bold text-tertiary">Dr. AI Agent · 10:07</p>
+                    <div class="bg-white rounded-2xl rounded-tl-none px-4 py-3 shadow-sm border border-outline-variant/10 max-w-xl">
+                        <p class="text-sm leading-relaxed">🧬 <strong>Kết quả Mô phỏng Cơ sinh học — Gối cổ C5-C6 Pro:</strong><br><br>
+                        Đã chạy mô phỏng FEA (Finite Element Analysis) với 2 biến thể góc nghiêng. Kết quả chi tiết đã được cập nhật vào <strong>Bảng kết quả bên phải</strong>.<br><br>
+                        🏆 <strong>Khuyến nghị:</strong> Góc 15° + Foam T70 cho phân bổ áp lực tối ưu nhất. Bạn muốn tiến sang Bước 4?</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 pt-1" id="step3-suggestions">
+                        <button onclick="quickSend('Xem chi tiết mô phỏng góc 20 độ')" class="text-[10px] font-bold text-primary border border-primary/30 bg-white px-3 py-1.5 rounded-full hover:bg-primary/5 transition-colors shadow-sm">📐 Chi tiết góc 20°</button>
+                        <button onclick="quickSend('So sánh 2 phương án foam với mô phỏng')" class="text-[10px] font-bold text-primary border border-primary/30 bg-white px-3 py-1.5 rounded-full hover:bg-primary/5 transition-colors shadow-sm">⚖️ So sánh foam</button>
+                        <button onclick="quickSend('Đề xuất vật liệu tối ưu dựa trên mô phỏng')" class="text-[10px] font-bold text-primary border border-primary/30 bg-white px-3 py-1.5 rounded-full hover:bg-primary/5 transition-colors shadow-sm">🧪 Sang Bước 4</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Input -->
+        <div class="flex-shrink-0 bg-white border-t border-outline-variant/10 p-3">
+            <div class="flex items-end gap-2">
+                <div class="flex-1 bg-surface-container-low border border-outline-variant/20 rounded-2xl px-4 py-3 focus-within:ring-2 focus-within:ring-primary/30 focus-within:border-primary/40 transition-all">
+                    <textarea id="chat-input" rows="1" placeholder="Nhập yêu cầu, ví dụ: 'Tôi muốn thiết kế gối cổ cho người lái xe...'"
+                        class="w-full bg-transparent text-sm resize-none focus:outline-none leading-relaxed"
+                        style="max-height:120px"
+                        oninput="this.style.height='auto';this.style.height=this.scrollHeight+'px'"
+                        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
+                </div>
+                <button onclick="sendMessage()" class="w-10 h-10 brand-gradient rounded-xl flex items-center justify-center hover:opacity-90 active:scale-95 transition-all flex-shrink-0 shadow-md">
+                    <span class="material-symbols-outlined text-white text-lg">send</span>
+                </button>
+            </div>
+            <p class="text-[9px] text-tertiary mt-1.5 pl-1">Enter để gửi · Shift+Enter xuống dòng</p>
+        </div>
+    </div>
+
+    <!-- ═══ RIGHT: RESULT VIEWER ═══ -->
+    <aside class="hidden lg:flex flex-col w-[320px] flex-shrink-0 bg-white overflow-hidden">
+        <div class="flex-shrink-0 p-4 border-b border-outline-variant/10 flex items-center justify-between">
+            <div>
+                <p class="text-[9px] font-black uppercase tracking-[0.15em] text-on-surface-variant/50">Trình hiển thị kết quả</p>
+                <p class="text-xs font-bold mt-0.5">Phân tích AI</p>
+            </div>
+            <div class="flex gap-1">
+                <button id="btn-export" onclick="exportResult()" class="p-1.5 text-on-surface-variant hover:bg-surface-container rounded-lg transition-colors" title="Xuất báo cáo">
+                    <span class="material-symbols-outlined text-base">download</span>
+                </button>
+                <button onclick="clearResult()" class="p-1.5 text-on-surface-variant hover:bg-surface-container rounded-lg transition-colors" title="Xóa kết quả">
+                    <span class="material-symbols-outlined text-base">clear_all</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Waiting state (hidden for demo) -->
+        <div id="result-waiting" class="hidden flex-1 flex flex-col items-center justify-center p-6 text-center gap-4">
+            <div class="w-16 h-16 brand-gradient/10 rounded-2xl flex items-center justify-center border-2 border-dashed border-primary/20">
+                <span class="material-symbols-outlined text-primary/40 text-3xl spin-slow">autorenew</span>
+            </div>
+            <div>
+                <p class="text-sm font-bold text-on-surface-variant">AI đang chờ dữ liệu đầu vào</p>
+                <p class="text-xs text-tertiary mt-1">Gửi yêu cầu bên trái để nhận kết quả phân tích</p>
+            </div>
+        </div>
+
+        <!-- Result content (pre-loaded for demo step 3) -->
+        <div id="result-content" class="flex-1 result-scroll overflow-y-auto p-4 space-y-4">
+            <!-- Populated by JS at init -->
+        </div>
+
+        <!-- Step action buttons -->
+        <div class="flex-shrink-0 p-3 border-t border-outline-variant/10 space-y-2">
+            <button id="btn-next-step" onclick="nextStep()" class="w-full flex items-center justify-center gap-2 py-2.5 brand-gradient text-white text-xs font-bold rounded-xl hover:opacity-90 active:scale-[0.98] transition-all shadow-sm" >
+                <span class="material-symbols-outlined text-sm">arrow_forward</span>Chuyển sang Bước 4: Vật liệu
+            </button>
+            <button onclick="generateReport()" class="w-full flex items-center justify-center gap-2 py-2 border border-outline-variant/30 text-on-surface-variant text-xs font-bold rounded-xl hover:bg-surface-container transition-colors">
+                <span class="material-symbols-outlined text-sm">description</span>Tạo báo cáo R&amp;D
+            </button>
+        </div>
+    </aside>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════════════
+//  DEMO DATA — 5 steps, each with full chat + result content
+// ═══════════════════════════════════════════════════════════════
+const STEPS = [
+    { id:1, label:'Phân tích & Nhu cầu',   icon:'manage_search', badge:'Bước 1: Phân tích' },
+    { id:2, label:'Thiết kế Concept',       icon:'draw',          badge:'Bước 2: Thiết kế' },
+    { id:3, label:'Mô phỏng Cơ sinh học',  icon:'biotech',       badge:'Bước 3: Mô phỏng' },
+    { id:4, label:'Đề xuất Vật liệu',      icon:'science',       badge:'Bước 4: Vật liệu' },
+    { id:5, label:'Đánh giá & Báo cáo',    icon:'fact_check',    badge:'Bước 5: Báo cáo' },
+];
+
+const DEMO_DATA = [
+  // ── BƯỚC 1 ──────────────────────────────────────────────────
+  {
+    userMsg: 'Phân tích thị trường gối cổ cho dân văn phòng, tập trung cột sống C5-C6',
+    aiMsg: `📊 <strong>Phân tích Nhu cầu — Dân văn phòng C5-C6</strong><br><br>
+• <strong>Quy mô thị trường:</strong> 4.2 triệu lao động văn phòng tại VN (2026)<br>
+• <strong>Tỉ lệ đau cổ mãn tính:</strong> 38% (C5-C6) — tăng đều 5%/năm<br>
+• <strong>Tăng trưởng tháng 3/2026:</strong> <span style="color:#dc2626;font-weight:700">+15%</span> so tháng trước<br>
+• <strong>Ngân sách trung bình:</strong> 2.5 – 4.5 triệu đ/sản phẩm sức khoẻ<br>
+• <strong>Kênh mua:</strong> 62% online, 38% cửa hàng thiết bị y tế<br><br>
+✅ <strong>Kết luận:</strong> Phân khúc ưu tiên cao nhất Q2/2026. Đề xuất tiến sang thiết kế Concept!`,
+    result: {
+      tag: 'Bước 1 · Phân tích thị trường',
+      title: 'Nhu cầu thị trường — C5-C6',
+      visual: `<div class="bg-surface-container-low rounded-xl p-3 border border-outline-variant/10 space-y-2">
+        <p class="text-[9px] font-black uppercase tracking-widest text-tertiary">Tỉ lệ mắc bệnh theo nhóm (%)</p>
+        <div><div class="flex justify-between text-[10px] mb-1"><span class="font-bold">Văn phòng 25-40t</span><span class="font-black text-red-600">48%</span></div><div class="h-2.5 bg-red-100 rounded-full overflow-hidden"><div class="h-full bg-red-500 rounded-full" style="width:48%"></div></div></div>
+        <div><div class="flex justify-between text-[10px] mb-1"><span>Văn phòng 40-55t</span><span class="font-black text-orange-600">38%</span></div><div class="h-2.5 bg-orange-100 rounded-full overflow-hidden"><div class="h-full bg-orange-400 rounded-full" style="width:38%"></div></div></div>
+        <div><div class="flex justify-between text-[10px] mb-1"><span>Sinh viên / trẻ</span><span class="font-black text-yellow-600">22%</span></div><div class="h-2.5 bg-yellow-100 rounded-full overflow-hidden"><div class="h-full bg-yellow-400 rounded-full" style="width:22%"></div></div></div>
+      </div>`,
+      cards: [
+        { icon:'groups', color:'blue', label:'Quy mô TT', value:'4.2 triệu', sub:'Lao động văn phòng VN 2026' },
+        { icon:'trending_up', color:'red', label:'Tăng trưởng', value:'+15%', sub:'Tháng 3/2026 vs T2' },
+        { icon:'percent', color:'orange', label:'Tỉ lệ C5-C6', value:'38%', sub:'Triệu chứng mãn tính' },
+        { icon:'payments', color:'green', label:'Ngân sách', value:'2.5–4.5M', sub:'Sẵn chi cho sức khoẻ' },
+      ],
+      insight: '🎯 Dân văn phòng 25-40 tuổi là nhóm ưu tiên cao nhất (48%). Sản phẩm cần nhẹ, portable, dễ dùng tại bàn làm việc.',
+    }
+  },
+  // ── BƯỚC 2 ──────────────────────────────────────────────────
+  {
+    userMsg: 'Thiết kế concept gối cổ ergonomic, hỗ trợ tư thế làm việc 8h, trọng lượng dưới 300g',
+    aiMsg: `✏️ <strong>Concept Design — Gối cổ C5-C6 Pro (v1.0)</strong><br><br>
+• <strong>Hình dáng:</strong> Contour lõm giữa, nâng 2 bên — duy trì đường cong cổ sinh lý 15–20°<br>
+• <strong>Kích thước:</strong> 40 × 25 × 10 cm (W × H × D) · Trọng lượng <strong>268g</strong><br>
+• <strong>Cấu trúc foam:</strong> 2 lớp — Soft top 20mm + Firm base 80mm<br>
+• <strong>Tính năng:</strong> Tháo rời giặt được, gấp gọn, túi đi kèm<br>
+• <strong>Màu sắc:</strong> Xám ghi, Trắng sứ, Xanh than — 3 phiên bản<br><br>
+✅ Concept hoàn thiện! Tiến sang mô phỏng cơ sinh học để kiểm tra an toàn.`,
+    result: {
+      tag: 'Bước 2 · Concept Design v1.0',
+      title: 'Bản thiết kế — Gối cổ C5-C6 Pro',
+      visual: `<div class="bg-surface-container-low rounded-xl p-3 border border-outline-variant/10">
+        <p class="text-[9px] font-black uppercase tracking-widest text-tertiary mb-2">Sơ đồ cấu tạo</p>
+        <div class="space-y-1.5">
+          <div class="flex items-center gap-2"><div class="w-full h-4 bg-amber-100 border border-amber-300 rounded flex items-center justify-center"><span class="text-[9px] font-bold text-amber-800">Vỏ Tencel — 2mm</span></div></div>
+          <div class="flex items-center gap-2"><div class="w-full h-6 bg-orange-100 border border-orange-300 rounded flex items-center justify-center"><span class="text-[9px] font-bold text-orange-800">Memory Foam Soft — 20mm</span></div></div>
+          <div class="flex items-center gap-2"><div class="w-full h-10 bg-primary/15 border border-primary/30 rounded flex items-center justify-center"><span class="text-[9px] font-bold text-primary">Memory Foam Firm — 80mm</span></div></div>
+          <div class="flex items-center gap-2"><div class="w-full h-3 bg-surface-container-high border border-outline-variant/20 rounded flex items-center justify-center"><span class="text-[9px] text-tertiary">Đế chống trượt</span></div></div>
+        </div>
+        <p class="text-[9px] text-tertiary mt-2 text-center">Tổng chiều cao: 102mm · Trọng lượng: 268g</p>
+      </div>`,
+      cards: [
+        { icon:'straighten', color:'blue', label:'Kích thước', value:'40×25×10cm', sub:'Chuẩn ergonomic văn phòng' },
+        { icon:'scale', color:'green', label:'Trọng lượng', value:'268g', sub:'Mục tiêu <300g ✅ đạt' },
+        { icon:'layers', color:'orange', label:'Cấu trúc', value:'2 lớp foam', sub:'Soft 20mm + Firm 80mm' },
+        { icon:'palette', color:'purple', label:'Màu sắc', value:'3 phiên bản', sub:'Xám · Trắng · Xanh than' },
+      ],
+      insight: '📐 Thiết kế Contour 15° phù hợp với 87% người dùng văn phòng. Góc 20° là option cho người có cổ dài hơn (SKU riêng).',
+    }
+  },
+  // ── BƯỚC 3 ──────────────────────────────────────────────────
+  {
+    userMsg: 'Mô phỏng FEA áp lực cột sống C5-C6 với góc 15° và 20°, vật liệu Memory Foam T70',
+    aiMsg: `🧬 <strong>Kết quả Mô phỏng FEA — Gối cổ C5-C6 Pro</strong><br><br>
+Đã chạy Finite Element Analysis với 2 biến thể góc nghiêng:<br><br>
+• <strong>Góc 15°:</strong> Áp lực C5-C6 = <span style="color:#16a34a;font-weight:700">0.28 MPa</span> — phân bổ đều ✅ An toàn<br>
+• <strong>Góc 20°:</strong> Áp lực C5-C6 = <span style="color:#ea580c;font-weight:700">0.41 MPa</span> — tập trung điểm ⚠️ Cần theo dõi<br>
+• <strong>Hệ số giảm chấn:</strong> 92.4% (Memory Foam T70)<br>
+• <strong>Phân bổ trọng tâm:</strong> Đối xứng, lệch <3mm<br><br>
+🏆 <strong>Khuyến nghị: Góc 15° + Memory Foam T70 là tối ưu nhất!</strong>`,
+    result: {
+      tag: 'Bước 3 · FEA Simulation',
+      title: 'Mô phỏng cơ sinh học — FEA',
+      visual: `<div class="bg-surface-container-low rounded-xl p-3 border border-outline-variant/10 space-y-2">
+        <p class="text-[9px] font-black uppercase tracking-widest text-tertiary">Áp lực cột sống C5-C6 (MPa)</p>
+        <div><div class="flex justify-between text-[10px] mb-1"><span class="font-bold text-green-700">✅ 15° — Tối ưu</span><span class="font-black text-green-700">0.28 MPa</span></div><div class="h-3 bg-green-100 rounded-full overflow-hidden"><div class="h-full bg-green-500 rounded-full" style="width:28%"></div></div></div>
+        <div><div class="flex justify-between text-[10px] mb-1"><span class="font-bold text-orange-600">⚠️ 20° — Cao hơn</span><span class="font-black text-orange-600">0.41 MPa</span></div><div class="h-3 bg-orange-100 rounded-full overflow-hidden"><div class="h-full bg-orange-400 rounded-full" style="width:41%"></div></div></div>
+        <div><div class="flex justify-between text-[10px] mb-1"><span class="text-tertiary">⛔ Ngưỡng nguy hiểm</span><span class="font-black text-red-600">0.80 MPa</span></div><div class="h-3 bg-red-100 rounded-full overflow-hidden"><div class="h-full bg-red-200 rounded-full" style="width:80%"></div></div></div>
+      </div>`,
+      cards: [
+        { icon:'compress', color:'green', label:'Áp lực 15° (tối ưu)', value:'0.28 MPa', sub:'Phân bổ đều · An toàn' },
+        { icon:'compress', color:'orange', label:'Áp lực 20°', value:'0.41 MPa', sub:'Tập trung điểm · Chú ý' },
+        { icon:'speed', color:'purple', label:'Hệ số giảm chấn', value:'92.4%', sub:'Memory Foam T70' },
+        { icon:'timer', color:'blue', label:'Hồi phục', value:'<2 giây', sub:'Sau nén 50% chiều cao' },
+      ],
+      insight: '✅ Góc 15° + Memory Foam T70 cho áp lực C5-C6 thấp nhất (0.28 MPa), phân bổ đều, đúng sinh lý. Chọn làm tiêu chuẩn sản xuất.',
+    }
+  },
+  // ── BƯỚC 4 ──────────────────────────────────────────────────
+  {
+    userMsg: 'Đề xuất vật liệu chính thức, tính giá thành sản xuất và đánh giá nhà cung cấp',
+    aiMsg: `🧪 <strong>Đề xuất Vật liệu chính thức — Gối cổ C5-C6 Pro</strong><br><br>
+<strong>Kết hợp tối ưu được chọn:</strong><br>
+• <strong>Memory Foam T70 (Nhật):</strong> Grade A+, ISO 9001, giảm chấn 92.4%<br>
+• <strong>Latex Organic:</strong> Kháng khuẩn, thoáng khí, bền 8-10 năm<br>
+• <strong>Vỏ Tencel 100%:</strong> Thân thiện da, giặt máy, chống ẩm<br>
+• <strong>Xốp EVA đế:</strong> Chống trượt, nhẹ, bền cơ học<br><br>
+💰 <strong>Giá thành SX ước tính: 480,000 – 620,000đ/sản phẩm</strong><br>
+💡 Tỉ suất lợi nhuận 38-42% với giá bán 1.8 – 2.2 triệu đ`,
+    result: {
+      tag: 'Bước 4 · Vật liệu & Chi phí',
+      title: 'Đề xuất vật liệu — Chính thức',
+      visual: `<div class="bg-surface-container-low rounded-xl p-3 border border-outline-variant/10">
+        <p class="text-[9px] font-black uppercase tracking-widest text-tertiary mb-2">Cơ cấu chi phí SX</p>
+        <div class="space-y-1.5">
+          <div class="flex items-center gap-2"><div class="h-5 bg-primary rounded-l-full rounded-r-full flex items-center px-2" style="width:42%"><span class="text-[9px] font-bold text-white">Memory Foam 42%</span></div></div>
+          <div class="flex items-center gap-2"><div class="h-5 bg-amber-400 rounded-l-full rounded-r-full flex items-center px-2" style="width:28%"><span class="text-[9px] font-bold text-white">Latex 28%</span></div></div>
+          <div class="flex items-center gap-2"><div class="h-5 bg-green-500 rounded-l-full rounded-r-full flex items-center px-2" style="width:18%"><span class="text-[9px] font-bold text-white">Tencel 18%</span></div></div>
+          <div class="flex items-center gap-2"><div class="h-5 bg-surface-container-high rounded-l-full rounded-r-full flex items-center px-2" style="width:12%"><span class="text-[9px] text-tertiary">Khác 12%</span></div></div>
+        </div>
+        <p class="text-[9px] text-tertiary mt-2 text-center">Tổng giá thành: 480,000 – 620,000đ/sản phẩm</p>
+      </div>`,
+      cards: [
+        { icon:'science', color:'purple', label:'Memory Foam T70', value:'Grade A+', sub:'Nhật · ISO 9001 · 42% chi phí' },
+        { icon:'eco', color:'green', label:'Latex Organic', value:'Cấp y tế', sub:'Kháng khuẩn · Bền 8-10 năm' },
+        { icon:'texture', color:'blue', label:'Vải Tencel', value:'100% tự nhiên', sub:'Giặt máy · Da nhạy cảm' },
+        { icon:'sell', color:'orange', label:'Tỉ suất LN', value:'38-42%', sub:'Giá bán 1.8 – 2.2 triệu đ' },
+      ],
+      insight: '💰 Giá thành 480-620K → giá bán 1.8-2.2M → biên lợi nhuận 38-42%. Nhà cung cấp Memory Foam T70: Toyobo Japan, MOQ 500 units.',
+    }
+  },
+  // ── BƯỚC 5 ──────────────────────────────────────────────────
+  {
+    userMsg: 'Tổng hợp đánh giá và tạo báo cáo R&D cuối cùng trình CEO phê duyệt',
+    aiMsg: `📋 <strong>Báo cáo R&D Tổng hợp — Gối cổ C5-C6 Pro</strong><br><br>
+<strong>✅ Tất cả 5 bước đã hoàn thành:</strong><br>
+• B1 Phân tích: Thị trường 4.2M người, +15% bệnh lý<br>
+• B2 Thiết kế: Concept 40×25×10cm, 268g, Contour 15°<br>
+• B3 Mô phỏng: FEA 0.28 MPa (15°) — An toàn<br>
+• B4 Vật liệu: Foam T70 + Latex + Tencel, giá 480-620K<br>
+• B5 Đánh giá: Điểm tổng thể <strong>4.7/5.0</strong> — Phê duyệt!<br><br>
+🚀 <strong>Khuyến nghị CEO:</strong> Phê duyệt sản xuất thử 200 units, timeline 45 ngày. Dự kiến ra mắt tháng 6/2026!`,
+    result: {
+      tag: 'Bước 5 · Báo cáo cuối cùng',
+      title: 'Đánh giá tổng hợp R&D',
+      visual: `<div class="bg-surface-container-low rounded-xl p-3 border border-outline-variant/10 space-y-2">
+        <p class="text-[9px] font-black uppercase tracking-widest text-tertiary">Điểm đánh giá tổng thể</p>
+        <div class="flex items-center gap-3"><div class="flex-1"><div class="flex justify-between text-[10px] mb-1"><span>Tính khả thi kỹ thuật</span><span class="font-black text-green-700">9.2/10</span></div><div class="h-2 bg-green-100 rounded-full overflow-hidden"><div class="h-full bg-green-500 rounded-full" style="width:92%"></div></div></div></div>
+        <div><div class="flex justify-between text-[10px] mb-1"><span>Tiềm năng thị trường</span><span class="font-black text-blue-700">9.0/10</span></div><div class="h-2 bg-blue-100 rounded-full overflow-hidden"><div class="h-full bg-blue-500 rounded-full" style="width:90%"></div></div></div>
+        <div><div class="flex justify-between text-[10px] mb-1"><span>Hiệu quả tài chính</span><span class="font-black text-primary">8.8/10</span></div><div class="h-2 bg-primary/10 rounded-full overflow-hidden"><div class="h-full bg-primary rounded-full" style="width:88%"></div></div></div>
+        <div class="flex items-center justify-center gap-2 mt-2 p-2 bg-primary/5 rounded-xl border border-primary/20"><span class="material-symbols-outlined text-primary text-base" style="font-variation-settings:'FILL' 1;">verified</span><span class="text-xs font-black text-primary">Điểm tổng hợp: 4.7 / 5.0 — PHÊ DUYỆT</span></div>
+      </div>`,
+      cards: [
+        { icon:'check_circle', color:'green', label:'Trạng thái R&D', value:'Hoàn thành', sub:'5/5 bước · 100%' },
+        { icon:'factory', color:'blue', label:'SX thử nghiệm', value:'200 units', sub:'Timeline 45 ngày' },
+        { icon:'rocket_launch', color:'orange', label:'Ra mắt dự kiến', value:'Tháng 6/2026', sub:'Kênh online + DL cấp 2' },
+        { icon:'trending_up', color:'green', label:'Doanh thu dự báo', value:'400–600tr', sub:'Quý 3/2026 · Margin 40%' },
+      ],
+      insight: '🎉 Dự án R&D Gối cổ C5-C6 Pro được phê duyệt! Bước tiếp theo: lệnh sản xuất thử 200 units → kiểm tra chất lượng → ra mắt thị trường tháng 6/2026.',
+    }
+  },
+];
+
+let currentStep = 1;
+
+// ═══════════════════════════════════════════════════════════════
+//  RENDER STEPS SIDEBAR
+// ═══════════════════════════════════════════════════════════════
+function renderSteps() {
+    const container = document.getElementById('step-list');
+    if (!container) return;
+    container.innerHTML = STEPS.map(s => {
+        const state = s.id < currentStep ? 'done' : s.id === currentStep ? 'active' : 'pending';
+        const textColor = state==='active' ? 'text-primary font-bold' : state==='done' ? 'text-green-700 font-semibold' : 'text-on-surface-variant';
+        const dotClass  = state==='active' ? 'brand-gradient shadow-sm' : state==='done' ? 'bg-green-500' : 'bg-outline-variant/30';
+        const icon      = state==='done' ? 'check' : s.icon;
+        const subLabel  = state==='done' ? '✓ Hoàn thành' : state==='active' ? '● Đang thực hiện' : 'Chưa bắt đầu';
+        return `
+        <button onclick="jumpToStep(${s.id})" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl transition-colors ${state==='active'?'bg-primary/8':'hover:bg-surface-container'}">
+            <div class="w-7 h-7 ${dotClass} rounded-lg flex items-center justify-center flex-shrink-0">
+                <span class="material-symbols-outlined text-white text-sm" style="font-variation-settings:'FILL' 1;">${icon}</span>
+            </div>
+            <div class="flex-1 text-left min-w-0">
+                <p class="text-[10px] ${textColor} truncate">${s.label}</p>
+                <p class="text-[9px] ${state==='active'?'text-primary':'text-tertiary'}">${subLabel}</p>
+            </div>
+        </button>`;
+    }).join('');
+
+    const badge = document.getElementById('current-step-badge');
+    if (badge) badge.textContent = STEPS[currentStep-1].badge;
+
+    const pct = Math.round((currentStep/STEPS.length)*100);
+    const bar = document.getElementById('progress-bar');
+    const txt = document.getElementById('progress-text');
+    if (bar) bar.style.width = pct + '%';
+    if (txt) txt.textContent = `Bước ${currentStep}/5 · ${pct}%`;
+
+    // Update next btn label
+    const btn = document.getElementById('btn-next-step');
+    if (!btn) return;
+    if (currentStep < STEPS.length) {
+        btn.innerHTML = `<span class="material-symbols-outlined text-sm">arrow_forward</span>Chuyển sang Bước ${currentStep+1}: ${STEPS[currentStep].label.split(' ')[0]} ${STEPS[currentStep].label.split(' ')[1]||''}`;
+        btn.disabled = false;
+        btn.className = 'w-full flex items-center justify-center gap-2 py-2.5 brand-gradient text-white text-xs font-bold rounded-xl hover:opacity-90 active:scale-[0.98] transition-all shadow-sm';
+    } else {
+        btn.innerHTML = `<span class="material-symbols-outlined text-sm">celebration</span>R&D Hoàn tất! Xuất báo cáo CEO`;
+        btn.disabled = false;
+        btn.className = 'w-full flex items-center justify-center gap-2 py-2.5 bg-green-600 text-white text-xs font-bold rounded-xl hover:opacity-90 active:scale-[0.98] transition-all shadow-sm';
+        btn.onclick = generateReport;
+    }
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  RESULT PANEL
+// ═══════════════════════════════════════════════════════════════
+function renderResult(data) {
+    document.getElementById('result-waiting').classList.add('hidden');
+    const panel = document.getElementById('result-content');
+    panel.classList.remove('hidden');
+    panel.innerHTML = `
+    <div class="space-y-3">
+        <div class="flex items-start gap-2">
+            <div class="flex-1">
+                <p class="text-[9px] font-black uppercase tracking-[0.15em] text-tertiary">${data.tag}</p>
+                <h3 class="font-extrabold text-sm mt-0.5">${data.title}</h3>
+            </div>
+            <span class="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0 animate-pulse"></span>
+        </div>
+        ${data.visual}
+        <div class="grid grid-cols-2 gap-2">
+            ${data.cards.map(c=>`
+            <div class="bg-surface-container-low rounded-xl p-3 border border-outline-variant/10">
+                <div class="flex items-center gap-1.5 mb-1.5">
+                    <span class="material-symbols-outlined text-${c.color}-600 text-base" style="font-variation-settings:'FILL' 1;">${c.icon}</span>
+                    <p class="text-[9px] text-tertiary truncate">${c.label}</p>
+                </div>
+                <p class="font-black text-sm">${c.value}</p>
+                <p class="text-[9px] text-tertiary mt-0.5">${c.sub}</p>
+            </div>`).join('')}
+        </div>
+        <div class="bg-primary/5 border border-primary/20 rounded-xl p-3 flex gap-2">
+            <span class="material-symbols-outlined text-primary flex-shrink-0 text-base mt-0.5" style="font-variation-settings:'FILL' 1;">lightbulb</span>
+            <p class="text-xs text-on-surface leading-relaxed">${data.insight}</p>
+        </div>
+    </div>`;
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  CHAT MESSAGES
+// ═══════════════════════════════════════════════════════════════
+function addDivider(stepIndex, done=false) {
+    const container = document.getElementById('chat-messages');
+    const s = STEPS[stepIndex];
+    const div = document.createElement('div');
+    div.className = 'flex items-center gap-3 py-1';
+    if (done) {
+        div.innerHTML = `<div class="flex-1 h-px bg-outline-variant/20"></div><span class="text-[9px] font-black uppercase tracking-[0.15em] text-green-600 bg-green-50 border border-green-200 px-2.5 py-1 rounded-full flex items-center gap-1.5"><span class="material-symbols-outlined text-xs" style="font-variation-settings:'FILL' 1;">check_circle</span>Bước ${s.id} — ${s.label}</span><div class="flex-1 h-px bg-outline-variant/20"></div>`;
+    } else {
+        div.innerHTML = `<div class="flex-1 h-px bg-primary/20"></div><span class="text-[9px] font-black uppercase tracking-[0.15em] text-primary bg-primary/5 border border-primary/30 px-2.5 py-1 rounded-full flex items-center gap-1.5"><span class="w-1.5 h-1.5 bg-primary rounded-full inline-block animate-pulse"></span>Bước ${s.id} — ${s.label}</span><div class="flex-1 h-px bg-primary/20"></div>`;
+    }
+    container.appendChild(div);
+}
+
+function addUserMsg(text, time) {
+    const container = document.getElementById('chat-messages');
+    const div = document.createElement('div');
+    div.className = 'flex gap-3 justify-end msg-new';
+    div.innerHTML = `
+        <div class="flex-1 min-w-0 flex flex-col items-end gap-1">
+            <p class="text-[10px] font-bold text-tertiary">Trưởng phòng R&D · ${time}</p>
+            <div class="bg-primary/10 border border-primary/15 rounded-2xl rounded-tr-none px-4 py-3 max-w-xl">
+                <p class="text-sm leading-relaxed">${text}</p>
+            </div>
+        </div>
+        <div class="w-8 h-8 bg-surface-container rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
+            <span class="material-symbols-outlined text-on-surface-variant text-sm" style="font-variation-settings:'FILL' 1;">person</span>
+        </div>`;
+    container.appendChild(div);
+}
+
+function addAiMsg(html, time, withSuggestions=false, stepIdx) {
+    const container = document.getElementById('chat-messages');
+    const div = document.createElement('div');
+    div.className = 'flex gap-3 msg-new';
+    div.innerHTML = `
+        <div class="w-8 h-8 brand-gradient rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5 shadow-sm">
+            <span class="material-symbols-outlined text-white text-sm" style="font-variation-settings:'FILL' 1;">smart_toy</span>
+        </div>
+        <div class="flex-1 min-w-0 space-y-1.5">
+            <p class="text-[10px] font-bold text-tertiary">Dr. AI Agent · ${time}</p>
+            <div class="bg-white rounded-2xl rounded-tl-none px-4 py-3 shadow-sm border border-outline-variant/10 max-w-xl">
+                <p class="text-sm leading-relaxed">${html}</p>
+            </div>
+            ${withSuggestions && stepIdx < STEPS.length - 1 ? `
+            <div class="flex flex-wrap gap-2 pt-1">
+                <button onclick="nextStep()" class="text-[10px] font-bold text-white brand-gradient border-0 px-3 py-1.5 rounded-full hover:opacity-90 transition-opacity shadow-sm flex items-center gap-1">
+                    <span class="material-symbols-outlined text-xs">arrow_forward</span>Chuyển Bước ${stepIdx+2}
+                </button>
+                <button onclick="quickSend('Giải thích thêm chi tiết bước ${stepIdx+1}')" class="text-[10px] font-bold text-primary border border-primary/30 bg-white px-3 py-1.5 rounded-full hover:bg-primary/5 transition-colors shadow-sm">💬 Hỏi thêm</button>
+            </div>` : withSuggestions ? `
+            <div class="flex flex-wrap gap-2 pt-1">
+                <button onclick="generateReport()" class="text-[10px] font-bold text-white bg-green-600 border-0 px-3 py-1.5 rounded-full hover:opacity-90 transition-opacity shadow-sm flex items-center gap-1">
+                    <span class="material-symbols-outlined text-xs">description</span>Xuất báo cáo CEO
+                </button>
+            </div>` : ''}
+        </div>`;
+    container.appendChild(div);
+    container.scrollTop = container.scrollHeight;
+}
+
+function showTyping() {
+    const container = document.getElementById('chat-messages');
+    const div = document.createElement('div');
+    div.id = 'typing-indicator';
+    div.className = 'flex gap-3';
+    div.innerHTML = `
+        <div class="w-8 h-8 brand-gradient rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm">
+            <span class="material-symbols-outlined text-white text-sm" style="font-variation-settings:'FILL' 1;">smart_toy</span>
+        </div>
+        <div class="bg-white rounded-2xl rounded-tl-none px-4 py-3 shadow-sm border border-outline-variant/10 flex gap-1.5 items-center">
+            <span class="w-2 h-2 bg-primary/40 rounded-full" style="animation:pulse-dot 1.2s infinite"></span>
+            <span class="w-2 h-2 bg-primary/40 rounded-full" style="animation:pulse-dot 1.2s .2s infinite"></span>
+            <span class="w-2 h-2 bg-primary/40 rounded-full" style="animation:pulse-dot 1.2s .4s infinite"></span>
+        </div>`;
+    container.appendChild(div);
+    container.scrollTop = container.scrollHeight;
+}
+function hideTyping() { document.getElementById('typing-indicator')?.remove(); }
+
+// ═══════════════════════════════════════════════════════════════
+//  LOAD STEP (auto-fills chat + result for a given step index)
+// ═══════════════════════════════════════════════════════════════
+const TIMES = ['08:32','09:11','10:07','11:15','13:40'];
+const TIMES_RESP = ['08:33','09:12','10:08','11:17','13:42'];
+
+function loadStep(stepIdx, animate=true) {
+    const d = DEMO_DATA[stepIdx];
+    if (!d) return;
+
+    if (animate) {
+        addDivider(stepIdx, false);
+        addUserMsg(d.userMsg, TIMES[stepIdx]);
+        showTyping();
+        setTimeout(() => {
+            hideTyping();
+            addAiMsg(d.aiMsg, TIMES_RESP[stepIdx], true, stepIdx);
+            renderResult(d.result);
+        }, 1000);
+    } else {
+        addDivider(stepIdx, false);
+        addUserMsg(d.userMsg, TIMES[stepIdx]);
+        addAiMsg(d.aiMsg, TIMES_RESP[stepIdx], true, stepIdx);
+        renderResult(d.result);
+    }
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  NAVIGATION
+// ═══════════════════════════════════════════════════════════════
+function nextStep() {
+    if (currentStep < STEPS.length) {
+        // Mark previous divider as done
+        const oldStep = currentStep - 1;
+        addDivider(oldStep, true);
+        currentStep++;
+        renderSteps();
+        loadStep(currentStep - 1, true);
+    }
+}
+
+function jumpToStep(id) {
+    const container = document.getElementById('chat-messages');
+    container.innerHTML = '';
+    document.getElementById('result-content').innerHTML = '';
+    document.getElementById('result-content').classList.add('hidden');
+    document.getElementById('result-waiting').classList.remove('hidden');
+
+    currentStep = id;
+    // Re-render all steps up to current
+    for (let i = 0; i < id; i++) {
+        if (i < id - 1) {
+            addDivider(i, true);
+            addUserMsg(DEMO_DATA[i].userMsg, TIMES[i]);
+            addAiMsg(DEMO_DATA[i].aiMsg, TIMES_RESP[i], false, i);
+        } else {
+            loadStep(i, false);
+        }
+    }
+    renderSteps();
+    container.scrollTop = container.scrollHeight;
+}
+
+function quickSend(text) {
+    const container = document.getElementById('chat-messages');
+    addUserMsg(text, new Date().toLocaleTimeString('vi',{hour:'2-digit',minute:'2-digit'}));
+    showTyping();
+    setTimeout(() => {
+        hideTyping();
+        addAiMsg(`Cảm ơn câu hỏi! Đây là bổ sung cho <strong>Bước ${currentStep}</strong>. Dữ liệu phân tích từ hệ thống R&D đã được ghi nhận. Bạn muốn tiếp tục sang bước tiếp theo hay cần phân tích thêm?`, new Date().toLocaleTimeString('vi',{hour:'2-digit',minute:'2-digit'}), false, currentStep-1);
+    }, 900);
+}
+
+function sendMessage() {
+    const inp = document.getElementById('chat-input');
+    const text = inp.value.trim();
+    if (!text) return;
+    inp.value = '';
+    inp.style.height = 'auto';
+    quickSend(text);
+}
+
+function generateReport() {
+    addAiMsg(`📄 <strong>Xuất báo cáo R&D hoàn chỉnh!</strong><br><br>
+Báo cáo PDF tổng hợp 5 bước đã sẵn sàng:<br>
+• Phân tích thị trường + FEA simulation<br>
+• Concept design + Bill of Materials<br>
+• Kế hoạch sản xuất 200 units thử nghiệm<br>
+• Dự báo tài chính Q3/2026<br><br>
+🚀 Đã gửi tự động đến <strong>CEO Dashboard</strong>! Vui lòng kiểm tra mục Phê duyệt dự án.`,
+    new Date().toLocaleTimeString('vi',{hour:'2-digit',minute:'2-digit'}), false, 4);
+}
+
+document.getElementById('btn-new-session')?.addEventListener('click', () => {
+    const container = document.getElementById('chat-messages');
+    container.innerHTML = '';
+    document.getElementById('result-content').innerHTML = '';
+    document.getElementById('result-content').classList.add('hidden');
+    document.getElementById('result-waiting').classList.remove('hidden');
+    currentStep = 1;
+    renderSteps();
+    loadStep(0, false);
+});
+
+document.getElementById('chat-input')?.addEventListener('keydown', function(e) {
+    if (e.key==='Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+});
+
+// ═══════════════════════════════════════════════════════════════
+//  INIT — Load Step 1 immediately
+// ═══════════════════════════════════════════════════════════════
+renderSteps();
+loadStep(0, false);
+</script>
+</body>
+</html>

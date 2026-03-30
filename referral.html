@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Link giới thiệu | DOCTORLOAN</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script src="js/tailwind-config.js"></script>
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/app.js"></script>
+</head>
+<body class="bg-surface text-on-surface min-h-screen pb-28">
+<main class="space-y-6">
+    <div class="flex items-center gap-3 pt-4">
+        <a href="profile.html" class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center hover:bg-surface-container-high transition-colors">
+            <span class="material-symbols-outlined">arrow_back</span>
+        </a>
+        <h1 class="font-extrabold text-xl tracking-tight">Link giới thiệu</h1>
+    </div>
+
+    <!-- Stats -->
+    <div class="grid grid-cols-3 gap-3">
+        <div class="bg-white rounded-2xl p-4 border border-outline-variant/10 shadow-sm text-center hover:-translate-y-1 transition-transform">
+            <p class="text-2xl font-black text-primary">38</p>
+            <p class="text-[10px] text-tertiary mt-1 font-medium">Người đã click</p>
+        </div>
+        <div class="bg-white rounded-2xl p-4 border border-outline-variant/10 shadow-sm text-center hover:-translate-y-1 transition-transform">
+            <p class="text-2xl font-black text-green-700">12</p>
+            <p class="text-[10px] text-tertiary mt-1 font-medium">Đã đăng ký</p>
+        </div>
+        <div class="bg-white rounded-2xl p-4 border border-outline-variant/10 shadow-sm text-center hover:-translate-y-1 transition-transform">
+            <p class="text-2xl font-black text-on-surface">3</p>
+            <p class="text-[10px] text-tertiary mt-1 font-medium">Đại lý mới</p>
+        </div>
+    </div>
+
+    <!-- Link Card -->
+    <div class="bg-white rounded-2xl p-5 border border-outline-variant/10 shadow-sm space-y-4">
+        <h2 class="font-bold text-sm">Link giới thiệu của bạn</h2>
+        <div class="flex items-center gap-3 bg-surface-container-low rounded-xl p-3 border border-outline-variant/20">
+            <p class="flex-1 text-sm font-mono truncate text-primary">doctorloan.vn/ref/minhtuan2024</p>
+            <button onclick="navigator.clipboard.writeText('doctorloan.vn/ref/minhtuan2024'); this.textContent='Đã sao chép!'; setTimeout(()=>this.textContent='Sao chép',2000)"
+                class="flex-shrink-0 px-3 py-1.5 brand-gradient text-white text-xs font-bold rounded-lg hover:opacity-90 transition-opacity">
+                Sao chép
+            </button>
+        </div>
+
+        <!-- QR Code placeholder -->
+        <div class="flex flex-col items-center gap-3 py-4">
+            <div class="w-40 h-40 bg-surface-container rounded-2xl flex items-center justify-center border-2 border-dashed border-primary/20">
+                <div class="text-center">
+                    <span class="material-symbols-outlined text-primary/40 text-5xl">qr_code_2</span>
+                    <p class="text-[10px] text-tertiary mt-1">QR Code</p>
+                </div>
+            </div>
+            <button class="flex items-center gap-2 px-4 py-2 border border-primary text-primary text-xs font-bold rounded-xl hover:bg-primary/5 transition-colors">
+                <span class="material-symbols-outlined text-sm">download</span>Tải QR Code
+            </button>
+        </div>
+    </div>
+
+    <!-- Share buttons -->
+    <div class="bg-white rounded-2xl p-5 border border-outline-variant/10 shadow-sm space-y-3">
+        <h2 class="font-bold text-sm">Chia sẻ nhanh</h2>
+        <div class="grid grid-cols-2 gap-3">
+            <button class="flex items-center gap-3 p-3.5 bg-[#0068ff]/10 rounded-xl hover:bg-[#0068ff]/20 transition-colors">
+                <div class="w-9 h-9 bg-[#0068ff] rounded-xl flex items-center justify-center flex-shrink-0">
+                    <span class="text-white font-black text-xs">Z</span>
+                </div>
+                <span class="text-sm font-bold text-[#0068ff]">Chia sẻ Zalo</span>
+            </button>
+            <button class="flex items-center gap-3 p-3.5 bg-[#1877F2]/10 rounded-xl hover:bg-[#1877F2]/20 transition-colors">
+                <div class="w-9 h-9 bg-[#1877F2] rounded-xl flex items-center justify-center flex-shrink-0">
+                    <span class="text-white font-black text-sm">f</span>
+                </div>
+                <span class="text-sm font-bold text-[#1877F2]">Facebook</span>
+            </button>
+            <button class="flex items-center gap-3 p-3.5 bg-surface-container rounded-xl hover:bg-surface-container-high transition-colors">
+                <div class="w-9 h-9 bg-on-surface rounded-xl flex items-center justify-center flex-shrink-0">
+                    <span class="material-symbols-outlined text-white text-lg">message</span>
+                </div>
+                <span class="text-sm font-bold">Nhắn tin</span>
+            </button>
+            <button class="flex items-center gap-3 p-3.5 bg-surface-container rounded-xl hover:bg-surface-container-high transition-colors">
+                <div class="w-9 h-9 bg-primary rounded-xl flex items-center justify-center flex-shrink-0">
+                    <span class="material-symbols-outlined text-white text-lg">share</span>
+                </div>
+                <span class="text-sm font-bold text-primary">Khác</span>
+            </button>
+        </div>
+    </div>
+</main>
+</body>
+</html>

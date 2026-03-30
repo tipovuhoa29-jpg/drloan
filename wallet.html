@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Ví DrLoan & Hoa hồng | DOCTORLOAN</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script src="js/tailwind-config.js"></script>
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/app.js"></script>
+</head>
+<body class="bg-surface text-on-surface min-h-screen pb-28">
+<main class="space-y-6">
+    <div class="flex items-center gap-3 pt-4">
+        <a href="profile.html" class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center hover:bg-surface-container-high transition-colors">
+            <span class="material-symbols-outlined">arrow_back</span>
+        </a>
+        <h1 class="font-extrabold text-xl tracking-tight">Ví DrLoan & Hoa hồng</h1>
+    </div>
+
+    <!-- Balance Card -->
+    <div class="brand-gradient rounded-2xl p-6 text-white relative overflow-hidden">
+        <div class="absolute -top-8 -right-8 w-40 h-40 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
+        <p class="text-white/70 text-xs font-bold uppercase tracking-widest">Số dư ví hiện tại</p>
+        <p class="text-4xl font-black mt-2 tracking-tight">24,600,000đ</p>
+        <p class="text-white/70 text-sm mt-1">Hoa hồng tích lũy tháng 3/2026</p>
+        <div class="flex gap-3 mt-5">
+            <button class="flex-1 flex items-center justify-center gap-2 bg-white/20 backdrop-blur-sm text-white font-bold py-2.5 rounded-xl text-sm hover:bg-white/30 transition-colors active:scale-[0.98]">
+                <span class="material-symbols-outlined text-lg">account_balance</span>Rút tiền
+            </button>
+            <button class="flex-1 flex items-center justify-center gap-2 bg-white/20 backdrop-blur-sm text-white font-bold py-2.5 rounded-xl text-sm hover:bg-white/30 transition-colors active:scale-[0.98]">
+                <span class="material-symbols-outlined text-lg">history</span>Lịch sử
+            </button>
+        </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="grid grid-cols-3 gap-3">
+        <div class="bg-white rounded-2xl p-4 border border-outline-variant/10 shadow-sm text-center">
+            <p class="text-xl font-black text-primary">347</p>
+            <p class="text-[10px] text-tertiary mt-1">Đơn đã bán</p>
+        </div>
+        <div class="bg-white rounded-2xl p-4 border border-outline-variant/10 shadow-sm text-center">
+            <p class="text-xl font-black text-green-700">5%</p>
+            <p class="text-[10px] text-tertiary mt-1">Tỉ lệ hoa hồng</p>
+        </div>
+        <div class="bg-white rounded-2xl p-4 border border-outline-variant/10 shadow-sm text-center">
+            <p class="text-xl font-black text-on-surface">12tr</p>
+            <p class="text-[10px] text-tertiary mt-1">Đã rút</p>
+        </div>
+    </div>
+
+    <!-- Transaction History -->
+    <div class="bg-white rounded-2xl border border-outline-variant/10 shadow-sm overflow-hidden">
+        <div class="p-4 border-b border-outline-variant/10">
+            <h2 class="font-bold text-sm">Lịch sử giao dịch</h2>
+        </div>
+        <div class="divide-y divide-outline-variant/10">
+            <div class="flex items-center gap-4 p-4">
+                <div class="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <span class="material-symbols-outlined text-green-700 text-lg" style="font-variation-settings:'FILL' 1;">add_circle</span>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <p class="font-semibold text-sm">Hoa hồng đơn #DRL2026033101</p>
+                    <p class="text-[10px] text-tertiary mt-0.5">31/03/2026 09:30 • Ghế 135</p>
+                </div>
+                <span class="font-black text-green-700 text-sm">+340,000đ</span>
+            </div>
+            <div class="flex items-center gap-4 p-4">
+                <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <span class="material-symbols-outlined text-primary text-lg" style="font-variation-settings:'FILL' 1;">remove_circle</span>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <p class="font-semibold text-sm">Rút tiền về Vietcombank</p>
+                    <p class="text-[10px] text-tertiary mt-0.5">28/03/2026 14:00 • ••••6789</p>
+                </div>
+                <span class="font-black text-primary text-sm">-5,000,000đ</span>
+            </div>
+            <div class="flex items-center gap-4 p-4">
+                <div class="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <span class="material-symbols-outlined text-green-700 text-lg" style="font-variation-settings:'FILL' 1;">add_circle</span>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <p class="font-semibold text-sm">Hoa hồng đơn #DRL2026031501</p>
+                    <p class="text-[10px] text-tertiary mt-0.5">28/03/2026 08:45 • Ghế N85</p>
+                </div>
+                <span class="font-black text-green-700 text-sm">+260,000đ</span>
+            </div>
+            <div class="flex items-center gap-4 p-4">
+                <div class="w-10 h-10 bg-yellow-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <span class="material-symbols-outlined text-yellow-700 text-lg" style="font-variation-settings:'FILL' 1;">star</span>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <p class="font-semibold text-sm">Thưởng giới thiệu đại lý mới</p>
+                    <p class="text-[10px] text-tertiary mt-0.5">25/03/2026 16:20 • Trần Đức Anh</p>
+                </div>
+                <span class="font-black text-green-700 text-sm">+500,000đ</span>
+            </div>
+            <div class="flex items-center gap-4 p-4">
+                <div class="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <span class="material-symbols-outlined text-green-700 text-lg" style="font-variation-settings:'FILL' 1;">add_circle</span>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <p class="font-semibold text-sm">Hoa hồng đơn #DRL2026031402</p>
+                    <p class="text-[10px] text-tertiary mt-0.5">25/03/2026 11:10 • Gối F4/09</p>
+                </div>
+                <span class="font-black text-green-700 text-sm">+103,000đ</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed bottom-0 left-0 right-0 z-30 bg-white/80 backdrop-blur-md border-t border-outline-variant/10 p-4 pb-safe lg:pl-[calc(240px+1rem)] flex justify-center">
+        <button class="w-full max-w-lg flex items-center justify-center gap-2 py-3.5 brand-gradient text-white font-bold rounded-2xl hover:opacity-90 active:scale-[0.98] transition-all shadow-md">
+            <span class="material-symbols-outlined text-lg">account_balance</span>Rút tiền về ngân hàng
+        </button>
+    </div>
+</main>
+</body>
+</html>

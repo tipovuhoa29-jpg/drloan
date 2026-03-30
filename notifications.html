@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Thông báo | DOCTORLOAN</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script src="js/tailwind-config.js"></script>
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/app.js"></script>
+</head>
+<body class="bg-surface text-on-surface min-h-screen pb-32">
+    <main>
+        <div class="max-w-2xl">
+
+        <!-- Page Header -->
+        <div class="flex items-center justify-between pt-4 pb-4 sticky top-16 bg-surface/95 backdrop-blur-md z-10 border-b border-outline-variant/10">
+            <h1 class="font-extrabold tracking-tight text-xl">Thông báo</h1>
+            <button class="text-xs font-bold text-primary hover:underline px-2 py-1 rounded-lg hover:bg-primary/5 transition-colors">
+                Đánh dấu tất cả đã đọc
+            </button>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="flex items-center gap-2 py-3 overflow-x-auto hide-scrollbar border-b border-outline-variant/10">
+            <button class="px-4 py-2 rounded-full bg-primary-container text-on-primary text-xs font-bold flex-shrink-0">Tất cả</button>
+            <button class="px-4 py-2 rounded-full bg-surface-container text-on-surface-variant text-xs font-medium hover:bg-surface-container-high transition-colors flex-shrink-0">Đơn hàng</button>
+            <button class="px-4 py-2 rounded-full bg-surface-container text-on-surface-variant text-xs font-medium hover:bg-surface-container-high transition-colors flex-shrink-0">Khuyến mãi</button>
+            <button class="px-4 py-2 rounded-full bg-surface-container text-on-surface-variant text-xs font-medium hover:bg-surface-container-high transition-colors flex-shrink-0">Học tập</button>
+            <button class="px-4 py-2 rounded-full bg-surface-container text-on-surface-variant text-xs font-medium hover:bg-surface-container-high transition-colors flex-shrink-0">Hệ thống</button>
+        </div>
+
+        <!-- Unread Section -->
+        <div class="pt-4 space-y-1">
+            <p class="text-[10px] font-black uppercase tracking-[0.15em] text-on-surface-variant/50 px-1 pb-2">MỚI — 3 chưa đọc</p>
+
+            <!-- Notification Item: Unread - Order -->
+            <div class="flex gap-4 px-2 py-4 rounded-2xl bg-primary/5 border border-primary/10 cursor-pointer hover:bg-primary/8 transition-colors group active:scale-[0.99]">
+                <div class="w-11 h-11 rounded-2xl bg-primary-container flex items-center justify-center flex-shrink-0">
+                    <span class="material-symbols-outlined text-on-primary text-xl" style="font-variation-settings:'FILL' 1;">local_shipping</span>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <div class="flex items-start justify-between gap-2">
+                        <p class="font-bold text-sm leading-snug">Đơn hàng #DRL2024031501 đã được giao</p>
+                        <span class="w-2.5 h-2.5 bg-primary rounded-full flex-shrink-0 mt-1"></span>
+                    </div>
+                    <p class="text-xs text-on-surface-variant mt-1 line-clamp-2">Ghế sáng chế DOCTORLOAN 135 của bạn đã được giao thành công đến địa chỉ. Hãy xác nhận nhận hàng.</p>
+                    <p class="text-[10px] text-tertiary font-medium mt-1.5 flex items-center gap-1">
+                        <span class="material-symbols-outlined text-[12px]">schedule</span> 5 phút trước
+                    </p>
+                </div>
+            </div>
+
+            <!-- Notification Item: Unread - Learning -->
+            <div class="flex gap-4 px-2 py-4 rounded-2xl bg-primary/5 border border-primary/10 cursor-pointer hover:bg-primary/8 transition-colors group active:scale-[0.99]">
+                <div class="w-11 h-11 rounded-2xl bg-[#E8F5E9] flex items-center justify-center flex-shrink-0">
+                    <span class="material-symbols-outlined text-green-700 text-xl" style="font-variation-settings:'FILL' 1;">school</span>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <div class="flex items-start justify-between gap-2">
+                        <p class="font-bold text-sm leading-snug">Livestream bắt đầu trong 30 phút</p>
+                        <span class="w-2.5 h-2.5 bg-primary rounded-full flex-shrink-0 mt-1"></span>
+                    </div>
+                    <p class="text-xs text-on-surface-variant mt-1 line-clamp-2">Dr. Nguyễn Minh sẽ livestream "Kỹ thuật nắn chỉnh cột sống chuyên sâu" lúc 14:00 hôm nay.</p>
+                    <div class="flex items-center gap-2 mt-2">
+                        <a href="learning-live.html" class="px-3 py-1.5 brand-gradient text-white text-[10px] font-bold rounded-lg hover:opacity-90 transition-opacity">Xem ngay</a>
+                        <button class="px-3 py-1.5 border border-outline-variant/30 text-[10px] font-bold rounded-lg hover:bg-surface-container transition-colors text-on-surface-variant">Nhắc sau</button>
+                    </div>
+                    <p class="text-[10px] text-tertiary font-medium mt-1.5 flex items-center gap-1">
+                        <span class="material-symbols-outlined text-[12px]">schedule</span> 1 giờ trước
+                    </p>
+                </div>
+            </div>
+
+            <!-- Notification Item: Unread - Promo -->
+            <div class="flex gap-4 px-2 py-4 rounded-2xl bg-primary/5 border border-primary/10 cursor-pointer hover:bg-primary/8 transition-colors group active:scale-[0.99]">
+                <div class="w-11 h-11 rounded-2xl bg-orange-100 flex items-center justify-center flex-shrink-0">
+                    <span class="material-symbols-outlined text-orange-600 text-xl" style="font-variation-settings:'FILL' 1;">local_offer</span>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <div class="flex items-start justify-between gap-2">
+                        <p class="font-bold text-sm leading-snug">Ưu đãi đặc biệt cho Đại lý Cấp 2</p>
+                        <span class="w-2.5 h-2.5 bg-primary rounded-full flex-shrink-0 mt-1"></span>
+                    </div>
+                    <p class="text-xs text-on-surface-variant mt-1 line-clamp-2">Chiết khấu thêm 5% cho tất cả đơn hàng từ 5 triệu đồng trong tháng 3/2024. Áp dụng tự động.</p>
+                    <p class="text-[10px] text-tertiary font-medium mt-1.5 flex items-center gap-1">
+                        <span class="material-symbols-outlined text-[12px]">schedule</span> 3 giờ trước
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Read Section -->
+        <div class="pt-6 space-y-1">
+            <p class="text-[10px] font-black uppercase tracking-[0.15em] text-on-surface-variant/50 px-1 pb-2">TRƯỚC ĐÓ</p>
+
+            <!-- Read - Commission -->
+            <div class="flex gap-4 px-2 py-4 rounded-2xl hover:bg-surface-container transition-colors cursor-pointer group active:scale-[0.99]">
+                <div class="w-11 h-11 rounded-2xl bg-surface-container-high flex items-center justify-center flex-shrink-0">
+                    <span class="material-symbols-outlined text-on-surface-variant text-xl" style="font-variation-settings:'FILL' 1;">payments</span>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <p class="font-semibold text-sm text-on-surface-variant leading-snug">Hoa hồng được duyệt: +250,000đ</p>
+                    <p class="text-xs text-tertiary mt-1 line-clamp-2">Đơn hàng #DRL2024031402 của khách Trần Văn B đã hoàn thành. Hoa hồng được cộng vào ví.</p>
+                    <p class="text-[10px] text-tertiary font-medium mt-1.5 flex items-center gap-1">
+                        <span class="material-symbols-outlined text-[12px]">schedule</span> Hôm qua, 16:42
+                    </p>
+                </div>
+            </div>
+
+            <!-- Read - Rank up -->
+            <div class="flex gap-4 px-2 py-4 rounded-2xl hover:bg-surface-container transition-colors cursor-pointer group active:scale-[0.99]">
+                <div class="w-11 h-11 rounded-2xl bg-yellow-50 flex items-center justify-center flex-shrink-0">
+                    <span class="material-symbols-outlined text-yellow-600 text-xl" style="font-variation-settings:'FILL' 1;">military_tech</span>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <p class="font-semibold text-sm text-on-surface-variant leading-snug">Chúc mừng! Bạn đã lên Đại lý Cấp 2</p>
+                    <p class="text-xs text-tertiary mt-1 line-clamp-2">Bạn đã đạt đủ điều kiện thăng hạng. Quyền lợi mới đã được kích hoạt.</p>
+                    <p class="text-[10px] text-tertiary font-medium mt-1.5 flex items-center gap-1">
+                        <span class="material-symbols-outlined text-[12px]">schedule</span> 2 ngày trước
+                    </p>
+                </div>
+            </div>
+
+            <!-- Read - System -->
+            <div class="flex gap-4 px-2 py-4 rounded-2xl hover:bg-surface-container transition-colors cursor-pointer group active:scale-[0.99]">
+                <div class="w-11 h-11 rounded-2xl bg-surface-container-high flex items-center justify-center flex-shrink-0">
+                    <span class="material-symbols-outlined text-on-surface-variant text-xl">info</span>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <p class="font-semibold text-sm text-on-surface-variant leading-snug">Cập nhật ứng dụng phiên bản 2.4.0</p>
+                    <p class="text-xs text-tertiary mt-1 line-clamp-2">Tính năng Livestream và Học tập nâng cao vừa được ra mắt. Khám phá ngay!</p>
+                    <p class="text-[10px] text-tertiary font-medium mt-1.5 flex items-center gap-1">
+                        <span class="material-symbols-outlined text-[12px]">schedule</span> 3 ngày trước
+                    </p>
+                </div>
+            </div>
+
+            <!-- Read - Certificate -->
+            <div class="flex gap-4 px-2 py-4 rounded-2xl hover:bg-surface-container transition-colors cursor-pointer group active:scale-[0.99]">
+                <div class="w-11 h-11 rounded-2xl bg-surface-container-high flex items-center justify-center flex-shrink-0">
+                    <span class="material-symbols-outlined text-on-surface-variant text-xl" style="font-variation-settings:'FILL' 1;">workspace_premium</span>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <p class="font-semibold text-sm text-on-surface-variant leading-snug">Chứng chỉ mới: Tư vấn Ghế DrLoan — Cơ bản</p>
+                    <p class="text-xs text-tertiary mt-1 line-clamp-2">Bạn đã hoàn thành khóa học và nhận chứng chỉ. Tải xuống và chia sẻ thành tích của bạn!</p>
+                    <p class="text-[10px] text-tertiary font-medium mt-1.5 flex items-center gap-1">
+                        <span class="material-symbols-outlined text-[12px]">schedule</span> 15/03/2024
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Load More -->
+        <div class="pt-4 pb-6 text-center">
+            <button class="text-sm font-bold text-primary hover:underline px-4 py-2 rounded-xl hover:bg-primary/5 transition-colors flex items-center gap-1 mx-auto">
+                <span class="material-symbols-outlined text-sm">expand_more</span> Xem thêm thông báo
+            </button>
+        </div>
+
+        </div><!-- end max-w-2xl -->
+    </main>
+</body>
+</html>

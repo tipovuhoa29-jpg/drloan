@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Trợ lý AI X-Quang | DOCTORLOAN</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script src="js/tailwind-config.js"></script>
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/app.js"></script>
+    <style>
+        .upload-zone { border: 2px dashed; transition: all .2s; }
+        .upload-zone:hover { transform: translateY(-1px); }
+        .screen { display: none; }
+        .screen.active { display: block; }
+        .tab-btn.active { background: var(--color-primary-container, #ff7500); color: white; }
+    
+        @keyframes scan {
+            0% { top: 0; opacity: 1; }
+            50% { opacity: 0.8; }
+            100% { top: 100%; opacity: 0.2; }
+        }
+        .scan-anim { animation: scan 2s linear infinite; }
+</style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen pb-28">
+<main class="space-y-6">
+
+    <!-- Page Header -->
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pt-4">
+        <div>
+            <p class="text-xs font-bold uppercase tracking-widest text-tertiary">Module bác sĩ / phòng khám</p>
+            <h1 class="font-extrabold text-2xl lg:text-3xl tracking-tight mt-1">Trợ lý AI — Đọc Phim X-Quang</h1>
+        </div>
+        <button onclick="switchTab('xray')" class="flex items-center gap-2 px-4 py-2.5 rounded-xl brand-gradient text-white text-sm font-bold shadow-md hover:opacity-90 active:scale-[0.98] transition-all self-start">
+            <span class="material-symbols-outlined text-lg">add</span>
+            Phiên khám mới
+        </button>
+    </div>
+
+    <!-- Inner Tabs -->
+    <div class="flex flex-wrap gap-2">
+        <button id="tab-overview" onclick="switchTab('overview')" class="tab-btn active flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold bg-primary-container text-white transition-all">
+            <span class="material-symbols-outlined text-base" style="font-variation-settings:'FILL' 1;">home</span>Tổng Quan
+        </button>
+        <button id="tab-xray" onclick="switchTab('xray')" class="tab-btn flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold bg-surface-container text-on-surface-variant hover:bg-surface-container-high transition-all">
+            <span class="material-symbols-outlined text-base">radiology</span>Phân Tích AI X-Quang
+        </button>
+        <button id="tab-patients" onclick="switchTab('patients')" class="tab-btn flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold bg-surface-container text-on-surface-variant hover:bg-surface-container-high transition-all">
+            <span class="material-symbols-outlined text-base">groups</span>Hồ Sơ Bệnh Nhân
+        </button>
+        <button id="tab-consult" onclick="switchTab('consult')" class="tab-btn flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold bg-surface-container text-on-surface-variant hover:bg-surface-container-high transition-all">
+            <span class="material-symbols-outlined text-base">shopping_bag</span>Tư Vấn Sản Phẩm
+        </button>
+        <button id="tab-patent" onclick="switchTab('patent')" class="tab-btn flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold bg-surface-container text-on-surface-variant hover:bg-surface-container-high transition-all">
+            <span class="material-symbols-outlined text-base">public</span>Chiến Lược Patent
+        </button>
+    </div>
+
+    <!-- ===== SCREEN: TỔNG QUAN ===== -->
+    <div id="screen-overview" class="screen active space-y-6">
+
+        <!-- AI Accuracy Banner -->
+        <div class="brand-gradient rounded-2xl p-5 text-white flex flex-col sm:flex-row sm:items-center gap-4">
+            <div class="flex-1">
+                <p class="text-white/70 text-xs font-bold uppercase tracking-widest">Hệ thống đang hoạt động</p>
+                <h2 class="text-2xl font-black mt-1">Trợ lý AI phân tích X-Quang cột sống</h2>
+                <p class="text-white/80 text-sm mt-1">Phát hiện thoát vị, trượt đốt sống, thoái hóa — độ chính xác 98.5%</p>
+            </div>
+            <div class="flex-shrink-0 text-right">
+                <p class="text-4xl font-black">98.5%</p>
+                <p class="text-white/70 text-xs font-bold">Độ chính xác AI</p>
+            </div>
+        </div>
+
+        <!-- KPI Cards -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <div class="bg-white rounded-2xl p-4 md:p-5 border border-outline-variant/10 shadow-sm hover:-translate-y-1 transition-transform">
+                <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-3">
+                    <span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings:'FILL' 1;">groups</span>
+                </div>
+                <p class="text-3xl font-black">1,248</p>
+                <p class="text-xs text-tertiary mt-1 font-medium">Tổng bệnh nhân</p>
+                <p class="text-[10px] text-green-600 font-bold mt-1">▲ +24 tháng này</p>
+            </div>
+            <div class="bg-white rounded-2xl p-4 md:p-5 border border-outline-variant/10 shadow-sm hover:-translate-y-1 transition-transform">
+                <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-3">
+                    <span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings:'FILL' 1;">analytics</span>
+                </div>
+                <p class="text-3xl font-black">4,592</p>
+                <p class="text-xs text-tertiary mt-1 font-medium">Phân tích AI</p>
+                <p class="text-[10px] text-green-600 font-bold mt-1">▲ +312 tháng này</p>
+            </div>
+            <div class="bg-white rounded-2xl p-4 md:p-5 border border-green-100 shadow-sm hover:-translate-y-1 transition-transform">
+                <div class="w-10 h-10 rounded-xl bg-green-100 flex items-center justify-center mb-3">
+                    <span class="material-symbols-outlined text-green-700 text-xl" style="font-variation-settings:'FILL' 1;">verified</span>
+                </div>
+                <p class="text-3xl font-black text-green-700">98.5%</p>
+                <p class="text-xs text-tertiary mt-1 font-medium">Độ chính xác</p>
+                <p class="text-[10px] text-green-600 font-bold mt-1">▲ +0.3% vs tháng trước</p>
+            </div>
+            <div class="bg-white rounded-2xl p-4 md:p-5 border border-outline-variant/10 shadow-sm hover:-translate-y-1 transition-transform">
+                <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-3">
+                    <span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings:'FILL' 1;">medication</span>
+                </div>
+                <p class="text-3xl font-black">856</p>
+                <p class="text-xs text-tertiary mt-1 font-medium">Phác đồ đề xuất</p>
+                <p class="text-[10px] text-green-600 font-bold mt-1">▲ +89 tháng này</p>
+            </div>
+        </div>
+
+        <!-- Recent + Breakdown -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            <div class="bg-white rounded-2xl p-5 border border-outline-variant/10 shadow-sm">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="font-bold text-base">Phân tích gần đây</h3>
+                    <button onclick="switchTab('patients')" class="text-xs font-bold text-primary hover:underline">Xem tất cả →</button>
+                </div>
+                <div class="space-y-3">
+                    <div class="flex items-center gap-3 p-3 bg-surface-container-low rounded-xl">
+                        <div class="w-10 h-10 bg-surface-container rounded-xl flex items-center justify-center flex-shrink-0">
+                            <span class="material-symbols-outlined text-on-surface-variant text-xl">radiology</span>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-sm font-bold truncate">Đồng Văn Thanh</p>
+                            <p class="text-[10px] text-tertiary">Mã: 015452 • X-Quang Cột Sống</p>
+                        </div>
+                        <span class="text-[10px] font-bold bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full flex-shrink-0">Trượt L5S1</span>
+                    </div>
+                    <div class="flex items-center gap-3 p-3 bg-surface-container-low rounded-xl">
+                        <div class="w-10 h-10 bg-surface-container rounded-xl flex items-center justify-center flex-shrink-0">
+                            <span class="material-symbols-outlined text-on-surface-variant text-xl">radiology</span>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-sm font-bold truncate">Lê N. Đài Trang</p>
+                            <p class="text-[10px] text-tertiary">Mã: 21191 • X-Quang Nghiêng</p>
+                        </div>
+                        <span class="text-[10px] font-bold bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full flex-shrink-0">Thoái hóa cổ</span>
+                    </div>
+                    <div class="flex items-center gap-3 p-3 bg-surface-container-low rounded-xl">
+                        <div class="w-10 h-10 bg-surface-container rounded-xl flex items-center justify-center flex-shrink-0">
+                            <span class="material-symbols-outlined text-on-surface-variant text-xl">radiology</span>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-sm font-bold truncate">Nguyễn Văn Minh</p>
+                            <p class="text-[10px] text-tertiary">Mã: 34502 • X-Quang Thẳng</p>
+                        </div>
+                        <span class="text-[10px] font-bold bg-purple-100 text-purple-700 px-2 py-0.5 rounded-full flex-shrink-0">Vẹo cột sống</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-5 border border-outline-variant/10 shadow-sm">
+                <h3 class="font-bold text-base mb-4">Phân bổ chẩn đoán</h3>
+                <div class="space-y-3">
+                    <div>
+                        <div class="flex justify-between text-sm mb-1.5"><span class="font-medium">Thoái hóa đốt sống</span><span class="font-black text-primary">38%</span></div>
+                        <div class="h-2 bg-surface-container rounded-full overflow-hidden"><div class="h-full brand-gradient rounded-full" style="width:38%"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-sm mb-1.5"><span class="font-medium">Trượt đốt sống</span><span class="font-black text-primary">22%</span></div>
+                        <div class="h-2 bg-surface-container rounded-full overflow-hidden"><div class="h-full brand-gradient rounded-full opacity-80" style="width:22%"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-sm mb-1.5"><span class="font-medium">Thoát vị đĩa đệm</span><span class="font-black text-primary">19%</span></div>
+                        <div class="h-2 bg-surface-container rounded-full overflow-hidden"><div class="h-full brand-gradient rounded-full opacity-60" style="width:19%"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-sm mb-1.5"><span class="font-medium">Vẹo cột sống</span><span class="font-black text-primary">14%</span></div>
+                        <div class="h-2 bg-surface-container rounded-full overflow-hidden"><div class="h-full brand-gradient rounded-full opacity-40" style="width:14%"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-sm mb-1.5"><span class="font-medium">Khác</span><span class="font-black text-on-surface-variant">7%</span></div>
+                        <div class="h-2 bg-surface-container rounded-full overflow-hidden"><div class="h-full bg-outline-variant rounded-full" style="width:7%"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SCREEN: PHÂN TÍCH AI X-QUANG ===== -->
+    <div id="screen-xray" class="screen space-y-5">
+        <div class="bg-white rounded-2xl p-5 border border-outline-variant/10 shadow-sm">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-5">
+                <div>
+                    <h2 class="font-bold text-lg">Tải lên hoặc chọn phim X-Quang</h2>
+                    <p class="text-sm text-tertiary mt-0.5">Hệ thống AI sẽ tự động phân tích cấu trúc cột sống, đĩa đệm và đề xuất phác đồ.</p>
+                </div>
+                <span class="text-[11px] font-black text-green-700 bg-green-50 border border-green-200 px-3 py-1.5 rounded-full flex-shrink-0">✓ Độ chính xác AI: 98.5%</span>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+                <!-- Upload zone -->
+                <div class="lg:col-span-2 relative">
+                    <div id="image-preview-container" class="hidden absolute inset-0 bg-black rounded-2xl overflow-hidden shadow-inner border border-outline-variant/20">
+                        <img id="xray-img" src="" class="w-full h-full object-contain opacity-90 mix-blend-screen" alt="X-Ray Analysis">
+                        <div id="scan-line" class="absolute left-0 w-full h-[3px] bg-primary shadow-[0_0_20px_4px_rgba(255,117,0,0.8)] hidden z-10"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none"></div>
+                    </div>
+                    
+                    <div id="upload-zone" onclick="simulateAnalysis()" class="upload-zone border-primary/30 rounded-2xl flex flex-col items-center justify-center py-24 gap-4 cursor-pointer hover:border-primary hover:bg-primary/5 h-full min-h-[400px]">
+                        <div class="w-16 h-16 rounded-full brand-gradient flex items-center justify-center shadow-lg">
+                            <span class="material-symbols-outlined text-white text-3xl">cloud_upload</span>
+                        </div>
+                        <div class="text-center">
+                            <p class="font-bold text-on-surface text-lg">Kéo thả phim X-Quang vào đây</p>
+                            <p class="text-sm text-tertiary mt-1">Hoặc click để chọn file từ máy tính</p>
+                            <p class="text-xs text-tertiary">(Hỗ trợ JPG, PNG, DICOM)</p>
+                        </div>
+                        <button class="flex items-center gap-2 px-5 py-2.5 border-2 border-primary text-primary rounded-xl text-sm font-bold hover:bg-primary/5 transition-colors">
+                            <span class="material-symbols-outlined text-base">folder_open</span>Chọn File
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Sample cases -->
+                <div>
+                    <p class="text-sm font-bold text-on-surface-variant mb-3">Chọn mẫu có sẵn để Test</p>
+                    <div class="space-y-3">
+                        <div onclick="showResult('L5S1')" class="flex items-center gap-3 p-3 bg-surface-container-low rounded-xl cursor-pointer hover:bg-primary/5 hover:border-primary/20 hover:shadow-md border border-transparent transition-all group">
+                            <div class="w-12 h-12 overflow-hidden rounded-lg flex-shrink-0 shadow-sm border border-outline-variant/20">
+                                <img src="https://doctorloan.vn/img/x-quang/dong-van-thanh_015452/dong-van-thanh_1.png" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" alt="thumbnail">
+                            </div>
+                            <div>
+                                <p class="text-sm font-bold text-on-surface">BN: Đồng Văn Thanh</p>
+                                <p class="text-[10px] font-semibold text-tertiary">Mã: 015452 • X-Quang Lưng Thẳng</p>
+                            </div>
+                        </div>
+                        <div onclick="showResult('cervical')" class="flex items-center gap-3 p-3 bg-surface-container-low rounded-xl cursor-pointer hover:bg-primary/5 border border-transparent hover:border-primary/20 hover:shadow-md transition-all group">
+                            <div class="w-12 h-12 overflow-hidden rounded-lg flex-shrink-0 shadow-sm border border-outline-variant/20">
+                                <img src="https://doctorloan.vn/img/x-quang/le-ngoc-dai-trang_21191/le-ngoc-dai-trang_3.png" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" alt="thumbnail">
+                            </div>
+                            <div>
+                                <p class="text-sm font-bold text-on-surface">BN: Lê N. Đài Trang</p>
+                                <p class="text-[10px] font-semibold text-tertiary">Mã: 21191 • X-Quang Cổ Nghiêng</p>
+                            </div>
+                        </div>
+                        <div onclick="showResult('dao')" class="flex items-center gap-3 p-3 bg-surface-container-low rounded-xl cursor-pointer hover:bg-primary/5 border border-transparent hover:border-primary/20 hover:shadow-md transition-all group">
+                            <div class="w-12 h-12 overflow-hidden rounded-lg flex-shrink-0 shadow-sm border border-outline-variant/20">
+                                <img src="https://doctorloan.vn/img/x-quang/le-thi-dao_18824/le-thi-dao_1.png" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" alt="thumbnail">
+                            </div>
+                            <div>
+                                <p class="text-sm font-bold text-on-surface">BN: Lê Thị Đào</p>
+                                <p class="text-[10px] font-semibold text-tertiary">Mã: 18824 • X-Quang Lưng Nghiêng</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI Result Card -->
+        <div id="ai-result" class="hidden bg-white rounded-2xl p-5 border border-primary/20 shadow-sm">
+            <div class="flex items-center gap-3 mb-5">
+                <div class="w-10 h-10 brand-gradient rounded-xl flex items-center justify-center flex-shrink-0">
+                    <span class="material-symbols-outlined text-white" style="font-variation-settings:'FILL' 1;">smart_toy</span>
+                </div>
+                <div class="flex-1">
+                    <p class="font-bold">Kết quả phân tích AI</p>
+                    <p class="text-xs text-tertiary">Hoàn thành trong 2.3 giây • Độ tin cậy: 96.8%</p>
+                </div>
+                <span class="text-[10px] font-bold text-green-700 bg-green-100 px-3 py-1.5 rounded-full">Phân tích hoàn tất ✓</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-surface-container-low rounded-xl p-4">
+                    <p class="text-[10px] font-black uppercase tracking-wider text-tertiary mb-2">Chẩn đoán chính</p>
+                    <p class="font-bold text-on-surface" id="diagnosis-text">Trượt đốt sống L5-S1 độ II</p>
+                    <p class="text-sm text-tertiary mt-2">Khoảng cách trượt ~8mm. Hẹp lỗ liên hợp nhẹ. Đĩa đệm L5-S1 giảm chiều cao.</p>
+                </div>
+                <div class="bg-surface-container-low rounded-xl p-4">
+                    <p class="text-[10px] font-black uppercase tracking-wider text-tertiary mb-2">Phác đồ đề xuất</p>
+                    <ul class="space-y-2">
+                        <li class="text-sm flex items-start gap-1.5"><span class="text-primary font-bold flex-shrink-0">→</span>Ghế chỉnh hình DoctorLoan 135</li>
+                        <li class="text-sm flex items-start gap-1.5"><span class="text-primary font-bold flex-shrink-0">→</span>Gối cổ trị liệu F4/09</li>
+                        <li class="text-sm flex items-start gap-1.5"><span class="text-primary font-bold flex-shrink-0">→</span>Tái khám sau 4 tuần</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="flex gap-3 mt-4">
+                <button onclick="switchTab('consult')" class="flex items-center gap-2 px-4 py-2.5 brand-gradient text-white text-sm font-bold rounded-xl hover:opacity-90 transition-opacity">
+                    <span class="material-symbols-outlined text-sm">shopping_bag</span>Tư vấn sản phẩm
+                </button>
+                <button onclick="switchTab('patients')" class="px-4 py-2.5 border border-outline-variant/30 text-on-surface-variant text-sm font-semibold rounded-xl hover:bg-surface-container transition-colors">
+                    Lưu hồ sơ
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SCREEN: HỒ SƠ BỆNH NHÂN ===== -->
+    <div id="screen-patients" class="screen space-y-5">
+        <div class="flex flex-col sm:flex-row gap-3">
+            <div class="flex-1 relative">
+                <span class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant/60 text-xl pointer-events-none">search</span>
+                <input type="text" placeholder="Tìm bệnh nhân, mã hồ sơ, chẩn đoán..." class="w-full pl-11 pr-4 py-3 text-sm bg-white border border-outline-variant/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/30 shadow-sm">
+            </div>
+            <select class="text-sm px-4 py-3 bg-white border border-outline-variant/20 rounded-xl font-medium shadow-sm text-on-surface-variant">
+                <option>Tất cả chẩn đoán</option><option>Trượt đốt sống</option><option>Thoái hóa</option><option>Thoát vị</option>
+            </select>
+        </div>
+        <div class="bg-white rounded-2xl border border-outline-variant/10 overflow-hidden shadow-sm">
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm">
+                    <thead class="bg-surface-container-low border-b border-outline-variant/10">
+                        <tr>
+                            <th class="text-left py-3.5 px-4 font-bold text-on-surface-variant/60 text-[10px] uppercase tracking-widest">Mã BN</th>
+                            <th class="text-left py-3.5 px-4 font-bold text-on-surface-variant/60 text-[10px] uppercase tracking-widest">Họ tên</th>
+                            <th class="text-left py-3.5 px-4 font-bold text-on-surface-variant/60 text-[10px] uppercase tracking-widest">Cập nhật</th>
+                            <th class="text-left py-3.5 px-4 font-bold text-on-surface-variant/60 text-[10px] uppercase tracking-widest">Kết luận AI</th>
+                            <th class="text-left py-3.5 px-4 font-bold text-on-surface-variant/60 text-[10px] uppercase tracking-widest">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-outline-variant/10">
+                        <tr class="hover:bg-surface-container-low transition-colors cursor-pointer">
+                            <td class="py-3.5 px-4 font-mono text-xs text-tertiary">015452</td>
+                            <td class="py-3.5 px-4 font-bold">Đồng Văn Thanh</td>
+                            <td class="py-3.5 px-4 text-tertiary text-xs">31/03/2026 09:12</td>
+                            <td class="py-3.5 px-4"><span class="text-[10px] font-bold bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full">Trượt L5S1</span></td>
+                            <td class="py-3.5 px-4"><button class="text-primary font-bold text-xs hover:underline">Xem báo cáo AI</button></td>
+                        </tr>
+                        <tr class="hover:bg-surface-container-low transition-colors cursor-pointer">
+                            <td class="py-3.5 px-4 font-mono text-xs text-tertiary">21191</td>
+                            <td class="py-3.5 px-4 font-bold">Lê N. Đài Trang</td>
+                            <td class="py-3.5 px-4 text-tertiary text-xs">30/03/2026 14:30</td>
+                            <td class="py-3.5 px-4"><span class="text-[10px] font-bold bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full">Thoái hóa cổ</span></td>
+                            <td class="py-3.5 px-4"><button class="text-primary font-bold text-xs hover:underline">Xem báo cáo AI</button></td>
+                        </tr>
+                        <tr class="hover:bg-surface-container-low transition-colors cursor-pointer">
+                            <td class="py-3.5 px-4 font-mono text-xs text-tertiary">34502</td>
+                            <td class="py-3.5 px-4 font-bold">Nguyễn Văn Minh</td>
+                            <td class="py-3.5 px-4 text-tertiary text-xs">29/03/2026 10:45</td>
+                            <td class="py-3.5 px-4"><span class="text-[10px] font-bold bg-purple-100 text-purple-700 px-2 py-0.5 rounded-full">Vẹo cột sống</span></td>
+                            <td class="py-3.5 px-4"><button class="text-primary font-bold text-xs hover:underline">Xem báo cáo AI</button></td>
+                        </tr>
+                        <tr class="hover:bg-surface-container-low transition-colors cursor-pointer">
+                            <td class="py-3.5 px-4 font-mono text-xs text-tertiary">28841</td>
+                            <td class="py-3.5 px-4 font-bold">Trần Thị Lan</td>
+                            <td class="py-3.5 px-4 text-tertiary text-xs">28/03/2026 08:20</td>
+                            <td class="py-3.5 px-4"><span class="text-[10px] font-bold bg-red-100 text-red-700 px-2 py-0.5 rounded-full">Thoát vị L4L5</span></td>
+                            <td class="py-3.5 px-4"><button class="text-primary font-bold text-xs hover:underline">Xem báo cáo AI</button></td>
+                        </tr>
+                        <tr class="hover:bg-surface-container-low transition-colors cursor-pointer">
+                            <td class="py-3.5 px-4 font-mono text-xs text-tertiary">19920</td>
+                            <td class="py-3.5 px-4 font-bold">Phạm Quốc Bảo</td>
+                            <td class="py-3.5 px-4 text-tertiary text-xs">27/03/2026 15:10</td>
+                            <td class="py-3.5 px-4"><span class="text-[10px] font-bold bg-green-100 text-green-700 px-2 py-0.5 rounded-full">Gai đôi S1</span></td>
+                            <td class="py-3.5 px-4"><button class="text-primary font-bold text-xs hover:underline">Xem báo cáo AI</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="p-4 border-t border-outline-variant/10 text-center text-xs text-tertiary">Hiển thị 5 / 1,248 bệnh nhân</div>
+        </div>
+    </div>
+
+    <!-- ===== SCREEN: TƯ VẤN SẢN PHẨM ===== -->
+    <div id="screen-consult" class="screen space-y-5">
+        <!-- Patient context -->
+        <div class="bg-white rounded-2xl p-4 border border-primary/20 shadow-sm flex flex-wrap items-center gap-4">
+            <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                <span class="material-symbols-outlined text-primary">person</span>
+            </div>
+            <div class="flex-1 min-w-0">
+                <p class="font-bold text-sm">Đồng Văn Thanh — Mã: 015452</p>
+                <p class="text-xs text-tertiary">Chẩn đoán: Trượt đốt sống L5-S1 độ II • Phân tích lúc 09:12</p>
+            </div>
+            <div class="flex items-center gap-3 flex-shrink-0">
+                <div class="text-right">
+                    <p class="text-xs text-tertiary">Tổng ước tính</p>
+                    <p class="font-black text-lg">17,400,000đ</p>
+                </div>
+                <button onclick="switchTab('xray')" class="flex items-center gap-1 px-3 py-2 border border-primary/30 text-primary text-xs font-bold rounded-xl hover:bg-primary/5">
+                    <span class="material-symbols-outlined text-sm">radiology</span>Xem phim
+                </button>
+            </div>
+        </div>
+
+        <!-- Product recommendations -->
+        <div class="space-y-3">
+            <h3 class="text-sm font-bold uppercase tracking-widest text-on-surface-variant/60">Sản phẩm đề xuất bởi AI</h3>
+            <div class="bg-white rounded-2xl p-5 border border-outline-variant/10 shadow-sm hover:-translate-y-1 transition-transform">
+                <div class="flex gap-4 items-start">
+                    <div class="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
+                        <img class="w-full h-full object-cover" src="https://doctorloan-api.giathaidoctorloan.vn/DataFiles/product/0001/img-pd-brown-6_kl540vew.png" alt="Ghế 135">
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex flex-wrap gap-2 mb-1.5">
+                            <span class="text-[10px] font-black bg-primary/10 text-primary px-2.5 py-0.5 rounded-full">98% phù hợp</span>
+                            <span class="text-[10px] text-tertiary">Ghế điều trị</span>
+                        </div>
+                        <h4 class="font-bold">Ghế Điều Trị Cột Sống DOCTORLOAN 135</h4>
+                        <p class="text-xs text-tertiary mt-1">Thiết kế chuyên điều trị trượt đốt sống, thoát vị đĩa đệm. Cơ chế cân bằng áp lực tự nhiên.</p>
+                        <p class="font-black text-on-surface mt-2">53,762,000đ</p>
+                    </div>
+                    <label class="flex items-center gap-2 flex-shrink-0 cursor-pointer mt-1">
+                        <input type="checkbox" checked class="w-5 h-5 accent-primary rounded">
+                        <span class="text-xs font-bold text-primary">Đã chọn</span>
+                    </label>
+                </div>
+            </div>
+            <div class="bg-white rounded-2xl p-5 border border-outline-variant/10 shadow-sm hover:-translate-y-1 transition-transform">
+                <div class="flex gap-4 items-start">
+                    <div class="w-20 h-20 rounded-xl bg-surface-container flex items-center justify-center flex-shrink-0">
+                        <span class="material-symbols-outlined text-on-surface-variant/40 text-4xl">airline_seat_flat</span>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex flex-wrap gap-2 mb-1.5">
+                            <span class="text-[10px] font-black bg-green-100 text-green-700 px-2.5 py-0.5 rounded-full">100% phù hợp</span>
+                            <span class="text-[10px] text-tertiary">Gối trị liệu</span>
+                        </div>
+                        <h4 class="font-bold">Gối Cổ Chống Trượt DOCTORLOAN F4/09</h4>
+                        <p class="text-xs text-tertiary mt-1">Thiết kế công thái học chuẩn y khoa, giữ cột cổ đúng tư thế sinh lý chuẩn.</p>
+                        <p class="font-black text-on-surface mt-2">7,624,000đ</p>
+                    </div>
+                    <label class="flex items-center gap-2 flex-shrink-0 cursor-pointer mt-1">
+                        <input type="checkbox" checked class="w-5 h-5 accent-primary rounded">
+                        <span class="text-xs font-bold text-primary">Đã chọn</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex flex-wrap gap-3">
+            <button class="flex items-center gap-2 px-5 py-2.5 brand-gradient text-white text-sm font-bold rounded-xl hover:opacity-90 shadow-md transition-opacity">
+                <span class="material-symbols-outlined text-sm">send</span>Gửi đề xuất cho bệnh nhân
+            </button>
+            <button class="px-5 py-2.5 border border-outline-variant/30 text-on-surface-variant text-sm font-bold rounded-xl hover:bg-surface-container transition-colors">
+                In phác đồ
+            </button>
+        </div>
+    </div>
+
+    <!-- ===== SCREEN: CHIẾN LƯỢC PATENT ===== -->
+    <div id="screen-patent" class="screen space-y-5">
+        <div class="bg-white rounded-2xl p-5 md:p-8 border border-primary/20 shadow-[0_12px_24px_rgba(156,69,0,0.06)] relative overflow-hidden">
+            <!-- Background decoration -->
+            <div class="absolute -right-10 -top-10 text-primary/5 pointer-events-none">
+                <span class="material-symbols-outlined text-[200px]" style="font-variation-settings:'FILL' 1;">gavel</span>
+            </div>
+            
+            <div class="relative z-10 flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between mb-8">
+                <div>
+                    <h2 class="font-black text-xl md:text-2xl flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary text-3xl">public</span>
+                        Chiến Lược Patent Theo Địa Lý
+                    </h2>
+                    <p class="text-sm text-tertiary mt-1">AI phân tích phạm vi bảo hộ cấp phép cho các sản phẩm tại thị trường mục tiêu.</p>
+                </div>
+                <div class="text-right flex-shrink-0 mt-2 sm:mt-0">
+                    <span class="text-xs font-black text-blue-700 bg-blue-100 border border-blue-200 shadow-sm px-4 py-2 rounded-xl flex items-center gap-1">
+                        <span class="material-symbols-outlined text-base">verified</span>
+                        Bảo hộ 62 Quốc gia
+                    </span>
+                </div>
+            </div>
+
+            <!-- Context -->
+            <div class="relative z-10 flex flex-wrap items-center justify-between gap-3 p-4 bg-surface-container-low border border-outline-variant/10 rounded-xl mb-8">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-lg bg-white flex items-center justify-center shadow-sm">
+                        <span class="material-symbols-outlined text-primary">inventory_2</span>
+                    </div>
+                    <div>
+                        <p class="text-xs text-tertiary font-medium">Sản phẩm điều trị:</p>
+                        <p class="text-sm font-bold text-on-surface">Ghế DOCTORLOAN 135 & Gối F4/09</p>
+                    </div>
+                </div>
+                <button onclick="switchTab('consult')" class="text-xs font-bold text-primary hover:underline px-2">Xem lại phác đồ</button>
+            </div>
+
+            <!-- Regions -->
+            <div class="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-5">
+                <!-- Region 1 -->
+                <div class="bg-white border text-center md:text-left border-outline-variant/20 rounded-2xl p-5 shadow-sm hover:border-primary/40 hover:shadow-md transition-all">
+                    <div class="flex flex-col md:flex-row items-center gap-3 mb-4">
+                        <img src="https://flagcdn.com/w40/us.png" class="w-8 h-auto shadow-sm rounded-sm" alt="US">
+                        <h3 class="font-extrabold text-base">Bắc Mỹ (USPTO)</h3>
+                    </div>
+                    <p class="text-sm text-on-surface-variant leading-relaxed mb-4">Đã cấp bằng sáng chế độc quyền. Giai đoạn thương mại hóa hoàn toàn an toàn về sở hữu trí tuệ.</p>
+                    <span class="text-xs font-bold text-green-700 bg-green-50 border border-green-100 px-3 py-1 rounded-lg">Active (Hiệu lực: Tới 2040)</span>
+                </div>
+                <!-- Region 2 -->
+                <div class="bg-white border text-center md:text-left border-outline-variant/20 rounded-2xl p-5 shadow-sm hover:border-primary/40 hover:shadow-md transition-all">
+                    <div class="flex flex-col md:flex-row items-center gap-3 mb-4">
+                        <img src="https://flagcdn.com/w40/eu.png" class="w-8 h-auto shadow-sm rounded-sm" alt="EU">
+                        <h3 class="font-extrabold text-base">Châu Âu (EPO)</h3>
+                    </div>
+                    <p class="text-sm text-on-surface-variant leading-relaxed mb-4">Bảo hộ toàn diện tại các quốc gia thành viên. Tránh rủi ro hàng giả từ các nhà cung cấp y tế khác.</p>
+                    <span class="text-xs font-bold text-green-700 bg-green-50 border border-green-100 px-3 py-1 rounded-lg">Active (Đã cấp văn bằng)</span>
+                </div>
+                <!-- Region 3 -->
+                <div class="bg-white border text-center md:text-left border-outline-variant/20 rounded-2xl p-5 shadow-sm hover:border-primary/40 hover:shadow-md transition-all">
+                    <div class="flex flex-col md:flex-row items-center gap-3 mb-4">
+                        <div class="flex -space-x-2 justify-center md:justify-start">
+                            <img src="https://flagcdn.com/w40/vn.png" class="w-8 h-auto shadow-sm rounded-full border border-white" alt="VN">
+                            <img src="https://flagcdn.com/w40/jp.png" class="w-8 h-auto shadow-sm rounded-full border border-white" alt="JP">
+                        </div>
+                        <h3 class="font-extrabold text-base">Châu Á Thái Bình Dương</h3>
+                    </div>
+                    <p class="text-sm text-on-surface-variant leading-relaxed mb-4">Đã cấp tại VN, Nhật Bản, Hàn Quốc, Úc. Thị trường nội địa và xuất khẩu châu Á được bảo vệ 100%.</p>
+                    <span class="text-xs font-bold text-green-700 bg-green-50 border border-green-100 px-3 py-1 rounded-lg">Active (Khu vực chính)</span>
+                </div>
+            </div>
+
+            <!-- AI Advice -->
+            <div class="relative z-10 mt-8 p-5 bg-gradient-to-r from-primary/10 to-transparent border-l-4 border-primary rounded-r-2xl flex items-start gap-4">
+                <div class="w-10 h-10 brand-gradient rounded-full flex items-center justify-center flex-shrink-0 shadow-md">
+                    <span class="material-symbols-outlined text-white" style="font-variation-settings:'FILL' 1;">lightbulb</span>
+                </div>
+                <div>
+                    <p class="font-black text-sm md:text-base text-primary mb-1">AI Đề xuất chiến lược định vị:</p>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">Căn cứ vào dữ liệu địa lý hiện tại, bệnh nhân/đối tác này nằm trong vùng bảo hộ thương mại an toàn. Đề xuất bác sĩ/phòng khám cung cấp <a href="patent-manager.html" class="font-bold text-primary underline hover:text-primary-container">Chứng nhận Bằng Sáng Chế 62 Quốc Gia</a> đính kèm hồ sơ điều trị để tăng <strong>niềm tin tuyệt đối</strong> và <strong>khẳng định tính độc quyền y khoa toàn cầu</strong>.</p>
+                </div>
+            </div>
+            
+            <div class="relative z-10 flex justify-end gap-3 mt-6">
+                <button class="flex items-center gap-2 px-5 py-2.5 brand-gradient text-white text-sm font-bold rounded-xl shadow-md hover:opacity-90 transition-opacity">
+                    <span class="material-symbols-outlined text-[18px]">print</span>
+                    In báo cáo chiến lược
+                </button>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<script>
+    function switchTab(name) {
+        document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(b => {
+            b.classList.remove('active', 'bg-primary-container', 'text-white');
+            b.classList.add('bg-surface-container', 'text-on-surface-variant');
+        });
+        document.getElementById('screen-' + name).classList.add('active');
+        const btn = document.getElementById('tab-' + name);
+        btn.classList.add('active', 'bg-primary-container', 'text-white');
+        btn.classList.remove('bg-surface-container', 'text-on-surface-variant');
+        if (name === 'xray') document.getElementById('ai-result').classList.add('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function simulateAnalysis() {
+        const resultEl = document.getElementById('ai-result');
+        resultEl.classList.add('hidden');
+        setTimeout(() => {
+            resultEl.classList.remove('hidden');
+            resultEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 1000);
+    }
+
+    function showResult(type) {
+        const patientImages = {
+            'L5S1': 'https://doctorloan.vn/img/x-quang/dong-van-thanh_015452/dong-van-thanh_1.png',
+            'cervical': 'https://doctorloan.vn/img/x-quang/le-ngoc-dai-trang_21191/le-ngoc-dai-trang_3.png',
+            'dao': 'https://doctorloan.vn/img/x-quang/le-thi-dao_18824/le-thi-dao_1.png'
+        };
+        const diagnoses = {
+            'L5S1': 'Trượt đốt sống L5-S1 độ II',
+            'cervical': 'Thoái hóa đốt sống cổ C5-C6',
+            'dao': 'Thoái hóa cột sống L3-L5'
+        };
+        
+        // Setup UI
+        document.getElementById('upload-zone').classList.add('opacity-0');
+        setTimeout(() => document.getElementById('upload-zone').classList.add('hidden'), 300);
+        
+        const preview = document.getElementById('image-preview-container');
+        preview.classList.remove('hidden');
+        document.getElementById('xray-img').src = patientImages[type];
+        
+        // Scan effect
+        const scanLine = document.getElementById('scan-line');
+        scanLine.classList.remove('hidden');
+        scanLine.classList.add('scan-anim');
+        
+        document.getElementById('diagnosis-text').textContent = diagnoses[type];
+        
+        // Show result panel after "analysis"
+        const resultEl = document.getElementById('ai-result');
+        resultEl.classList.add('hidden');
+        setTimeout(() => {
+            scanLine.classList.remove('scan-anim');
+            scanLine.classList.add('hidden');
+            resultEl.classList.remove('hidden');
+            resultEl.scrollIntoView({ behavior: 'smooth', block: 'end' });
+            
+            // Draw some AI bounding boxes dynamically
+            const existingBoxes = preview.querySelectorAll('.ai-box');
+            existingBoxes.forEach(b => b.remove());
+            
+            const box = document.createElement('div');
+            box.className = 'ai-box absolute border-2 border-red-500 bg-red-500/10 rounded-lg animate-pulse';
+            box.style.left = '40%'; box.style.top = '50%'; box.style.width = '20%'; box.style.height = '15%';
+            preview.appendChild(box);
+            
+            // Add secondary indicator
+            const crosshair = document.createElement('div');
+            crosshair.className = 'ai-box absolute w-4 h-4 rounded-full border-2 border-primary bg-primary/20 animate-ping';
+            crosshair.style.left = '50%'; crosshair.style.top = '57%';
+            preview.appendChild(crosshair);
+            
+        }, 2000);
+    }
+</script>
+</body>
+</html>

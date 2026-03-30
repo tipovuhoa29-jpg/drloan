@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>DOCTORLOAN - Home Dashboard</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script src="js/tailwind-config.js"></script>
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/app.js"></script>
+</head>
+<body class="bg-surface text-on-surface min-h-screen">
+    <main class="space-y-6">
+        <!-- Welcome Card -->
+        <section class="brand-gradient rounded-3xl p-6 text-on-primary shadow-lg relative overflow-hidden">
+            <div class="relative z-10 space-y-1">
+                <h1 class="text-2xl font-extrabold tracking-tight">Xin chào, Minh Tuấn 👋</h1>
+                <p class="text-sm font-medium opacity-90">Đại lý Cấp 2 • 1,240 điểm</p>
+            </div>
+            <div class="absolute right-[-10%] top-[-10%] opacity-20 transform rotate-12">
+                <span class="material-symbols-outlined text-[140px]" style="font-variation-settings: 'FILL' 1;">settings_accessibility</span>
+            </div>
+        </section>
+
+        <!-- Quick Stats Row (Responsive grid adjustment) -->
+        <section class="grid grid-cols-3 gap-3 md:gap-6">
+            <div class="bg-surface-container-lowest p-4 md:p-6 rounded-xl shadow-[0px_12px_32px_rgba(27,28,28,0.04)] text-center flex flex-col items-center justify-center hover:scale-105 transition-transform cursor-pointer">
+                <span class="text-primary-container text-xl md:text-3xl font-bold">12</span>
+                <span class="text-[11px] md:text-sm font-semibold text-on-surface-variant uppercase tracking-wider mt-2">Đơn hàng</span>
+            </div>
+            <div class="bg-surface-container-lowest p-4 md:p-6 rounded-xl shadow-[0px_12px_32px_rgba(27,28,28,0.04)] text-center flex flex-col items-center justify-center border-b-[3px] border-primary-container hover:scale-105 transition-transform cursor-pointer">
+                <span class="text-primary-container text-xl md:text-3xl font-bold">4.8M</span>
+                <span class="text-[11px] md:text-sm font-semibold text-on-surface-variant uppercase tracking-wider mt-2">Hoa hồng</span>
+            </div>
+            <div class="bg-surface-container-lowest p-4 md:p-6 rounded-xl shadow-[0px_12px_32px_rgba(27,28,28,0.04)] text-center flex flex-col items-center justify-center hover:scale-105 transition-transform cursor-pointer">
+                <span class="text-primary-container text-xl md:text-3xl font-bold">03</span>
+                <span class="text-[11px] md:text-sm font-semibold text-on-surface-variant uppercase tracking-wider mt-2">Khóa học</span>
+            </div>
+        </section>
+
+        <!-- Premium Leaderboard Section -->
+        <section class="bg-surface-container-lowest rounded-3xl p-5 md:p-8 shadow-[0px_12px_32px_rgba(27,28,28,0.04)] lg:mt-6 border border-outline-variant/20">
+            <!-- Header -->
+            <div class="flex items-end justify-between mb-8">
+                <div>
+                    <div class="flex items-center gap-2 mb-1">
+                        <span class="bg-yellow-100 text-yellow-800 text-[10px] font-black uppercase px-2 py-0.5 rounded-full tracking-wider">Cập nhật realtime</span>
+                    </div>
+                    <h2 class="text-xl md:text-2xl font-black text-on-surface flex items-center gap-2">
+                        <span class="text-2xl md:text-3xl">🏆</span> Đường Đua Doanh Số 
+                    </h2>
+                </div>
+                <a href="rank.html" class="font-bold text-xs md:text-sm bg-primary text-white shadow-md hover:opacity-90 px-4 py-2 rounded-xl transition-colors flex items-center gap-1">
+                    Toàn bộ BXH <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                </a>
+            </div>
+
+            <!-- Top 3 Podium (Sleek Horizontal Design) -->
+            <div class="grid grid-cols-3 gap-3 md:gap-6 mb-6 items-end">
+                <!-- Top 2 -->
+                <div class="bg-surface-container relative rounded-2xl p-4 flex flex-col items-center text-center border-t-4 border-slate-300 transform translate-y-4">
+                    <div class="absolute -top-5 bg-slate-100 w-8 h-8 rounded-full flex items-center justify-center font-black text-slate-500 shadow-sm border-2 border-white">2</div>
+                    <img src="https://ui-avatars.com/api/?name=Thu+Hang&background=f1f5f9&color=475569&size=48" class="w-12 h-12 rounded-full mb-2 shadow-sm border-2 border-white" alt="">
+                    <h4 class="font-bold text-sm text-on-surface line-clamp-1">Thu Hằng</h4>
+                    <p class="text-[10px] text-tertiary font-bold mb-2">Đại lý Cấp 1</p>
+                    <div class="bg-white px-3 py-1.5 rounded-lg w-full shadow-sm">
+                        <p class="font-black text-slate-700 text-sm">620tr</p>
+                    </div>
+                </div>
+
+                <!-- Top 1 -->
+                <div class="brand-gradient relative rounded-2xl p-4 md:p-6 flex flex-col items-center text-center shadow-xl transform hover:scale-105 transition-transform z-10">
+                    <div class="absolute -top-6 text-3xl drop-shadow-md animate-bounce">👑</div>
+                    <img src="https://ui-avatars.com/api/?name=Minh+Tuan&background=ffedd5&color=ea580c&size=64" class="w-16 h-16 rounded-full mb-3 shadow-md border-4 border-yellow-300" alt="">
+                    <h4 class="font-black text-base text-white line-clamp-1">Quốc Anh</h4>
+                    <p class="text-[11px] text-yellow-100 font-bold mb-3">Tổng Đại Lý</p>
+                    <div class="bg-white/20 px-3 py-2 rounded-xl w-full backdrop-blur-sm border border-white/30">
+                        <p class="font-black text-yellow-300 text-lg drop-shadow-sm">850tr</p>
+                    </div>
+                </div>
+
+                <!-- Top 3 -->
+                <div class="bg-surface-container relative rounded-2xl p-4 flex flex-col items-center text-center border-t-4 border-amber-600 transform translate-y-6">
+                    <div class="absolute -top-5 bg-amber-50 w-8 h-8 rounded-full flex items-center justify-center font-black text-amber-700 shadow-sm border-2 border-white">3</div>
+                    <img src="https://ui-avatars.com/api/?name=Duc+Anh&background=fffbeb&color=b45309&size=48" class="w-12 h-12 rounded-full mb-2 shadow-sm border-2 border-white" alt="">
+                    <h4 class="font-bold text-sm text-on-surface line-clamp-1">Đức Anh</h4>
+                    <p class="text-[10px] text-tertiary font-bold mb-2">Đại lý Cấp 2</p>
+                    <div class="bg-white px-3 py-1.5 rounded-lg w-full shadow-sm">
+                        <p class="font-black text-amber-700 text-sm">410tr</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Current User Target -->
+            <div class="mt-8 bg-primary-container/30 border border-primary/20 rounded-2xl p-4 flex items-center justify-between relative overflow-hidden group">
+                <div class="absolute inset-0 bg-primary/5 w-0 group-hover:w-full transition-all duration-1000"></div>
+                <div class="flex items-center gap-4 relative z-10">
+                    <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center font-black text-primary shadow-sm">
+                        #4
+                    </div>
+                    <div>
+                        <p class="text-sm font-bold text-on-surface">Bạn đang có <span class="text-primary font-black">280tr</span> doanh số</p>
+                        <p class="text-xs text-on-surface-variant font-medium mt-0.5">Chỉ cần 130tr nữa để bước lên bục Top 3! Cố lên! 🔥</p>
+                    </div>
+                </div>
+                <div class="relative z-10 hidden md:block">
+                    <div class="w-48 h-2 bg-white rounded-full overflow-hidden shadow-inner">
+                        <div class="h-full bg-primary rounded-full transition-all duration-1000" style="width: 68%;"></div>
+                    </div>
+                    <p class="text-[10px] text-right mt-1 font-bold text-primary">Đạt 68% mục tiêu</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Action Grid (Responsive columns) -->
+        <section class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 lg:mt-6">
+            <a href="products.html" class="bg-surface-container-lowest p-5 md:py-8 rounded-3xl shadow-[0px_12px_32px_rgba(27,28,28,0.04)] flex flex-col items-center gap-3 active:bg-secondary-fixed hover:bg-surface-container transition-colors cursor-pointer">
+                <div class="w-12 h-12 md:w-16 md:h-16 rounded-2xl md:rounded-3xl bg-secondary-fixed flex items-center justify-center">
+                    <span class="material-symbols-outlined text-primary-container text-2xl md:text-3xl">shopping_cart</span>
+                </div>
+                <span class="font-bold text-on-surface text-sm md:text-base">Đặt hàng</span>
+            </a>
+            <a href="profile.html" class="bg-surface-container-lowest p-5 md:py-8 rounded-3xl shadow-[0px_12px_32px_rgba(27,28,28,0.04)] flex flex-col items-center gap-3 active:bg-secondary-fixed hover:bg-surface-container transition-colors cursor-pointer">
+                <div class="w-12 h-12 md:w-16 md:h-16 rounded-2xl md:rounded-3xl bg-secondary-fixed flex items-center justify-center">
+                    <span class="material-symbols-outlined text-primary-container text-2xl md:text-3xl">payments</span>
+                </div>
+                <span class="font-bold text-on-surface text-sm md:text-base">Hoa hồng</span>
+            </a>
+            <a href="learning.html" class="bg-surface-container-lowest p-5 md:py-8 rounded-3xl shadow-[0px_12px_32px_rgba(27,28,28,0.04)] flex flex-col items-center gap-3 active:bg-secondary-fixed hover:bg-surface-container transition-colors cursor-pointer">
+                <div class="w-12 h-12 md:w-16 md:h-16 rounded-2xl md:rounded-3xl bg-secondary-fixed flex items-center justify-center">
+                    <span class="material-symbols-outlined text-primary-container text-2xl md:text-3xl">school</span>
+                </div>
+                <span class="font-bold text-on-surface text-sm md:text-base">Học tập</span>
+            </a>
+            <a href="chat-ai.html" class="bg-surface-container-lowest p-5 md:py-8 rounded-3xl shadow-[0px_12px_32px_rgba(27,28,28,0.04)] flex flex-col items-center gap-3 active:bg-secondary-fixed hover:bg-surface-container transition-colors cursor-pointer">
+                <div class="w-12 h-12 md:w-16 md:h-16 rounded-2xl md:rounded-3xl bg-secondary-fixed flex items-center justify-center relative">
+                    <span class="material-symbols-outlined text-primary-container text-2xl md:text-3xl">smart_toy</span>
+                    <span class="absolute -top-1 -right-1 flex h-3 w-3 md:h-4 md:w-4">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-3 h-3 md:h-4 md:w-4 bg-primary"></span>
+                    </span>
+                </div>
+                <span class="font-bold text-on-surface text-sm md:text-base">Chatbot AI</span>
+            </a>
+        </section>
+
+        <!-- Promo Banner -->
+        <section class="bg-secondary-fixed rounded-3xl p-6 md:p-10 flex items-center justify-between shadow-[0px_12px_32px_rgba(27,28,28,0.04)] relative overflow-hidden group cursor-pointer hover:shadow-lg transition-all lg:mt-6">
+            <div class="space-y-4 md:space-y-6 z-10 max-w-[60%] md:max-w-[50%]">
+                <h3 class="text-xl md:text-4xl font-black text-on-primary-fixed leading-tight">Đệm thiền sáng chế DOCTORLOAN</h3>
+                <button class="bg-surface-container-lowest text-primary px-5 md:px-8 py-2 md:py-4 rounded-full font-bold text-xs md:text-base uppercase tracking-widest active:scale-95 transition-transform hover:bg-surface-container">Mua ngay</button>
+            </div>
+            <div class="absolute right-0 bottom-0 w-32 h-32 md:w-64 md:h-64 group-hover:scale-110 group-hover:-translate-x-2 transition-transform duration-500">
+                <img class="w-full h-full object-contain" src="https://doctorloan-api.giathaidoctorloan.vn/DataFiles/product/0009/img-pd-yellow-5_crudfelo.png" alt="Promo product">
+            </div>
+        </section>
+
+        <!-- Product List Header -->
+        <section class="flex justify-between items-center px-1 lg:mt-10">
+            <h2 class="text-xl md:text-2xl font-bold text-on-surface">Sản phẩm bán chạy</h2>
+            <a href="products.html" class="text-primary-container font-bold text-sm md:text-base hover:opacity-80 transition-opacity flex items-center gap-1">
+                Xem tất cả <span class="material-symbols-outlined text-lg">arrow_forward</span>
+            </a>
+        </section>
+
+        <script>
+        function switchLB(tab) {
+            document.getElementById('lb-month').className = tab==='month'
+                ? 'px-3 py-1.5 rounded-lg bg-white text-primary transition-all text-[10px] font-bold'
+                : 'px-3 py-1.5 rounded-lg text-white transition-all text-[10px] font-bold';
+            document.getElementById('lb-all').className = tab==='all'
+                ? 'px-3 py-1.5 rounded-lg bg-white text-primary transition-all text-[10px] font-bold'
+                : 'px-3 py-1.5 rounded-lg text-white transition-all text-[10px] font-bold';
+        }
+        </script>
+
+        <!-- Horizontal Scroll Product List / Grid on Desktop -->
+        <section class="flex overflow-x-auto gap-4 pb-4 hide-scrollbar -mx-4 px-4 md:mx-0 md:px-0 md:grid md:grid-cols-3 lg:grid-cols-4 lg:overflow-visible">
+            <!-- Product Card 1 -->
+            <a href="product-detail.html" class="flex-none w-48 md:w-auto bg-surface-container-lowest rounded-2xl shadow-[0px_12px_32px_rgba(27,28,28,0.04)] overflow-hidden group hover:-translate-y-1 hover:shadow-lg transition-all cursor-pointer flex flex-col">
+                <div class="relative h-40 md:h-56 bg-surface-container-low overflow-hidden">
+                    <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://doctorloan-api.giathaidoctorloan.vn/DataFiles/product/0015/g%E1%BB%91i%20c%E1%BB%95%20ng%20l%E1%BB%9Bn%204_qvvitb5c.png" alt="Gối cổ">
+                    <div class="absolute bottom-2 right-2 bg-[#ecfdf5] text-[#047857] px-2 py-0.5 md:px-3 md:py-1 rounded-lg text-[10px] md:text-xs font-black uppercase">HH: 331k</div>
+                </div>
+                <div class="p-4 space-y-2 flex-grow flex flex-col justify-between">
+                    <h4 class="font-bold text-on-surface text-sm md:text-base line-clamp-2 leading-snug">Gối cổ người lớn DOCTORLOAN AU/N</h4>
+                    <p class="text-primary-container font-black text-lg md:text-xl">3.312.000 đ</p>
+                </div>
+            </a>
+            <!-- Product Card 2 -->
+            <a href="product-detail.html" class="flex-none w-48 md:w-auto bg-surface-container-lowest rounded-2xl shadow-[0px_12px_32px_rgba(27,28,28,0.04)] overflow-hidden group hover:-translate-y-1 hover:shadow-lg transition-all cursor-pointer flex flex-col">
+                <div class="relative h-40 md:h-56 bg-surface-container-low overflow-hidden">
+                    <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://doctorloan-api.giathaidoctorloan.vn/DataFiles/product/0005/img-pd-yellow-1_ecfirofl.png" alt="Ghế">
+                    <div class="absolute bottom-2 right-2 bg-[#ecfdf5] text-[#047857] px-2 py-0.5 md:px-3 md:py-1 rounded-lg text-[10px] md:text-xs font-black uppercase">HH: 150k</div>
+                </div>
+                <div class="p-4 space-y-2 flex-grow flex flex-col justify-between">
+                    <h4 class="font-bold text-on-surface text-sm md:text-base line-clamp-2 leading-snug">Ghế sáng chế DOCTORLOAN N85</h4>
+                    <p class="text-primary-container font-black text-lg md:text-xl">2.127.000 đ</p>
+                </div>
+            </a>
+            <!-- Product Card 3 -->
+            <a href="product-detail.html" class="flex-none w-48 md:w-auto bg-surface-container-lowest rounded-2xl shadow-[0px_12px_32px_rgba(27,28,28,0.04)] overflow-hidden group hover:-translate-y-1 hover:shadow-lg transition-all cursor-pointer flex flex-col">
+                <div class="relative h-40 md:h-56 bg-surface-container-low overflow-hidden">
+                    <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://doctorloan-api.giathaidoctorloan.vn/DataFiles/product/0009/img-pd-yellow-5_crudfelo.png" alt="Đệm thiền">
+                    <div class="absolute bottom-2 right-2 bg-[#ecfdf5] text-[#047857] px-2 py-0.5 md:px-3 md:py-1 rounded-lg text-[10px] md:text-xs font-black uppercase">HH: 210k</div>
+                </div>
+                <div class="p-4 space-y-2 flex-grow flex flex-col justify-between">
+                    <h4 class="font-bold text-on-surface text-sm md:text-base line-clamp-2 leading-snug">Đệm thiền DOCTORLOAN</h4>
+                    <p class="text-primary-container font-black text-lg md:text-xl">1.200.000 đ</p>
+                </div>
+            </a>
+        </section>
+    </main>
+</body>
+</html>

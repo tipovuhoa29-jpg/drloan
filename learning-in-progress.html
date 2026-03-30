@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Đang học | DOCTORLOAN</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script src="js/tailwind-config.js"></script>
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/app.js"></script>
+</head>
+<body class="bg-surface text-on-surface min-h-screen pb-32">
+    <main class="space-y-8">
+        <!-- Page Title -->
+        <div class="space-y-1 pt-4">
+            <h1 class="font-extrabold tracking-tight text-xl lg:text-3xl">Đang học</h1>
+            <p class="text-tertiary text-sm">Bạn đang theo học 3 khóa học</p>
+        </div>
+
+        <!-- Summary Stats -->
+        <div class="grid grid-cols-3 gap-3">
+            <div class="bg-surface-container-lowest rounded-2xl p-4 text-center shadow-sm border border-outline-variant/5">
+                <p class="text-2xl font-black text-primary">3</p>
+                <p class="text-[11px] text-tertiary font-medium mt-1 uppercase tracking-tighter">Khóa học</p>
+            </div>
+            <div class="bg-surface-container-lowest rounded-2xl p-4 text-center shadow-sm border border-outline-variant/5">
+                <p class="text-2xl font-black text-primary">15</p>
+                <p class="text-[11px] text-tertiary font-medium mt-1 uppercase tracking-tighter">Bài đã học</p>
+            </div>
+            <div class="bg-surface-container-lowest rounded-2xl p-4 text-center shadow-sm border border-outline-variant/5">
+                <p class="text-2xl font-black text-primary">4.2h</p>
+                <p class="text-[11px] text-tertiary font-medium mt-1 uppercase tracking-tighter">Thời lượng</p>
+            </div>
+        </div>
+
+        <!-- Continue Learning Banner -->
+        <section class="relative overflow-hidden rounded-2xl brand-gradient text-white p-5 flex items-center gap-4 cursor-pointer hover:shadow-lg transition-shadow group" onclick="location='learning-lesson.html'">
+            <div class="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
+                <span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+            </div>
+            <div class="flex-1 min-w-0">
+                <p class="text-[10px] font-bold uppercase tracking-widest opacity-80">TIẾP TỤC HỌC</p>
+                <h2 class="font-bold text-base leading-snug">Bài 3: Nguyên lý chỉnh hình cột sống</h2>
+                <p class="text-[11px] opacity-80 mt-0.5">Tư vấn Ghế DrLoan • 03:45 / 12:50</p>
+            </div>
+            <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                <span class="material-symbols-outlined">chevron_right</span>
+            </div>
+            <div class="absolute -top-6 -right-6 w-24 h-24 bg-white/5 rounded-full pointer-events-none"></div>
+        </section>
+
+        <!-- In-Progress Courses -->
+        <section class="space-y-4">
+            <h2 class="text-sm font-bold uppercase tracking-widest text-on-surface/60">Khóa học của bạn</h2>
+
+            <!-- Course 1 -->
+            <a href="learning-lesson.html" class="block bg-surface-container-lowest rounded-2xl p-4 md:p-5 border border-outline-variant/5 shadow-sm group hover:-translate-y-1 transition-transform cursor-pointer">
+                <div class="flex gap-4">
+                    <div class="w-16 h-16 md:w-20 md:h-20 rounded-xl overflow-hidden flex-shrink-0 bg-surface-container">
+                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform" src="https://doctorloan-api.giathaidoctorloan.vn/DataFiles/product/0001/img-pd-brown-6_kl540vew.png" alt="">
+                    </div>
+                    <div class="flex-1 min-w-0 space-y-2">
+                        <div>
+                            <span class="text-[10px] font-bold text-primary uppercase tracking-wider">Sản phẩm</span>
+                            <h3 class="font-bold leading-snug group-hover:text-primary transition-colors">Tư vấn Ghế DrLoan</h3>
+                            <p class="text-xs text-tertiary">8 bài • 45 phút</p>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="text-[10px] text-on-surface-variant">Tiến độ</span>
+                                <span class="text-[10px] font-bold text-primary">75%</span>
+                            </div>
+                            <div class="h-1.5 w-full bg-surface-container rounded-full overflow-hidden">
+                                <div class="h-full bg-primary rounded-full" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-3 pt-3 border-t border-outline-variant/10 flex justify-between items-center">
+                    <div class="flex items-center gap-1 text-xs text-tertiary">
+                        <span class="material-symbols-outlined text-[14px]">check_circle</span>
+                        6/8 bài hoàn thành
+                    </div>
+                    <span class="text-xs font-bold text-primary flex items-center gap-1">Tiếp tục <span class="material-symbols-outlined text-sm">chevron_right</span></span>
+                </div>
+            </a>
+
+            <!-- Course 2 -->
+            <a href="learning-lesson.html" class="block bg-surface-container-lowest rounded-2xl p-4 md:p-5 border border-outline-variant/5 shadow-sm group hover:-translate-y-1 transition-transform cursor-pointer">
+                <div class="flex gap-4">
+                    <div class="w-16 h-16 md:w-20 md:h-20 rounded-xl overflow-hidden flex-shrink-0 bg-surface-container">
+                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDO-t0YuF8w8ri_lMoSkZu80c2uqAJoHRb51TWIe90ptaf66CZrjZHZ0rkmh-RH96RD1L6qwUw0WtFYCmq_X1UdRwymHxY79nQFcxd9XL5sjQZE5HThVVB9pX04Ui_43fHCFJBCsF6ULI9nE8dY0LWjMpOlvwZ43wOGguYHaVMEXtYfy39feKMyzxPe5WwpxeNbZaYbdRvMqVWuh_EZ-6lSaPSQ4Bv-8gz2VCtAz2iXIGxVnqMyF1IlqlX2XDZBzGrvZZ0yyBgcY0" alt="">
+                    </div>
+                    <div class="flex-1 min-w-0 space-y-2">
+                        <div>
+                            <span class="text-[10px] font-bold text-primary uppercase tracking-wider">Kỹ năng</span>
+                            <h3 class="font-bold leading-snug group-hover:text-primary transition-colors">Bán hàng y tế hiệu quả</h3>
+                            <p class="text-xs text-tertiary">10 bài • 60 phút</p>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="text-[10px] text-on-surface-variant">Tiến độ</span>
+                                <span class="text-[10px] font-bold text-primary">30%</span>
+                            </div>
+                            <div class="h-1.5 w-full bg-surface-container rounded-full overflow-hidden">
+                                <div class="h-full bg-primary rounded-full" style="width: 30%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-3 pt-3 border-t border-outline-variant/10 flex justify-between items-center">
+                    <div class="flex items-center gap-1 text-xs text-tertiary">
+                        <span class="material-symbols-outlined text-[14px]">check_circle</span>
+                        3/10 bài hoàn thành
+                    </div>
+                    <span class="text-xs font-bold text-primary flex items-center gap-1">Tiếp tục <span class="material-symbols-outlined text-sm">chevron_right</span></span>
+                </div>
+            </a>
+
+            <!-- Course 3 — New -->
+            <a href="learning-lesson.html" class="block bg-surface-container-lowest rounded-2xl p-4 md:p-5 border border-outline-variant/5 shadow-sm group hover:-translate-y-1 transition-transform cursor-pointer">
+                <div class="flex gap-4">
+                    <div class="w-16 h-16 md:w-20 md:h-20 rounded-xl overflow-hidden flex-shrink-0 bg-surface-container">
+                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform" src="https://images.unsplash.com/photo-1581093806997-124204d9fa9d?auto=format&fit=crop&q=80&w=200" alt="">
+                    </div>
+                    <div class="flex-1 min-w-0 space-y-2">
+                        <div>
+                            <span class="text-[10px] font-bold text-primary uppercase tracking-wider">Y học</span>
+                            <h3 class="font-bold leading-snug group-hover:text-primary transition-colors">Giải phẫu cột sống cơ bản</h3>
+                            <p class="text-xs text-tertiary">6 bài • 40 phút</p>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="text-[10px] text-on-surface-variant">Tiến độ</span>
+                                <span class="text-[10px] font-bold text-primary">10%</span>
+                            </div>
+                            <div class="h-1.5 w-full bg-surface-container rounded-full overflow-hidden">
+                                <div class="h-full bg-primary rounded-full" style="width: 10%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-3 pt-3 border-t border-outline-variant/10 flex justify-between items-center">
+                    <div class="flex items-center gap-1 text-xs text-tertiary">
+                        <span class="material-symbols-outlined text-[14px]">schedule</span>
+                        Mới bắt đầu
+                    </div>
+                    <span class="text-xs font-bold text-primary flex items-center gap-1">Bắt đầu <span class="material-symbols-outlined text-sm">chevron_right</span></span>
+                </div>
+            </a>
+        </section>
+
+        <!-- Browse More -->
+        <section class="text-center py-4">
+            <a href="learning.html" class="inline-flex items-center gap-2 text-sm font-bold text-primary hover:underline">
+                <span class="material-symbols-outlined text-lg">add_circle</span>
+                Khám phá thêm khóa học
+            </a>
+        </section>
+    </main>
+</body>
+</html>

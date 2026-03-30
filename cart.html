@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Giỏ hàng | DOCTORLOAN</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script src="js/tailwind-config.js"></script>
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/app.js"></script>
+</head>
+<body class="bg-surface text-on-surface min-h-screen pb-32" data-hide-bottom-nav>
+
+    <!-- Content -->
+    <main class="pt-6 space-y-6">
+        <!-- Page Title that aligns with global layout -->
+        <div class="flex items-center justify-between">
+            <h1 class="font-['Inter'] font-extrabold tracking-tight text-2xl lg:text-3xl">Giỏ hàng (2)</h1>
+            <button class="active:scale-95 transition-transform text-primary hover:bg-surface-container p-2 rounded-full cursor-pointer">
+                <span class="material-symbols-outlined text-xl">delete</span>
+            </button>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
+            <!-- Left Column: Cart Items and Vouchers -->
+            <div class="lg:col-span-2 space-y-6">
+                <!-- Cart Item List -->
+                <section class="space-y-4">
+                    <!-- Item 1 -->
+                    <div class="bg-surface-container-lowest p-4 rounded-xl shadow-[0_12px_32px_rgba(27,28,28,0.04)] flex gap-4 relative overflow-hidden group hover:border-surface-variant border border-transparent transition-colors">
+                        <a href="product-detail.html" class="w-24 h-24 md:w-32 md:h-32 bg-surface-container-low rounded-lg overflow-hidden flex-shrink-0 block cursor-pointer">
+                            <img class="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform" src="https://doctorloan-api.giathaidoctorloan.vn/DataFiles/product/0002/img-pd-brown-3_fvy5d5jh.png" alt="Ghế">
+                        </a>
+                        <div class="flex flex-col justify-between flex-grow">
+                            <div>
+                                <a href="product-detail.html" class="font-semibold text-on-surface line-clamp-2 md:text-lg hover:text-primary">Ghế sáng chế DOCTORLOAN 95</a>
+                                <p class="text-xs md:text-sm text-on-surface-variant mt-1.5">Màu sắc: Nâu</p>
+                                <p class="text-primary font-bold md:text-lg mt-1">34.937.000 đ</p>
+                            </div>
+                            <div class="flex items-center justify-between mt-3">
+                                <div class="flex items-center bg-surface-container rounded-lg md:rounded-full px-1 py-1">
+                                    <button class="w-8 h-8 flex items-center justify-center text-on-surface-variant hover:bg-surface-variant rounded-md md:rounded-full transition-colors cursor-pointer">
+                                        <span class="material-symbols-outlined text-sm">remove</span>
+                                    </button>
+                                    <span class="px-4 font-semibold text-sm">1</span>
+                                    <button class="w-8 h-8 flex items-center justify-center bg-primary-container hover:bg-primary text-white rounded-md md:rounded-full shadow-sm cursor-pointer transition-colors">
+                                        <span class="material-symbols-outlined text-sm">add</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 2 -->
+                    <div class="bg-surface-container-lowest p-4 rounded-xl shadow-[0_12px_32px_rgba(27,28,28,0.04)] flex gap-4 relative overflow-hidden group hover:border-surface-variant border border-transparent transition-colors">
+                        <a href="product-detail.html" class="w-24 h-24 md:w-32 md:h-32 bg-surface-container-low rounded-lg overflow-hidden flex-shrink-0 block cursor-pointer">
+                            <img class="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform" src="https://doctorloan-api.giathaidoctorloan.vn/DataFiles/product/0005/img-pd-yellow-1_ecfirofl.png" alt="Ghế N85">
+                        </a>
+                        <div class="flex flex-col justify-between flex-grow">
+                            <div>
+                                <a href="product-detail.html" class="font-semibold text-on-surface line-clamp-2 md:text-lg hover:text-primary">Ghế sáng chế DOCTORLOAN N85</a>
+                                <p class="text-xs md:text-sm text-on-surface-variant mt-1.5">Kích thước: M</p>
+                                <p class="text-primary font-bold md:text-lg mt-1">2.127.000 đ</p>
+                            </div>
+                            <div class="flex items-center justify-between mt-3">
+                                <div class="flex items-center bg-surface-container rounded-lg md:rounded-full px-1 py-1">
+                                    <button class="w-8 h-8 flex items-center justify-center text-on-surface-variant hover:bg-surface-variant rounded-md md:rounded-full transition-colors cursor-pointer">
+                                        <span class="material-symbols-outlined text-sm">remove</span>
+                                    </button>
+                                    <span class="px-4 font-semibold text-sm">2</span>
+                                    <button class="w-8 h-8 flex items-center justify-center bg-primary-container hover:bg-primary text-white rounded-md md:rounded-full shadow-sm cursor-pointer transition-colors">
+                                        <span class="material-symbols-outlined text-sm">add</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Reward Card -->
+                <div class="bg-[#10b981] p-4 rounded-xl flex items-center gap-3 text-white shadow-lg overflow-hidden relative group cursor-pointer hover:shadow-[#10b981]/30 transition-shadow">
+                    <div class="absolute -right-4 -top-4 opacity-20 transform group-hover:rotate-45 transition-transform duration-500">
+                        <span class="material-symbols-outlined text-7xl">celebration</span>
+                    </div>
+                    <span class="material-symbols-outlined text-3xl">savings</span>
+                    <p class="font-semibold text-sm md:text-base relative z-10">🎉 Bạn sẽ nhận 640.000 đ từ đơn này</p>
+                </div>
+                
+                <!-- Voucher Input -->
+                <section class="bg-surface-container-lowest p-5 md:p-6 rounded-xl border border-outline-variant/15 md:shadow-sm">
+                    <label class="text-sm font-bold text-on-surface-variant uppercase tracking-wider mb-3 block">Mã giảm giá</label>
+                    <div class="flex flex-col md:flex-row gap-3">
+                        <div class="flex-grow bg-surface-container rounded-xl px-4 py-1 flex items-center border border-transparent focus-within:border-primary-container transition-colors">
+                            <span class="material-symbols-outlined text-on-surface-variant mr-2 text-xl">sell</span>
+                            <input class="bg-transparent border-none focus:ring-0 text-sm w-full font-medium h-12 outline-none" placeholder="Nhập mã giảm giá..." type="text">
+                        </div>
+                        <button class="bg-surface-container-highest text-on-surface font-bold px-8 py-3.5 md:py-0 rounded-xl hover:bg-primary hover:text-white active:scale-95 transition-all cursor-pointer">
+                            Áp dụng
+                        </button>
+                    </div>
+                </section>
+
+            </div><!-- End Left Column -->
+
+            <!-- Right Column: Order Summary & Checkout -->
+            <div class="space-y-6">
+                <!-- Customer Type Selection -->
+                <section class="bg-surface-container-lowest p-5 rounded-xl border border-outline-variant/15 space-y-3">
+                    <div class="flex justify-between items-center">
+                        <label class="text-sm font-bold text-on-surface-variant uppercase tracking-wider">Khách hàng</label>
+                        <span class="text-primary font-bold text-xs bg-primary/10 px-2 py-1 rounded-md">Chiết khấu 18%</span>
+                    </div>
+                    <div class="flex items-center justify-between bg-surface-container-low px-4 py-3 rounded-xl cursor-pointer hover:bg-surface-container transition-colors">
+                        <div class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-primary">badge</span>
+                            <span class="font-semibold">Đại lý Cấp 2</span>
+                        </div>
+                        <span class="material-symbols-outlined text-on-surface-variant">keyboard_arrow_down</span>
+                    </div>
+                </section>
+
+                <!-- Shipping Address -->
+                <section class="bg-surface-container-lowest p-5 rounded-xl border border-outline-variant/15 flex items-start gap-4">
+                    <div class="bg-primary/10 p-3 rounded-xl">
+                        <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">location_on</span>
+                    </div>
+                    <div class="flex-grow">
+                        <div class="flex justify-between items-center mb-2">
+                            <h4 class="font-bold text-sm">Giao tới</h4>
+                            <button class="text-primary font-bold text-xs hover:underline cursor-pointer">Thay đổi</button>
+                        </div>
+                        <p class="text-on-surface-variant text-sm leading-relaxed">9A Tôn Thất Tùng, P. Phạm Ngũ Lão, Q.1, TP. Hồ Chí Minh</p>
+                    </div>
+                </section>
+
+                <!-- Order Summary -->
+                <section class="bg-[#FFF3E8] p-6 rounded-2xl space-y-5 border border-primary/10 lg:sticky lg:top-24">
+                    <h3 class="font-bold text-on-surface text-lg">Chi tiết thanh toán</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between text-on-surface-variant text-sm font-medium">
+                            <span>Tạm tính</span>
+                            <span class="text-on-surface">37.064.000 đ</span>
+                        </div>
+                        <div class="flex justify-between text-sm font-medium">
+                            <span class="text-on-surface-variant">Chiết khấu (18%)</span>
+                            <span class="text-primary">-1.108.800 đ</span>
+                        </div>
+                        <div class="flex justify-between text-sm font-medium">
+                            <span class="text-on-surface-variant">Phí giao hàng</span>
+                            <span class="text-green-600">Miễn phí</span>
+                        </div>
+                    </div>
+                    <div class="pt-5 border-t border-primary/15 flex justify-between items-end">
+                        <span class="font-bold text-on-surface">Tổng cộng</span>
+                        <div class="text-right">
+                            <span class="text-primary text-2xl font-extrabold tracking-tight block leading-none">35.955.200 đ</span>
+                            <span class="text-[10px] text-on-surface-variant opacity-70 mt-1 block">Đã bao gồm VAT</span>
+                        </div>
+                    </div>
+
+                    <!-- Checkout Button for Desktop (inside flow) -->
+                    <button class="hidden lg:flex w-full brand-gradient text-white rounded-xl py-4 items-center justify-center shadow-[0_8px_16px_rgba(156,69,0,0.2)] hover:opacity-90 transition-opacity cursor-pointer">
+                        <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined">shopping_cart_checkout</span>
+                            <span class="font-bold text-base">Đặt hàng ngay</span>
+                        </div>
+                    </button>
+                </section>
+
+            </div><!-- End Right Column -->
+        </div>
+    </main>
+
+    <!-- Bottom Action Bar (Mobile/Tablet) -->
+    <nav class="fixed bottom-0 left-0 w-full lg:hidden bg-white/95 backdrop-blur-md flex justify-between items-center px-6 py-4 pb-safe rounded-[1.5rem] z-[60] shadow-[0_-12px_32px_rgba(0,0,0,0.1)] border-t border-surface-variant">
+        <div class="flex flex-col justify-center text-on-surface">
+            <span class="text-[10px] uppercase font-bold tracking-widest text-on-surface-variant mb-0.5">Tổng tiền</span>
+            <span class="font-extrabold text-[#ff7500] text-xl tracking-tight leading-none">35.955k</span>
+        </div>
+        <button class="brand-gradient text-white rounded-2xl px-6 py-3.5 flex items-center justify-center shadow-lg active:scale-95 transition-transform cursor-pointer">
+            <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined font-light text-[20px]">shopping_cart_checkout</span>
+                <span class="font-bold text-sm">Đặt hàng</span>
+            </div>
+        </button>
+    </nav>
+
+</body>
+</html>

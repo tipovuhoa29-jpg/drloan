@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>DrLoan AI Tư vấn | DOCTORLOAN</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script src="js/tailwind-config.js"></script>
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/app.js"></script>
+    <style>
+        .chat-container { height: calc(100vh - 144px); }
+        @media (min-width: 1024px) {
+            .chat-container { height: calc(100vh - 160px); }
+        }
+        .bot-bubble { border-bottom-left-radius: 4px; }
+        .user-bubble { border-bottom-right-radius: 4px; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased overflow-hidden" data-hide-header data-hide-bottom-nav>
+
+    <!-- Top Navigation Custom for Chat -->
+    <header class="fixed top-0 w-full lg:w-[calc(100%-250px)] md:ml-[250px] z-50 brand-gradient h-16 lg:h-20 flex items-center px-4 shadow-lg">
+        <div class="flex items-center justify-between w-full">
+            <div class="flex items-center gap-2 md:gap-4">
+                <a href="index.html" class="p-2 text-white active:scale-95 transition-transform cursor-pointer">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                </a>
+                <div class="flex items-center gap-3">
+                    <div class="relative">
+                        <div class="w-10 h-10 md:w-12 md:h-12 rounded-full border-2 border-white flex items-center justify-center bg-white/20 backdrop-blur-sm">
+                            <span class="material-symbols-outlined text-white text-2xl md:text-3xl" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+                        </div>
+                        <div class="absolute bottom-0 right-0 w-3 h-3 bg-green-400 border-2 border-white rounded-full"></div>
+                    </div>
+                    <div>
+                        <h1 class="text-white font-bold tracking-tight text-base md:text-lg leading-tight uppercase">DrLoan AI</h1>
+                        <p class="text-white/90 text-[10px] md:text-xs font-medium">Tư vấn sức khỏe • Online</p>
+                    </div>
+                </div>
+            </div>
+            <button class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-colors cursor-pointer">
+                <span class="material-symbols-outlined">more_vert</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content Chat Area -->
+    <main data-custom-layout class="pt-20 md:pt-24 pb-40 lg:pb-32 px-4 md:px-6 lg:px-8 w-full h-full overflow-y-auto hide-scrollbar absolute top-0 md:ml-[250px] lg:w-[calc(100%-250px)]">
+        <div class="flex flex-col gap-6 max-w-3xl mx-auto h-full justify-end min-h-[max-content] pb-6">
+            <!-- Timestamp -->
+            <div class="flex justify-center mt-6">
+                <span class="text-[10px] font-bold tracking-widest text-on-surface-variant uppercase bg-surface-container px-3 py-1 rounded-full">10:32 SA</span>
+            </div>
+            
+            <!-- Bot Message 1 -->
+            <div class="flex items-end gap-2 max-w-[90%] md:max-w-[75%]">
+                <div class="bg-surface-container-highest text-on-surface p-4 rounded-2xl bot-bubble shadow-sm">
+                    <p class="text-sm md:text-base leading-relaxed">Xin chào! Tôi là DrLoan AI 🤖 Bạn đang gặp vấn đề gì về cột sống?</p>
+                </div>
+            </div>
+            
+            <!-- User Message 1 -->
+            <div class="flex items-end justify-end gap-2 ml-auto max-w-[90%] md:max-w-[75%]">
+                <div class="brand-gradient text-white p-4 rounded-2xl user-bubble shadow-[0px_8px_16px_rgba(156,69,0,0.2)]">
+                    <p class="text-sm md:text-base leading-relaxed">Tôi hay bị đau thắt lưng khi ngồi làm việc lâu tại văn phòng ạ</p>
+                </div>
+            </div>
+            
+            <!-- Bot Message 2 -->
+            <div class="flex items-end gap-2 max-w-[90%] md:max-w-[75%]">
+                <div class="bg-surface-container-highest text-on-surface p-4 rounded-2xl bot-bubble shadow-sm">
+                    <p class="text-sm md:text-base leading-relaxed">Tôi hiểu. Việc ngồi sai tư thế lâu ngày rất dễ gây thoái hóa cột sống. Bạn ngồi trung bình bao nhiêu tiếng/ngày?</p>
+                </div>
+            </div>
+            
+            <!-- User Message 2 -->
+            <div class="flex items-end justify-end gap-2 ml-auto max-w-[90%] md:max-w-[75%]">
+                <div class="brand-gradient text-white p-4 rounded-2xl user-bubble shadow-[0px_8px_16px_rgba(156,69,0,0.2)]">
+                    <p class="text-sm md:text-base leading-relaxed">Khoảng 8–10 tiếng / ngày</p>
+                </div>
+            </div>
+            
+            <!-- Bot Message 3 & Product Card -->
+            <div class="flex flex-col gap-3 max-w-[95%] md:max-w-[75%]">
+                <div class="bg-surface-container-highest text-on-surface p-4 rounded-2xl bot-bubble shadow-sm self-start">
+                    <p class="text-sm md:text-base leading-relaxed">Với thời gian ngồi lâu như vậy, bạn nên sử dụng đệm hoặc ghế có chức năng hỗ trợ cấu trúc lồi-lõm sinh lý tự nhiên. Tôi gợi ý sản phẩm phù hợp với bạn nhé 👇</p>
+                </div>
+                
+                <!-- Product Card (Chat attachment) -->
+                <div class="bg-surface-container-lowest rounded-2xl overflow-hidden shadow-[0px_12px_32px_rgba(27,28,28,0.06)] border border-outline-variant/15 w-64 md:w-72">
+                    <div class="h-40 bg-surface-container-low relative overflow-hidden">
+                        <img class="w-full h-full object-cover" src="https://doctorloan-api.giathaidoctorloan.vn/DataFiles/product/0002/img-pd-brown-3_fvy5d5jh.png" alt="Ghế">
+                        <div class="absolute top-2 left-2 bg-primary-container text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-widest">Gợi ý tốt nhất</div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-on-surface text-sm line-clamp-2">Ghế sáng chế DOCTORLOAN 95</h3>
+                        <p class="text-primary font-black text-lg mt-1">39.249.000 đ</p>
+                        <a href="product-detail.html" class="block text-center w-full mt-3 bg-surface-container-low text-primary font-bold py-2.5 rounded-xl hover:bg-primary hover:text-white transition-all active:scale-95 text-sm cursor-pointer">
+                            Xem sản phẩm
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Interactive Shell (Fixed Bottom Input) -->
+    <div class="fixed bottom-0 w-full lg:w-[calc(100%-250px)] md:ml-[250px] z-50 bg-surface/95 backdrop-blur-xl border-t border-surface-variant pb-safe">
+        <!-- Quick Reply Chips -->
+        <div class="flex overflow-x-auto gap-2 px-4 py-3 hide-scrollbar flex-nowrap max-w-3xl mx-auto">
+            <button class="whitespace-nowrap px-4 py-2 rounded-full border border-primary text-primary text-xs md:text-sm font-semibold bg-white hover:bg-primary-fixed hover:border-transparent transition-colors active:scale-95 cursor-pointer">Đau mỏi vai gáy</button>
+            <button class="whitespace-nowrap px-4 py-2 rounded-full border border-primary text-primary text-xs md:text-sm font-semibold bg-white hover:bg-primary-fixed hover:border-transparent transition-colors active:scale-95 cursor-pointer">Chọn gối phù hợp</button>
+            <button class="whitespace-nowrap px-4 py-2 rounded-full border border-primary text-primary text-xs md:text-sm font-semibold bg-white hover:bg-primary-fixed hover:border-transparent transition-colors active:scale-95 cursor-pointer">Hỏi giá đệm</button>
+            <button class="whitespace-nowrap px-4 py-2 rounded-full border border-primary text-primary text-xs md:text-sm font-semibold bg-white hover:bg-primary-fixed hover:border-transparent transition-colors active:scale-95 cursor-pointer">Tư vấn kinh doanh</button>
+        </div>
+        
+        <!-- Input Bar -->
+        <div class="px-4 pb-4 pt-2 flex items-end gap-3 max-w-3xl mx-auto">
+            <button class="text-primary p-2 transition-colors active:scale-90 hover:bg-surface-container rounded-full mb-1 cursor-pointer">
+                <span class="material-symbols-outlined">add_circle</span>
+            </button>
+            
+            <div class="flex-1 bg-surface-container-low rounded-[24px] flex items-center px-4 py-1.5 border border-transparent focus-within:border-primary/30 focus-within:bg-white transition-all shadow-inner">
+                <input class="w-full bg-transparent border-none focus:ring-0 text-sm md:text-base py-2.5 placeholder:text-on-surface-variant/60 outline-none" placeholder="Nhập tin nhắn..." type="text">
+                <button class="text-primary p-1 ml-2 transition-colors active:scale-90 cursor-pointer">
+                    <span class="material-symbols-outlined">mic</span>
+                </button>
+            </div>
+            
+            <button class="w-12 h-12 shrink-0 brand-gradient text-white rounded-full flex items-center justify-center shadow-[0_8px_16px_rgba(156,69,0,0.3)] active:scale-90 transition-transform mb-0.5 cursor-pointer hover:opacity-90">
+                <span class="material-symbols-outlined ml-1" style="font-variation-settings: 'FILL' 1;">send</span>
+            </button>
+        </div>
+    </div>
+
+</body>
+</html>

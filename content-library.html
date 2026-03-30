@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Thư viện nội dung | DOCTORLOAN</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script src="js/tailwind-config.js"></script>
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/app.js"></script>
+</head>
+<body class="bg-surface text-on-surface min-h-screen pb-28">
+<main class="space-y-6">
+    <div class="flex items-center gap-3 pt-4">
+        <a href="profile.html" class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center hover:bg-surface-container-high transition-colors">
+            <span class="material-symbols-outlined">arrow_back</span>
+        </a>
+        <h1 class="font-extrabold text-xl tracking-tight">Thư viện nội dung</h1>
+    </div>
+
+    <!-- Filter tabs -->
+    <div class="flex gap-2 flex-wrap">
+        <button class="px-4 py-2 rounded-full bg-primary-container text-white text-xs font-bold">Tất cả</button>
+        <button class="px-4 py-2 rounded-full bg-surface-container text-on-surface-variant text-xs font-medium hover:bg-surface-container-high transition-colors">Hình ảnh</button>
+        <button class="px-4 py-2 rounded-full bg-surface-container text-on-surface-variant text-xs font-medium hover:bg-surface-container-high transition-colors">Video</button>
+        <button class="px-4 py-2 rounded-full bg-surface-container text-on-surface-variant text-xs font-medium hover:bg-surface-container-high transition-colors">Brochure</button>
+        <button class="px-4 py-2 rounded-full bg-surface-container text-on-surface-variant text-xs font-medium hover:bg-surface-container-high transition-colors">Kịch bản</button>
+    </div>
+
+    <!-- Content Grid -->
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+        <div class="bg-white rounded-2xl overflow-hidden border border-outline-variant/10 shadow-sm hover:-translate-y-1 transition-transform cursor-pointer group">
+            <div class="aspect-video bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
+                <span class="material-symbols-outlined text-primary text-4xl group-hover:scale-110 transition-transform" style="font-variation-settings:'FILL' 1;">image</span>
+            </div>
+            <div class="p-3">
+                <p class="text-xs font-bold truncate">Banner Ghế 135 — Tháng 3</p>
+                <p class="text-[10px] text-tertiary mt-0.5">1920×1080 • JPG</p>
+                <button class="mt-2 flex items-center gap-1 text-[10px] font-bold text-primary hover:underline">
+                    <span class="material-symbols-outlined text-xs">download</span>Tải về
+                </button>
+            </div>
+        </div>
+        <div class="bg-white rounded-2xl overflow-hidden border border-outline-variant/10 shadow-sm hover:-translate-y-1 transition-transform cursor-pointer group">
+            <div class="aspect-video bg-gradient-to-br from-red-100 to-red-50 flex items-center justify-center">
+                <span class="material-symbols-outlined text-red-500 text-4xl group-hover:scale-110 transition-transform" style="font-variation-settings:'FILL' 1;">smart_display</span>
+            </div>
+            <div class="p-3">
+                <p class="text-xs font-bold truncate">Video giới thiệu Ghế 135</p>
+                <p class="text-[10px] text-tertiary mt-0.5">2:34 • MP4 • 45MB</p>
+                <button class="mt-2 flex items-center gap-1 text-[10px] font-bold text-primary hover:underline">
+                    <span class="material-symbols-outlined text-xs">download</span>Tải về
+                </button>
+            </div>
+        </div>
+        <div class="bg-white rounded-2xl overflow-hidden border border-outline-variant/10 shadow-sm hover:-translate-y-1 transition-transform cursor-pointer group">
+            <div class="aspect-video bg-gradient-to-br from-blue-100 to-blue-50 flex items-center justify-center">
+                <span class="material-symbols-outlined text-blue-500 text-4xl group-hover:scale-110 transition-transform" style="font-variation-settings:'FILL' 1;">picture_as_pdf</span>
+            </div>
+            <div class="p-3">
+                <p class="text-xs font-bold truncate">Brochure sản phẩm Q1/2026</p>
+                <p class="text-[10px] text-tertiary mt-0.5">12 trang • PDF</p>
+                <button class="mt-2 flex items-center gap-1 text-[10px] font-bold text-primary hover:underline">
+                    <span class="material-symbols-outlined text-xs">download</span>Tải về
+                </button>
+            </div>
+        </div>
+        <div class="bg-white rounded-2xl overflow-hidden border border-outline-variant/10 shadow-sm hover:-translate-y-1 transition-transform cursor-pointer group">
+            <div class="aspect-video bg-gradient-to-br from-green-100 to-green-50 flex items-center justify-center">
+                <span class="material-symbols-outlined text-green-600 text-4xl group-hover:scale-110 transition-transform" style="font-variation-settings:'FILL' 1;">description</span>
+            </div>
+            <div class="p-3">
+                <p class="text-xs font-bold truncate">Kịch bản tư vấn Ghế 95</p>
+                <p class="text-[10px] text-tertiary mt-0.5">Docx • 8 trang</p>
+                <button class="mt-2 flex items-center gap-1 text-[10px] font-bold text-primary hover:underline">
+                    <span class="material-symbols-outlined text-xs">download</span>Tải về
+                </button>
+            </div>
+        </div>
+        <div class="bg-white rounded-2xl overflow-hidden border border-outline-variant/10 shadow-sm hover:-translate-y-1 transition-transform cursor-pointer group">
+            <div class="aspect-video bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
+                <span class="material-symbols-outlined text-primary text-4xl group-hover:scale-110 transition-transform" style="font-variation-settings:'FILL' 1;">image</span>
+            </div>
+            <div class="p-3">
+                <p class="text-xs font-bold truncate">Story Gối AU/N — Zalo OA</p>
+                <p class="text-[10px] text-tertiary mt-0.5">1080×1920 • PNG</p>
+                <button class="mt-2 flex items-center gap-1 text-[10px] font-bold text-primary hover:underline">
+                    <span class="material-symbols-outlined text-xs">download</span>Tải về
+                </button>
+            </div>
+        </div>
+        <div class="bg-white rounded-2xl overflow-hidden border border-outline-variant/10 shadow-sm hover:-translate-y-1 transition-transform cursor-pointer group">
+            <div class="aspect-video bg-gradient-to-br from-red-100 to-red-50 flex items-center justify-center">
+                <span class="material-symbols-outlined text-red-500 text-4xl group-hover:scale-110 transition-transform" style="font-variation-settings:'FILL' 1;">smart_display</span>
+            </div>
+            <div class="p-3">
+                <p class="text-xs font-bold truncate">Video testimonial bệnh nhân</p>
+                <p class="text-[10px] text-tertiary mt-0.5">1:12 • MP4 • 18MB</p>
+                <button class="mt-2 flex items-center gap-1 text-[10px] font-bold text-primary hover:underline">
+                    <span class="material-symbols-outlined text-xs">download</span>Tải về
+                </button>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Học tập | DOCTORLOAN</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script src="js/tailwind-config.js"></script>
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/app.js"></script>
+</head>
+<body class="bg-surface text-on-surface pb-32">
+    <main class="space-y-6">
+        <h1 class="font-['Inter'] font-extrabold tracking-tight text-xl lg:text-3xl lg:mb-8 pt-4">Trung tâm học tập</h1>
+
+        <!-- Tab Bar -->
+        <div class="flex items-center gap-6 overflow-x-auto hide-scrollbar py-2 mb-6 border-b border-outline-variant/15 md:text-lg">
+            <a class="flex-shrink-0 relative pb-3 text-primary font-bold" href="learning.html">
+                Khóa học
+                <span class="absolute bottom-0 left-0 w-full h-[3px] bg-primary rounded-full"></span>
+            </a>
+            <a class="flex-shrink-0 pb-3 text-on-surface-variant font-medium hover:text-primary transition-colors" href="learning-live.html">Livestream <span class="bg-red-500 text-white text-[10px] px-1.5 py-0.5 rounded-full align-top ml-1">Live</span></a>
+            <a class="flex-shrink-0 pb-3 text-on-surface-variant font-medium hover:text-primary transition-colors" href="learning-in-progress.html">Đang học</a>
+            <a class="flex-shrink-0 pb-3 text-on-surface-variant font-medium hover:text-primary transition-colors" href="learning-certificates.html">Chứng chỉ</a>
+        </div>
+
+        <!-- Livestream Section (New) -->
+        <section class="space-y-4">
+            <div class="flex items-center justify-between">
+                <h2 class="text-sm font-bold uppercase tracking-widest text-on-surface/60">Đang diễn ra</h2>
+                <span class="text-xs text-primary font-bold hover:underline cursor-pointer">Xem tất cả</span>
+            </div>
+            
+            <div class="flex gap-4 overflow-x-auto hide-scrollbar pb-2">
+                <!-- Live Card 1 -->
+                <div class="flex-shrink-0 w-72 bg-white rounded-2xl overflow-hidden shadow-sm border border-outline-variant/10 group cursor-pointer">
+                    <div class="relative h-40">
+                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform" src="https://medlatec.vn/media/2818/content/20230113_phuong-phap-chriopractic-la-gi-2.jpg" alt="Kỹ thuật chỉnh hình cột sống">
+                        <div class="absolute top-2 left-2 bg-red-600 text-white text-[10px] font-bold px-2 py-1 rounded-md flex items-center gap-1 uppercase tracking-tighter">
+                            <span class="w-1.5 h-1.5 bg-white rounded-full animate-pulse"></span>
+                            Trực tiếp
+                        </div>
+                        <div class="absolute bottom-2 left-2 bg-black/50 backdrop-blur-md text-white text-[10px] px-2 py-1 rounded-md flex items-center gap-1">
+                            <span class="material-symbols-outlined text-[12px]">visibility</span>
+                            1.2k đang xem
+                        </div>
+                    </div>
+                    <div class="p-3 space-y-2">
+                        <h3 class="font-bold text-sm line-clamp-2">Kỹ thuật nắn chỉnh cột sống chuyên sâu - Dr. Minh</h3>
+                        <div class="flex items-center gap-2">
+                            <img class="w-5 h-5 rounded-full" src="https://ui-avatars.com/api/?name=Dr+Minh&background=ff7500&color=fff" alt="Avatar">
+                            <span class="text-[10px] text-tertiary">Dr. Nguyễn Minh • Chuyên khoa cột sống</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Live Card 2 -->
+                <div class="flex-shrink-0 w-72 bg-white rounded-2xl overflow-hidden shadow-sm border border-outline-variant/10 group cursor-pointer opacity-80 hover:opacity-100 transition-opacity">
+                    <div class="relative h-40">
+                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform" src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=400" alt="Live stream">
+                        <div class="absolute top-2 left-2 bg-surface-container-highest text-on-surface-variant text-[10px] font-bold px-2 py-1 rounded-md flex items-center gap-1 uppercase tracking-tighter">
+                            Sắp diễn ra
+                        </div>
+                        <div class="absolute bottom-2 left-2 bg-black/50 backdrop-blur-md text-white text-[10px] px-2 py-1 rounded-md">
+                            Bắt đầu lúc 14:00
+                        </div>
+                    </div>
+                    <div class="p-3 space-y-2">
+                        <h3 class="font-bold text-sm line-clamp-2">Giải đáp thắc mắc về các dòng ghế DoctorLoan N85</h3>
+                        <div class="flex items-center gap-2">
+                            <img class="w-5 h-5 rounded-full" src="https://ui-avatars.com/api/?name=Sale+Expert&background=ff7500&color=fff" alt="Avatar">
+                            <span class="text-[10px] text-tertiary">Phòng Kinh doanh • DoctorLoan</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hero Card (Featured Course) -->
+        <section class="mb-8">
+            <div class="relative overflow-hidden rounded-2xl md:rounded-3xl brand-gradient p-6 md:p-10 text-white flex justify-between items-center group cursor-pointer hover:shadow-[0_12px_32px_rgba(156,69,0,0.3)] transition-all">
+                <div class="z-10 w-2/3 md:w-1/2">
+                    <span class="text-[10px] md:text-sm font-bold uppercase tracking-widest opacity-80 mb-2 block">Tin nổi bật</span>
+                    <h2 class="text-xl md:text-3xl font-extrabold leading-tight mb-3">Mới: Kỹ năng tư vấn cột sống 2024</h2>
+                    <div class="flex items-center gap-3 text-xs md:text-sm opacity-90 mb-6 font-medium">
+                        <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">menu_book</span> 12 bài</span>
+                        <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span> 4.8</span>
+                        <span class="flex items-center gap-1">3.2k đã học</span>
+                    </div>
+                    <button class="bg-white text-primary px-8 py-3 rounded-full font-bold text-sm md:text-base active:scale-95 transition-transform hover:bg-surface-container shadow-sm">Bắt đầu ngay</button>
+                </div>
+                <div class="absolute -right-4 -bottom-4 w-40 h-40 md:w-64 md:h-64 opacity-20 transform rotate-12 group-hover:rotate-0 transition-transform duration-500 group-hover:scale-110">
+                    <img class="w-full h-full object-contain" src="https://doctorloan-api.giathaidoctorloan.vn/DataFiles/product/0002/img-pd-brown-3_fvy5d5jh.png" alt="Featured course">
+                </div>
+                <!-- Glass accent -->
+                <div class="absolute top-0 right-0 w-32 h-32 md:w-64 md:h-64 bg-white/10 blur-3xl -mr-16 -mt-16 rounded-full pointer-events-none"></div>
+            </div>
+        </section>
+
+        <!-- Category Chips -->
+        <section class="mb-8">
+            <div class="flex items-center gap-3 overflow-x-auto hide-scrollbar py-1">
+                <button class="px-5 py-2.5 md:py-3 rounded-full bg-primary-container text-on-primary font-bold text-sm">Tất cả</button>
+                <button class="px-5 py-2.5 md:py-3 rounded-full bg-surface-container text-on-surface-variant font-medium text-sm hover:bg-primary-fixed hover:text-primary transition-colors border border-transparent">Sản phẩm</button>
+                <button class="px-5 py-2.5 md:py-3 rounded-full bg-surface-container text-on-surface-variant font-medium text-sm hover:bg-primary-fixed hover:text-primary transition-colors border border-transparent">Y học</button>
+                <button class="px-5 py-2.5 md:py-3 rounded-full bg-surface-container text-on-surface-variant font-medium text-sm hover:bg-primary-fixed hover:text-primary transition-colors border border-transparent">Bán hàng</button>
+                <button class="px-5 py-2.5 md:py-3 rounded-full bg-surface-container text-on-surface-variant font-medium text-sm hover:bg-primary-fixed hover:text-primary transition-colors border border-transparent">Kỹ năng</button>
+            </div>
+        </section>
+
+        <!-- Course List Grid Responsive -->
+        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+            <!-- Card 1 -->
+            <a href="learning-lesson.html" class="bg-surface-container-lowest rounded-xl p-4 md:p-5 flex gap-4 md:gap-5 shadow-[0px_10px_30px_rgba(156,69,0,0.04)] border border-outline-variant/5 group hover:border-surface-variant transition-colors cursor-pointer hover:-translate-y-1">
+                <div class="w-20 h-20 md:w-24 md:h-24 rounded-xl overflow-hidden flex-shrink-0 bg-surface-container">
+                    <img class="w-full h-full object-cover group-hover:scale-105 transition-transform" src="https://doctorloan-api.giathaidoctorloan.vn/DataFiles/product/0001/img-pd-brown-6_kl540vew.png" alt="Course Image">
+                </div>
+                <div class="flex-1 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-1">
+                            <span class="text-[10px] md:text-xs font-bold text-primary uppercase tracking-wider">Sản phẩm</span>
+                            <span class="text-[10px] items-center px-2 py-0.5 rounded-md bg-green-100 text-green-700 font-bold">Cơ bản</span>
+                        </div>
+                        <h3 class="text-sm md:text-base font-bold text-on-surface leading-snug group-hover:text-primary transition-colors">Tư vấn Ghế DrLoan</h3>
+                        <p class="text-xs text-tertiary mt-1">8 bài • 45 phút</p>
+                    </div>
+                    <div class="mt-3">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="text-[10px] font-medium text-on-surface-variant uppercase tracking-wider">Tiến độ</span>
+                            <span class="text-[10px] font-bold text-primary">75%</span>
+                        </div>
+                        <div class="h-1.5 w-full bg-surface-container rounded-full overflow-hidden">
+                            <div class="h-full bg-primary-container rounded-full" style="width: 75%"></div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Card 2 -->
+            <div class="bg-surface-container-lowest rounded-xl p-4 md:p-5 flex gap-4 md:gap-5 shadow-[0px_10px_30px_rgba(156,69,0,0.04)] border border-outline-variant/5 group hover:border-surface-variant transition-colors cursor-pointer hover:-translate-y-1">
+                <div class="w-20 h-20 md:w-24 md:h-24 rounded-xl overflow-hidden flex-shrink-0 relative bg-surface-container">
+                    <img class="w-full h-full object-cover grayscale opacity-30 group-hover:opacity-40 transition-opacity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAO0eyYnigeulH__pCeNu2uWKhIgxaYc0eNOEgwfK46hyiw551iRzezSDuRCQvHUP26VdmiuNmfC-Rq3sXA2jbMQRje1PoWGAQhKfZkRrb0kbc3FYztIR4Vcv80o9Gg-nwuqFlDXMSgRO-ygL05U8scVzip2FFgvcs15xgfqkkwFeFWhrxS5JRdAG2QYwIZGmd0OGlEP7w60nrVTozM_6HyXo2Ke8wm30tX1MvxrqIgqWofpAYURNFOMbcPjaM8duvnGQKDL77Nv7A" alt="Anatomy">
+                    <div class="absolute inset-0 flex items-center justify-center bg-black/5">
+                        <span class="material-symbols-outlined text-[#783100]" style="font-variation-settings: 'FILL' 1;">lock</span>
+                    </div>
+                </div>
+                <div class="flex-1 flex flex-col justify-between opacity-80">
+                    <div>
+                        <div class="flex justify-between items-start mb-1">
+                            <span class="text-[10px] md:text-xs font-bold text-primary uppercase tracking-wider">Y học</span>
+                            <span class="text-[10px] items-center px-2 py-0.5 rounded-md bg-orange-100 text-orange-700 font-bold">Trung cấp</span>
+                        </div>
+                        <h3 class="text-sm md:text-base font-bold text-on-surface leading-snug">Giải phẫu cột sống</h3>
+                        <p class="text-xs text-tertiary mt-1">12 bài • 90 phút</p>
+                    </div>
+                    <div class="mt-3 flex items-center gap-1">
+                        <span class="material-symbols-outlined text-[16px] text-tertiary">lock</span>
+                        <span class="text-[10px] text-tertiary italic">Hoàn thành khóa trước để mở</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <a href="learning-lesson.html" class="bg-surface-container-lowest rounded-xl p-4 md:p-5 flex gap-4 md:gap-5 shadow-[0px_10px_30px_rgba(156,69,0,0.04)] border border-outline-variant/5 group hover:border-surface-variant transition-colors cursor-pointer hover:-translate-y-1">
+                <div class="w-20 h-20 md:w-24 md:h-24 rounded-xl overflow-hidden flex-shrink-0 bg-surface-container">
+                    <img class="w-full h-full object-cover group-hover:scale-105 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDO-t0YuF8w8ri_lMoSkZu80c2uqAJoHRb51TWIe90ptaf66CZrjZHZ0rkmh-RH96RD1L6qwUw0WtFYCmq_X1UdRwymHxY79nQFcxd9XL5sjQZE5HThVVB9pX04Ui_43fHCFJBCsF6ULI9nE8dY0LWjMpOlvwZ43wOGguYHaVMEXtYfy39feKMyzxPe5WwpxeNbZaYbdRvMqVWuh_EZ-6lSaPSQ4Bv-8gz2VCtAz2iXIGxVnqMyF1IlqlX2XDZBzGrvZZ0yyBgcY0" alt="Sales">
+                </div>
+                <div class="flex-1 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-1">
+                            <span class="text-[10px] md:text-xs font-bold text-primary uppercase tracking-wider">Kỹ năng</span>
+                            <span class="text-[10px] items-center px-2 py-0.5 rounded-md bg-red-100 text-[#9C4500] font-bold">Nâng cao</span>
+                        </div>
+                        <h3 class="text-sm md:text-base font-bold text-on-surface leading-snug group-hover:text-primary transition-colors">Bán hàng y tế hiệu quả</h3>
+                        <p class="text-xs text-tertiary mt-1">10 bài • 60 phút</p>
+                    </div>
+                    <div class="mt-3">
+                        <div class="w-full py-2 rounded-lg border-2 border-primary-container text-primary text-xs font-bold hover:bg-primary hover:text-white transition-colors flex items-center justify-center cursor-pointer">Xem chi tiết</div>
+                    </div>
+                </div>
+            </a>
+        </section>
+    </main>
+</body>
+</html>

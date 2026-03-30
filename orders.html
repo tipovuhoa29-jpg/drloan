@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Đơn hàng | DOCTORLOAN</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script src="js/tailwind-config.js"></script>
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/app.js"></script>
+</head>
+<body class="bg-surface text-on-surface min-h-screen pb-28">
+<main class="space-y-8">
+
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pt-4">
+        <div>
+            <p class="text-xs font-bold uppercase tracking-widest text-tertiary">Bán hàng</p>
+            <h1 class="font-extrabold text-2xl lg:text-3xl tracking-tight mt-1">Quản lý đơn hàng</h1>
+        </div>
+        <button class="flex items-center gap-2 px-4 py-2.5 rounded-xl brand-gradient text-white text-sm font-bold shadow-md hover:opacity-90 transition-all self-start">
+            <span class="material-symbols-outlined text-lg">add_shopping_cart</span>Tạo đơn mới
+        </button>
+    </div>
+
+    <!-- Pipeline Stats -->
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
+        <div class="bg-white rounded-2xl p-4 border border-yellow-200 shadow-sm text-center hover:-translate-y-1 transition-transform cursor-pointer">
+            <p class="text-2xl font-black text-yellow-700">12</p>
+            <p class="text-[10px] text-tertiary mt-1 font-medium uppercase tracking-tighter">Chờ xác nhận</p>
+        </div>
+        <div class="bg-white rounded-2xl p-4 border border-blue-100 shadow-sm text-center hover:-translate-y-1 transition-transform cursor-pointer">
+            <p class="text-2xl font-black text-blue-700">24</p>
+            <p class="text-[10px] text-tertiary mt-1 font-medium uppercase tracking-tighter">Đang xử lý</p>
+        </div>
+        <div class="bg-white rounded-2xl p-4 border border-primary/20 shadow-sm text-center hover:-translate-y-1 transition-transform cursor-pointer">
+            <p class="text-2xl font-black text-primary">38</p>
+            <p class="text-[10px] text-tertiary mt-1 font-medium uppercase tracking-tighter">Đang giao</p>
+        </div>
+        <div class="bg-white rounded-2xl p-4 border border-green-100 shadow-sm text-center hover:-translate-y-1 transition-transform cursor-pointer">
+            <p class="text-2xl font-black text-green-700">273</p>
+            <p class="text-[10px] text-tertiary mt-1 font-medium uppercase tracking-tighter">Hoàn thành</p>
+        </div>
+        <div class="bg-white rounded-2xl p-4 border border-red-100 shadow-sm text-center hover:-translate-y-1 transition-transform cursor-pointer">
+            <p class="text-2xl font-black text-red-600">5</p>
+            <p class="text-[10px] text-tertiary mt-1 font-medium uppercase tracking-tighter">Đã huỷ</p>
+        </div>
+    </div>
+
+    <!-- Tabs + Search -->
+    <div class="flex flex-col sm:flex-row gap-3">
+        <div class="flex flex-wrap gap-2">
+            <button class="px-4 py-2 rounded-full bg-primary-container text-on-primary text-xs font-bold">Tất cả (352)</button>
+            <button class="px-4 py-2 rounded-full bg-surface-container text-on-surface-variant text-xs font-medium hover:bg-surface-container-high transition-colors">Chờ xác nhận</button>
+            <button class="px-4 py-2 rounded-full bg-surface-container text-on-surface-variant text-xs font-medium hover:bg-surface-container-high transition-colors">Đang giao</button>
+            <button class="px-4 py-2 rounded-full bg-surface-container text-on-surface-variant text-xs font-medium hover:bg-surface-container-high transition-colors">Hoàn thành</button>
+        </div>
+        <div class="flex-1 relative">
+            <span class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant/60 text-xl pointer-events-none">search</span>
+            <input type="text" placeholder="Tìm mã đơn, khách hàng..." class="w-full pl-11 pr-4 py-3 text-sm bg-white border border-outline-variant/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/30 shadow-sm">
+        </div>
+    </div>
+
+    <!-- Order List -->
+    <div class="space-y-3">
+
+        <!-- Order 1: Pending -->
+        <div class="bg-white rounded-2xl p-4 md:p-5 border border-yellow-200 shadow-sm hover:-translate-y-1 transition-transform cursor-pointer group">
+            <div class="flex flex-wrap items-start gap-4">
+                <div class="flex-1 min-w-0">
+                    <div class="flex flex-wrap items-center gap-2 mb-2">
+                        <span class="text-[10px] font-bold bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded-full flex items-center gap-1">
+                            <span class="material-symbols-outlined text-[11px]">schedule</span>Chờ xác nhận
+                        </span>
+                        <span class="text-[10px] text-tertiary font-mono font-bold">#DRL2026033101</span>
+                    </div>
+                    <p class="font-bold text-sm group-hover:text-primary transition-colors">Trần Văn An</p>
+                    <p class="text-xs text-tertiary mt-1">Ghế sáng chế DOCTORLOAN 135 × 1</p>
+                    <p class="text-[10px] text-tertiary mt-1 flex items-center gap-1">
+                        <span class="material-symbols-outlined text-[12px]">location_on</span>Hà Nội • Đặt: 31/03/2026 09:15
+                    </p>
+                </div>
+                <div class="flex flex-col items-end gap-2 flex-shrink-0">
+                    <p class="font-black text-base text-on-surface">6,800,000đ</p>
+                    <button class="px-3 py-1.5 brand-gradient text-white text-[10px] font-bold rounded-xl hover:opacity-90 transition-opacity">Xác nhận</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Order 2: Shipping -->
+        <div class="bg-white rounded-2xl p-4 md:p-5 border border-outline-variant/10 shadow-sm hover:-translate-y-1 transition-transform cursor-pointer group">
+            <div class="flex flex-wrap items-start gap-4">
+                <div class="flex-1 min-w-0">
+                    <div class="flex flex-wrap items-center gap-2 mb-2">
+                        <span class="text-[10px] font-bold bg-primary/10 text-primary px-2 py-0.5 rounded-full flex items-center gap-1">
+                            <span class="material-symbols-outlined text-[11px]">local_shipping</span>Đang giao
+                        </span>
+                        <span class="text-[10px] text-tertiary font-mono font-bold">#DRL2026033002</span>
+                    </div>
+                    <p class="font-bold text-sm group-hover:text-primary transition-colors">Nguyễn Thị Bình</p>
+                    <p class="text-xs text-tertiary mt-1">Gối cổ AU/N × 2 + Đệm thiền × 1</p>
+                    <p class="text-[10px] text-tertiary mt-1 flex items-center gap-1">
+                        <span class="material-symbols-outlined text-[12px]">location_on</span>TP.HCM • Dự kiến: 01/04/2026
+                    </p>
+                </div>
+                <div class="flex flex-col items-end gap-2 flex-shrink-0">
+                    <p class="font-black text-base text-on-surface">2,580,000đ</p>
+                    <button class="px-3 py-1.5 border border-primary text-primary text-[10px] font-bold rounded-xl hover:bg-primary/5 transition-colors">Theo dõi</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Order 3: Completed -->
+        <div class="bg-white rounded-2xl p-4 md:p-5 border border-outline-variant/10 shadow-sm hover:-translate-y-1 transition-transform cursor-pointer group">
+            <div class="flex flex-wrap items-start gap-4">
+                <div class="flex-1 min-w-0">
+                    <div class="flex flex-wrap items-center gap-2 mb-2">
+                        <span class="text-[10px] font-bold bg-green-100 text-green-700 px-2 py-0.5 rounded-full flex items-center gap-1">
+                            <span class="material-symbols-outlined text-[11px]">check_circle</span>Hoàn thành
+                        </span>
+                        <span class="text-[10px] text-tertiary font-mono font-bold">#DRL2026031501</span>
+                    </div>
+                    <p class="font-bold text-sm group-hover:text-primary transition-colors">Lê Văn Cường</p>
+                    <p class="text-xs text-tertiary mt-1">Ghế sáng chế DOCTORLOAN N85 × 1</p>
+                    <p class="text-[10px] text-tertiary mt-1 flex items-center gap-1">
+                        <span class="material-symbols-outlined text-[12px]">location_on</span>Đà Nẵng • Giao: 28/03/2026
+                    </p>
+                </div>
+                <div class="flex flex-col items-end gap-2 flex-shrink-0">
+                    <p class="font-black text-base text-on-surface">5,200,000đ</p>
+                    <span class="text-[10px] font-bold text-green-600 bg-green-50 px-2 py-1 rounded-full">Hoa hồng: +260k</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Order 4: Completed -->
+        <div class="bg-white rounded-2xl p-4 md:p-5 border border-outline-variant/10 shadow-sm hover:-translate-y-1 transition-transform cursor-pointer group opacity-80">
+            <div class="flex flex-wrap items-start gap-4">
+                <div class="flex-1 min-w-0">
+                    <div class="flex flex-wrap items-center gap-2 mb-2">
+                        <span class="text-[10px] font-bold bg-green-100 text-green-700 px-2 py-0.5 rounded-full flex items-center gap-1">
+                            <span class="material-symbols-outlined text-[11px]">check_circle</span>Hoàn thành
+                        </span>
+                        <span class="text-[10px] text-tertiary font-mono font-bold">#DRL2026031402</span>
+                    </div>
+                    <p class="font-bold text-sm group-hover:text-primary transition-colors">Phạm Thị Dung</p>
+                    <p class="text-xs text-tertiary mt-1">Gối F4/09 × 1 + Đệm thiền × 1</p>
+                    <p class="text-[10px] text-tertiary mt-1 flex items-center gap-1">
+                        <span class="material-symbols-outlined text-[12px]">location_on</span>Cần Thơ • Giao: 27/03/2026
+                    </p>
+                </div>
+                <div class="flex flex-col items-end gap-2 flex-shrink-0">
+                    <p class="font-black text-base text-on-surface">2,050,000đ</p>
+                    <span class="text-[10px] font-bold text-green-600 bg-green-50 px-2 py-1 rounded-full">Hoa hồng: +103k</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center pt-2">
+            <button class="text-sm font-bold text-primary px-4 py-2 rounded-xl hover:bg-primary/5 transition-colors inline-flex items-center gap-1">
+                <span class="material-symbols-outlined text-sm">expand_more</span>Xem thêm 348 đơn hàng
+            </button>
+        </div>
+    </div>
+</main>
+</body>
+</html>

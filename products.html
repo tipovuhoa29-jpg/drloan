@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>DOCTORLOAN - Sản phẩm</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script src="js/tailwind-config.js"></script>
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/app.js"></script>
+</head>
+<body class="bg-surface text-on-surface min-h-screen">
+    <main class="space-y-6">
+        <!-- Search Bar Section -->
+        <section class="mt-4 max-w-2xl">
+            <div class="relative group">
+                <input class="w-full h-12 pl-6 pr-12 bg-surface-container-low rounded-3xl border-none focus:ring-2 focus:ring-primary-container/40 focus:bg-surface-container-lowest transition-all duration-300 placeholder:text-on-surface-variant/50 text-on-surface" placeholder="Tìm sản phẩm..." type="text">
+                <div class="absolute right-4 top-1/2 -translate-y-1/2 text-primary-container cursor-pointer">
+                    <span class="material-symbols-outlined">search</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filter Chips (Horizontal Scroll) -->
+        <section class="overflow-x-auto hide-scrollbar flex gap-2 -mx-4 px-4 md:mx-0 md:px-0">
+            <button class="whitespace-nowrap px-6 py-2 rounded-full bg-primary-container text-white font-semibold text-sm transition-all active:scale-95">Tất cả</button>
+            <button class="whitespace-nowrap px-6 py-2 rounded-full border border-primary-container/30 text-primary-container font-semibold text-sm bg-surface-container-lowest hover:bg-primary-fixed active:scale-95 transition-all">Ghế ngồi</button>
+            <button class="whitespace-nowrap px-6 py-2 rounded-full border border-primary-container/30 text-primary-container font-semibold text-sm bg-surface-container-lowest hover:bg-primary-fixed active:scale-95 transition-all">Gối cổ</button>
+            <button class="whitespace-nowrap px-6 py-2 rounded-full border border-primary-container/30 text-primary-container font-semibold text-sm bg-surface-container-lowest hover:bg-primary-fixed active:scale-95 transition-all">Gối lưng</button>
+            <button class="whitespace-nowrap px-6 py-2 rounded-full border border-primary-container/30 text-primary-container font-semibold text-sm bg-surface-container-lowest hover:bg-primary-fixed active:scale-95 transition-all">Đệm</button>
+            <button class="whitespace-nowrap px-6 py-2 rounded-full border border-primary-container/30 text-primary-container font-semibold text-sm bg-surface-container-lowest hover:bg-primary-fixed active:scale-95 transition-all">Combo</button>
+        </section>
+
+        <!-- Sort & Filter Row -->
+        <section class="flex justify-between items-center text-on-surface-variant">
+            <button class="flex items-center gap-1 text-sm font-medium hover:text-on-surface transition-colors">
+                Sắp xếp: <span class="text-on-surface">Nổi bật</span>
+                <span class="material-symbols-outlined text-[18px]">expand_more</span>
+            </button>
+            <button class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-surface-container-low active:scale-95 transition-all hover:bg-surface-container">
+                <span class="material-symbols-outlined text-[20px]">filter_list</span>
+                <span class="text-xs font-bold uppercase tracking-wider">Lọc</span>
+            </button>
+        </section>
+
+        <!-- Product Grid Responsive -->
+        <section class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 pb-12">
+            <!-- Card 1 -->
+            <div class="bg-surface-container-lowest rounded-2xl overflow-hidden shadow-[0px_8px_24px_rgba(27,28,2c,0.04)] flex flex-col group transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg border border-transparent hover:border-surface-variant">
+                <a href="product-detail.html" class="relative aspect-[4/5] bg-surface-container-low overflow-hidden block">
+                    <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://doctorloan-api.giathaidoctorloan.vn/DataFiles/product/0001/img-pd-brown-6_kl540vew.png" alt="Ghế">
+                    <div class="absolute top-2 left-2 flex flex-col gap-1">
+                        <span class="bg-error text-white text-[10px] font-bold px-2 py-0.5 rounded-full w-fit">-15%</span>
+                        <span class="bg-tertiary-container text-on-tertiary-container text-[10px] font-bold px-2 py-0.5 rounded-full w-fit">HH 8%</span>
+                    </div>
+                
+                        <button onclick="event.preventDefault(); openShareModal('item-id')" class="absolute top-2 right-2 w-8 h-8 rounded-xl bg-white/90 backdrop-blur border border-outline-variant/20 shadow-sm flex items-center justify-center text-on-surface-variant hover:text-primary hover:border-primary/50 active:scale-95 transition-all z-10">
+                            <span class="material-symbols-outlined text-[18px]">share</span>
+                        </button>
+                    </a>
+                <div class="p-3 md:p-4 space-y-2 flex-1 flex flex-col justify-between">
+                    <div>
+                        <a href="product-detail.html" class="font-bold text-sm md:text-base text-on-surface line-clamp-2 hover:text-primary">Ghế sáng chế DOCTORLOAN 135</a>
+                        <p class="text-primary font-extrabold text-base md:text-lg mt-1">53.762.000 đ</p>
+                        <div class="mt-2 bg-secondary-fixed/40 px-2 py-1 rounded-lg inline-block">
+                            <p class="text-[10px] font-medium text-on-secondary-fixed-variant">Bạn nhận: <span class="font-bold text-primary">+5.376.200 đ</span></p>
+                        </div>
+                    </div>
+                    <button class="w-full brand-gradient text-white py-2.5 rounded-xl text-xs md:text-sm font-bold mt-3 shadow-sm hover:opacity-90 active:scale-95 transition-all">Thêm giỏ</button>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bg-surface-container-lowest rounded-2xl overflow-hidden shadow-[0px_8px_24px_rgba(27,28,2c,0.04)] flex flex-col group transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg border border-transparent hover:border-surface-variant">
+                <a href="product-detail.html" class="relative aspect-[4/5] bg-surface-container-low overflow-hidden block">
+                    <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://doctorloan-api.giathaidoctorloan.vn/DataFiles/product/0002/img-pd-brown-3_fvy5d5jh.png" alt="Ghế">
+                    <div class="absolute top-2 left-2 flex flex-col gap-1">
+                        <span class="bg-error text-white text-[10px] font-bold px-2 py-0.5 rounded-full w-fit">-15%</span>
+                        <span class="bg-tertiary-container text-on-tertiary-container text-[10px] font-bold px-2 py-0.5 rounded-full w-fit">HH 8%</span>
+                    </div>
+                
+                        <button onclick="event.preventDefault(); openShareModal('item-id')" class="absolute top-2 right-2 w-8 h-8 rounded-xl bg-white/90 backdrop-blur border border-outline-variant/20 shadow-sm flex items-center justify-center text-on-surface-variant hover:text-primary hover:border-primary/50 active:scale-95 transition-all z-10">
+                            <span class="material-symbols-outlined text-[18px]">share</span>
+                        </button>
+                    </a>
+                <div class="p-3 md:p-4 space-y-2 flex-1 flex flex-col justify-between">
+                    <div>
+                        <a href="product-detail.html" class="font-bold text-sm md:text-base text-on-surface line-clamp-2 hover:text-primary">Ghế sáng chế DOCTORLOAN 95</a>
+                        <p class="text-primary font-extrabold text-base md:text-lg mt-1">39.249.000 đ</p>
+                        <div class="mt-2 bg-secondary-fixed/40 px-2 py-1 rounded-lg inline-block">
+                            <p class="text-[10px] font-medium text-on-secondary-fixed-variant">Bạn nhận: <span class="font-bold text-primary">+3.924.900 đ</span></p>
+                        </div>
+                    </div>
+                    <button class="w-full brand-gradient text-white py-2.5 rounded-xl text-xs md:text-sm font-bold mt-3 shadow-sm hover:opacity-90 active:scale-95 transition-all">Thêm giỏ</button>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-surface-container-lowest rounded-2xl overflow-hidden shadow-[0px_8px_24px_rgba(27,28,2c,0.04)] flex flex-col group transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg border border-transparent hover:border-surface-variant">
+                <a href="product-detail.html" class="relative aspect-[4/5] bg-surface-container-low overflow-hidden block">
+                    <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://doctorloan-api.giathaidoctorloan.vn/DataFiles/product/0006/img-pd-gc-f4-2_qzuwrhm4.png" alt="Gối cổ">
+                    <div class="absolute top-2 left-2 flex flex-col gap-1">
+                        <span class="bg-error text-white text-[10px] font-bold px-2 py-0.5 rounded-full w-fit">-15%</span>
+                        <span class="bg-tertiary-container text-on-tertiary-container text-[10px] font-bold px-2 py-0.5 rounded-full w-fit">HH 8%</span>
+                    </div>
+                
+                        <button onclick="event.preventDefault(); openShareModal('item-id')" class="absolute top-2 right-2 w-8 h-8 rounded-xl bg-white/90 backdrop-blur border border-outline-variant/20 shadow-sm flex items-center justify-center text-on-surface-variant hover:text-primary hover:border-primary/50 active:scale-95 transition-all z-10">
+                            <span class="material-symbols-outlined text-[18px]">share</span>
+                        </button>
+                    </a>
+                <div class="p-3 md:p-4 space-y-2 flex-1 flex flex-col justify-between">
+                    <div>
+                        <a href="product-detail.html" class="font-bold text-sm md:text-base text-on-surface line-clamp-2 hover:text-primary">Gối cổ sáng chế DOCTORLOAN F4/09</a>
+                        <p class="text-primary font-extrabold text-base md:text-lg mt-1">7.624.000 đ</p>
+                        <div class="mt-2 bg-secondary-fixed/40 px-2 py-1 rounded-lg inline-block">
+                            <p class="text-[10px] font-medium text-on-secondary-fixed-variant">Bạn nhận: <span class="font-bold text-primary">+762.400 đ</span></p>
+                        </div>
+                    </div>
+                    <button class="w-full brand-gradient text-white py-2.5 rounded-xl text-xs md:text-sm font-bold mt-3 shadow-sm hover:opacity-90 active:scale-95 transition-all">Thêm giỏ</button>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="bg-surface-container-lowest rounded-2xl overflow-hidden shadow-[0px_8px_24px_rgba(27,28,2c,0.04)] flex flex-col group transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg border border-transparent hover:border-surface-variant">
+                <a href="product-detail.html" class="relative aspect-[4/5] bg-surface-container-low overflow-hidden block">
+                    <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://doctorloan-api.giathaidoctorloan.vn/DataFiles/product/0008/img-pd-gc-f6-4_jssu1joe.png" alt="Gối cổ F5">
+                    <div class="absolute top-2 left-2 flex flex-col gap-1">
+                        <span class="bg-error text-white text-[10px] font-bold px-2 py-0.5 rounded-full w-fit">-15%</span>
+                        <span class="bg-tertiary-container text-on-tertiary-container text-[10px] font-bold px-2 py-0.5 rounded-full w-fit">HH 8%</span>
+                    </div>
+                
+                        <button onclick="event.preventDefault(); openShareModal('item-id')" class="absolute top-2 right-2 w-8 h-8 rounded-xl bg-white/90 backdrop-blur border border-outline-variant/20 shadow-sm flex items-center justify-center text-on-surface-variant hover:text-primary hover:border-primary/50 active:scale-95 transition-all z-10">
+                            <span class="material-symbols-outlined text-[18px]">share</span>
+                        </button>
+                    </a>
+                <div class="p-3 md:p-4 space-y-2 flex-1 flex flex-col justify-between">
+                    <div>
+                        <a href="product-detail.html" class="font-bold text-sm md:text-base text-on-surface line-clamp-2 hover:text-primary">Gối cổ sáng chế DOCTORLOAN F5/S</a>
+                        <p class="text-primary font-extrabold text-base md:text-lg mt-1">7.049.000 đ</p>
+                        <div class="mt-2 bg-secondary-fixed/40 px-2 py-1 rounded-lg inline-block">
+                            <p class="text-[10px] font-medium text-on-secondary-fixed-variant">Bạn nhận: <span class="font-bold text-primary">+704.900 đ</span></p>
+                        </div>
+                    </div>
+                    <button class="w-full brand-gradient text-white py-2.5 rounded-xl text-xs md:text-sm font-bold mt-3 shadow-sm hover:opacity-90 active:scale-95 transition-all">Thêm giỏ</button>
+                </div>
+            </div>
+            
+            <!-- Additional Card to fill grid -->
+            <div class="bg-surface-container-lowest rounded-2xl overflow-hidden shadow-[0px_8px_24px_rgba(27,28,2c,0.04)] flex flex-col group transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg border border-transparent hover:border-surface-variant">
+                <a href="product-detail.html" class="relative aspect-[4/5] bg-surface-container-low overflow-hidden block">
+                    <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://doctorloan-api.giathaidoctorloan.vn/DataFiles/product/0009/img-pd-yellow-5_crudfelo.png" alt="Đệm thiền">
+                </a>
+                <div class="p-3 md:p-4 space-y-2 flex-1 flex flex-col justify-between">
+                    <div>
+                        <a href="product-detail.html" class="font-bold text-sm md:text-base text-on-surface line-clamp-2 hover:text-primary">Đệm thiền DOCTORLOAN</a>
+                        <p class="text-primary font-extrabold text-base md:text-lg mt-1">1.200.000 đ</p>
+                    </div>
+                    <button class="w-full brand-gradient text-white py-2.5 rounded-xl text-xs md:text-sm font-bold mt-3 shadow-sm hover:opacity-90 active:scale-95 transition-all">Thêm giỏ</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Floating Cart Button (Mobile only since desktop has header/sidebar nav) -->
+    <a href="cart.html" class="fixed right-6 bottom-24 z-40 lg:hidden cursor-pointer hover:scale-110 transition-transform">
+        <div class="h-16 w-16 rounded-[20px] brand-gradient shadow-[0px_12px_32px_rgba(156,69,0,0.3)] flex items-center justify-center text-white">
+            <div class="relative">
+                <span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">shopping_cart</span>
+                <span class="absolute -top-2 -right-2 bg-white text-primary text-[11px] font-black h-5 w-5 flex items-center justify-center rounded-full border-2 border-primary shadow-sm">3</span>
+            </div>
+        </div>
+    </a>
+</body>
+</html>

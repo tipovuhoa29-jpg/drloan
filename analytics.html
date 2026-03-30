@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Báo cáo | DOCTORLOAN</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script src="js/tailwind-config.js"></script>
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/app.js"></script>
+</head>
+<body class="bg-surface text-on-surface min-h-screen pb-28">
+<main class="space-y-8">
+
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pt-4">
+        <div>
+            <p class="text-xs font-bold uppercase tracking-widest text-tertiary">Phân tích</p>
+            <h1 class="font-extrabold text-2xl lg:text-3xl tracking-tight mt-1">Báo cáo & Analytics</h1>
+        </div>
+        <div class="flex items-center gap-2">
+            <select class="text-sm px-4 py-2.5 bg-white border border-outline-variant/20 rounded-xl font-medium shadow-sm text-on-surface-variant">
+                <option>Tháng 3 / 2026</option>
+                <option>Tháng 2 / 2026</option>
+                <option>Quý 1 / 2026</option>
+            </select>
+            <button class="flex items-center gap-2 px-4 py-2.5 border border-primary rounded-xl text-primary text-sm font-bold hover:bg-primary/5 transition-colors">
+                <span class="material-symbols-outlined text-lg">download</span>Xuất
+            </button>
+        </div>
+    </div>
+
+    <!-- Summary KPIs -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+        <div class="bg-white rounded-2xl p-5 border border-outline-variant/10 shadow-sm hover:-translate-y-1 transition-transform">
+            <p class="text-[10px] font-black uppercase tracking-wider text-tertiary mb-2">Doanh thu</p>
+            <p class="text-3xl font-black text-on-surface">4.2B</p>
+            <p class="text-xs text-green-600 font-bold mt-1 flex items-center gap-1">
+                <span class="material-symbols-outlined text-sm">trending_up</span>+12.5% vs tháng trước
+            </p>
+        </div>
+        <div class="bg-white rounded-2xl p-5 border border-outline-variant/10 shadow-sm hover:-translate-y-1 transition-transform">
+            <p class="text-[10px] font-black uppercase tracking-wider text-tertiary mb-2">Hoa hồng của tôi</p>
+            <p class="text-3xl font-black text-primary">24.6tr</p>
+            <p class="text-xs text-green-600 font-bold mt-1 flex items-center gap-1">
+                <span class="material-symbols-outlined text-sm">trending_up</span>+8.2% vs tháng trước
+            </p>
+        </div>
+        <div class="bg-white rounded-2xl p-5 border border-outline-variant/10 shadow-sm hover:-translate-y-1 transition-transform">
+            <p class="text-[10px] font-black uppercase tracking-wider text-tertiary mb-2">Số đơn hàng</p>
+            <p class="text-3xl font-black text-on-surface">347</p>
+            <p class="text-xs text-green-600 font-bold mt-1 flex items-center gap-1">
+                <span class="material-symbols-outlined text-sm">trending_up</span>+22% vs tháng trước
+            </p>
+        </div>
+        <div class="bg-white rounded-2xl p-5 border border-outline-variant/10 shadow-sm hover:-translate-y-1 transition-transform">
+            <p class="text-[10px] font-black uppercase tracking-wider text-tertiary mb-2">Tỉ lệ chuyển đổi</p>
+            <p class="text-3xl font-black text-on-surface">38%</p>
+            <p class="text-xs text-red-500 font-bold mt-1 flex items-center gap-1">
+                <span class="material-symbols-outlined text-sm">trending_down</span>-2% vs tháng trước
+            </p>
+        </div>
+    </div>
+
+    <!-- Charts Row -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <!-- Revenue Trend -->
+        <div class="bg-white rounded-2xl p-5 border border-outline-variant/10 shadow-sm">
+            <div class="flex items-center justify-between mb-5">
+                <h2 class="font-bold text-base">Doanh thu theo tuần</h2>
+                <span class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-full">Tháng 3/2026</span>
+            </div>
+            <div class="flex items-end gap-3 h-40">
+                <div class="flex-1 flex flex-col justify-end items-center gap-2 h-full">
+                    <div class="w-full bg-primary/20 rounded-t-lg hover:bg-primary/50 transition-colors cursor-pointer relative group" style="height:55%">
+                        <span class="absolute -top-6 left-1/2 -translate-x-1/2 text-[9px] font-bold text-tertiary opacity-0 group-hover:opacity-100 transition-opacity">780tr</span>
+                    </div>
+                    <span class="text-[10px] font-medium text-tertiary">T1–7</span>
+                </div>
+                <div class="flex-1 flex flex-col justify-end items-center gap-2 h-full">
+                    <div class="w-full bg-primary/40 rounded-t-lg hover:bg-primary/50 transition-colors cursor-pointer relative group" style="height:70%">
+                        <span class="absolute -top-6 left-1/2 -translate-x-1/2 text-[9px] font-bold text-tertiary opacity-0 group-hover:opacity-100 transition-opacity">980tr</span>
+                    </div>
+                    <span class="text-[10px] font-medium text-tertiary">T8–14</span>
+                </div>
+                <div class="flex-1 flex flex-col justify-end items-center gap-2 h-full">
+                    <div class="w-full bg-primary/70 rounded-t-lg hover:bg-primary/80 transition-colors cursor-pointer relative group" style="height:85%">
+                        <span class="absolute -top-6 left-1/2 -translate-x-1/2 text-[9px] font-bold text-tertiary opacity-0 group-hover:opacity-100 transition-opacity">1.1B</span>
+                    </div>
+                    <span class="text-[10px] font-medium text-tertiary">T15–21</span>
+                </div>
+                <div class="flex-1 flex flex-col justify-end items-center gap-2 h-full">
+                    <div class="w-full bg-primary rounded-t-lg hover:opacity-90 transition-opacity cursor-pointer relative" style="height:100%">
+                        <span class="absolute -top-6 left-1/2 -translate-x-1/2 text-[10px] font-black text-primary">1.4B</span>
+                    </div>
+                    <span class="text-[10px] font-black text-primary">T22–31</span>
+                </div>
+            </div>
+            <div class="flex justify-between text-[10px] text-tertiary mt-3">
+                <span>Thấp nhất: 780tr (Tuần 1)</span>
+                <span>Cao nhất: 1.4B (Tuần 4)</span>
+            </div>
+        </div>
+
+        <!-- Top Products -->
+        <div class="bg-white rounded-2xl p-5 border border-outline-variant/10 shadow-sm">
+            <div class="flex items-center justify-between mb-5">
+                <h2 class="font-bold text-base">Top sản phẩm bán chạy</h2>
+                <a href="products.html" class="text-xs font-bold text-primary hover:underline">Tất cả →</a>
+            </div>
+            <div class="space-y-4">
+                <div>
+                    <div class="flex justify-between items-center mb-1.5">
+                        <span class="text-sm font-semibold">Ghế DOCTORLOAN 135</span>
+                        <span class="text-sm font-black text-primary">142 chiếc</span>
+                    </div>
+                    <div class="h-2 bg-surface-container rounded-full overflow-hidden">
+                        <div class="h-full brand-gradient rounded-full" style="width:100%"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex justify-between items-center mb-1.5">
+                        <span class="text-sm font-semibold">Ghế DOCTORLOAN N85</span>
+                        <span class="text-sm font-black text-primary">98 chiếc</span>
+                    </div>
+                    <div class="h-2 bg-surface-container rounded-full overflow-hidden">
+                        <div class="h-full brand-gradient rounded-full opacity-80" style="width:69%"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex justify-between items-center mb-1.5">
+                        <span class="text-sm font-semibold">Gối AU/N</span>
+                        <span class="text-sm font-black text-primary">74 chiếc</span>
+                    </div>
+                    <div class="h-2 bg-surface-container rounded-full overflow-hidden">
+                        <div class="h-full brand-gradient rounded-full opacity-60" style="width:52%"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex justify-between items-center mb-1.5">
+                        <span class="text-sm font-semibold">Ghế DOCTORLOAN 95</span>
+                        <span class="text-sm font-black text-primary">33 chiếc</span>
+                    </div>
+                    <div class="h-2 bg-surface-container rounded-full overflow-hidden">
+                        <div class="h-full brand-gradient rounded-full opacity-40" style="width:23%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Commission Detail -->
+    <div class="bg-white rounded-2xl p-5 border border-outline-variant/10 shadow-sm">
+        <div class="flex items-center justify-between mb-5">
+            <h2 class="font-bold text-base">Chi tiết hoa hồng</h2>
+            <span class="text-sm font-black text-primary">Tổng: 24,600,000đ</span>
+        </div>
+        <div class="divide-y divide-outline-variant/10">
+            <div class="flex items-center gap-4 py-3">
+                <div class="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <span class="material-symbols-outlined text-primary text-lg" style="font-variation-settings:'FILL' 1;">chair</span>
+                </div>
+                <div class="flex-1"><p class="text-sm font-semibold">Hoa hồng từ Ghế sáng chế</p><p class="text-xs text-tertiary">142 đơn × 5% commission</p></div>
+                <span class="font-black text-on-surface">16,240,000đ</span>
+            </div>
+            <div class="flex items-center gap-4 py-3">
+                <div class="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <span class="material-symbols-outlined text-primary text-lg" style="font-variation-settings:'FILL' 1;">airline_seat_flat</span>
+                </div>
+                <div class="flex-1"><p class="text-sm font-semibold">Hoa hồng từ Gối cổ</p><p class="text-xs text-tertiary">74 đơn × 5% commission</p></div>
+                <span class="font-black text-on-surface">5,550,000đ</span>
+            </div>
+            <div class="flex items-center gap-4 py-3">
+                <div class="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <span class="material-symbols-outlined text-primary text-lg" style="font-variation-settings:'FILL' 1;">self_improvement</span>
+                </div>
+                <div class="flex-1"><p class="text-sm font-semibold">Hoa hồng từ Đệm thiền</p><p class="text-xs text-tertiary">18 đơn × 7% commission</p></div>
+                <span class="font-black text-on-surface">1,512,000đ</span>
+            </div>
+            <div class="flex items-center gap-4 py-3">
+                <div class="w-9 h-9 rounded-xl bg-green-100 flex items-center justify-center flex-shrink-0">
+                    <span class="material-symbols-outlined text-green-700 text-lg" style="font-variation-settings:'FILL' 1;">hub</span>
+                </div>
+                <div class="flex-1"><p class="text-sm font-semibold">Thưởng giới thiệu đại lý</p><p class="text-xs text-tertiary">3 đại lý mới trong mạng lưới</p></div>
+                <span class="font-black text-green-700">+1,298,000đ</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Regional Breakdown -->
+    <div class="bg-white rounded-2xl p-5 border border-outline-variant/10 shadow-sm">
+        <h2 class="font-bold text-base mb-5">Phân bổ doanh số theo khu vực</h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+            <div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/10 text-center">
+                <p class="text-sm font-black text-primary">38%</p>
+                <p class="text-xs font-bold mt-0.5">TP.HCM</p>
+                <p class="text-[10px] text-tertiary">1.60B VNĐ</p>
+            </div>
+            <div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/10 text-center">
+                <p class="text-sm font-black text-primary">24%</p>
+                <p class="text-xs font-bold mt-0.5">Hà Nội</p>
+                <p class="text-[10px] text-tertiary">1.01B VNĐ</p>
+            </div>
+            <div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/10 text-center">
+                <p class="text-sm font-black text-primary">15%</p>
+                <p class="text-xs font-bold mt-0.5">Đà Nẵng</p>
+                <p class="text-[10px] text-tertiary">630tr VNĐ</p>
+            </div>
+            <div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/10 text-center">
+                <p class="text-sm font-black">9%</p>
+                <p class="text-xs font-bold mt-0.5">Cần Thơ</p>
+                <p class="text-[10px] text-tertiary">378tr VNĐ</p>
+            </div>
+            <div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/10 text-center">
+                <p class="text-sm font-black">8%</p>
+                <p class="text-xs font-bold mt-0.5">Hải Phòng</p>
+                <p class="text-[10px] text-tertiary">336tr VNĐ</p>
+            </div>
+            <div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/10 text-center">
+                <p class="text-sm font-black">6%</p>
+                <p class="text-xs font-bold mt-0.5">Khác</p>
+                <p class="text-[10px] text-tertiary">252tr VNĐ</p>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

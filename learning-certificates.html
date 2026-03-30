@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Chứng chỉ | DOCTORLOAN</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script src="js/tailwind-config.js"></script>
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/app.js"></script>
+    <style>
+        .cert-card {
+            background: linear-gradient(135deg, #fff8f4 0%, #fff0e6 100%);
+            border: 1.5px solid rgba(255,117,0,0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        .cert-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: radial-gradient(circle at top right, rgba(255,117,0,0.05) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .cert-card-locked {
+            background: #f5f0eb;
+            border: 1.5px dashed rgba(140,113,99,0.3);
+            filter: grayscale(30%);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen pb-32">
+    <main class="space-y-8">
+        <!-- Page Header -->
+        <div class="space-y-1 pt-4">
+            <h1 class="font-extrabold tracking-tight text-xl lg:text-3xl">Chứng chỉ của tôi</h1>
+            <p class="text-tertiary text-sm">Bạn đã đạt được 2 chứng chỉ</p>
+        </div>
+
+        <!-- Achievement Banner -->
+        <div class="relative overflow-hidden rounded-2xl brand-gradient p-6 text-white flex items-center gap-4">
+            <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center flex-shrink-0">
+                <span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+            </div>
+            <div>
+                <p class="text-[11px] font-bold uppercase tracking-widest opacity-80">Thành tích xuất sắc</p>
+                <h2 class="font-bold text-lg leading-snug">Đại lý Cấp 2 — 2 chứng chỉ đã đạt</h2>
+                <p class="text-[12px] opacity-80 mt-0.5">Hoàn thành thêm 1 khóa để lên Cấp 3</p>
+            </div>
+            <div class="absolute -bottom-4 -right-4 opacity-10">
+                <span class="material-symbols-outlined text-[120px]">military_tech</span>
+            </div>
+        </div>
+
+        <!-- Earned Certificates -->
+        <section class="space-y-4">
+            <h2 class="text-sm font-bold uppercase tracking-widest text-on-surface/60">Đã đạt được</h2>
+
+            <!-- Certificate 1 -->
+            <div class="cert-card rounded-2xl p-5 shadow-sm">
+                <div class="flex items-start justify-between gap-4">
+                    <div class="w-14 h-14 bg-primary-container/20 rounded-2xl flex items-center justify-center flex-shrink-0">
+                        <span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="text-[10px] font-bold text-primary uppercase tracking-wider mb-1">Hoàn thành</p>
+                        <h3 class="font-bold text-base leading-snug">Tư vấn Ghế DrLoan — Cơ bản</h3>
+                        <p class="text-xs text-tertiary mt-1">Cấp bởi DoctorLoan Academy • 15/03/2024</p>
+                    </div>
+                </div>
+                <!-- Certificate Preview -->
+                <div class="mt-4 border border-primary/15 rounded-xl p-5 text-center bg-white/60 space-y-2">
+                    <div class="w-10 h-10 bg-primary-container/20 rounded-full flex items-center justify-center mx-auto">
+                        <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">verified</span>
+                    </div>
+                    <p class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">DOCTORLOAN ACADEMY</p>
+                    <p class="font-black text-xl text-on-surface tracking-tight leading-tight italic">Nguyễn Minh Tuấn</p>
+                    <p class="text-xs text-tertiary">đã hoàn thành xuất sắc khóa học</p>
+                    <p class="font-bold text-sm text-primary">"Tư vấn Sản phẩm Ghế DrLoan — Cơ bản"</p>
+                    <div class="flex justify-center items-center gap-2 pt-1">
+                        <div class="h-px flex-1 bg-outline-variant/20"></div>
+                        <span class="material-symbols-outlined text-primary-container text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <div class="h-px flex-1 bg-outline-variant/20"></div>
+                    </div>
+                    <p class="text-[10px] text-tertiary">Ngày cấp: 15/03/2024 • Mã: DRL-2024-0315-001</p>
+                </div>
+                <div class="flex gap-2 mt-3">
+                    <button class="flex-1 py-2.5 rounded-xl border border-primary text-primary text-xs font-bold flex items-center justify-center gap-1 hover:bg-primary/5 transition-colors active:scale-[0.98]">
+                        <span class="material-symbols-outlined text-sm">download</span> Tải xuống
+                    </button>
+                    <button class="flex-1 py-2.5 rounded-xl border border-outline-variant/30 text-on-surface-variant text-xs font-bold flex items-center justify-center gap-1 hover:bg-surface-container transition-colors active:scale-[0.98]">
+                        <span class="material-symbols-outlined text-sm">share</span> Chia sẻ
+                    </button>
+                </div>
+            </div>
+
+            <!-- Certificate 2 -->
+            <div class="cert-card rounded-2xl p-5 shadow-sm">
+                <div class="flex items-start justify-between gap-4">
+                    <div class="w-14 h-14 bg-yellow-100 rounded-2xl flex items-center justify-center flex-shrink-0">
+                        <span class="material-symbols-outlined text-yellow-600 text-3xl" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="text-[10px] font-bold text-yellow-600 uppercase tracking-wider mb-1">Chứng chỉ xuất sắc</p>
+                        <h3 class="font-bold text-base leading-snug">Kỹ năng bán hàng y tế — Top 10%</h3>
+                        <p class="text-xs text-tertiary mt-1">Cấp bởi DoctorLoan Academy • 01/02/2024</p>
+                    </div>
+                </div>
+                <div class="mt-4 border border-yellow-200/60 rounded-xl p-5 text-center bg-yellow-50/50 space-y-2">
+                    <div class="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center mx-auto">
+                        <span class="material-symbols-outlined text-yellow-600" style="font-variation-settings: 'FILL' 1;">star</span>
+                    </div>
+                    <p class="text-[10px] uppercase tracking-widest text-yellow-700 font-bold">DOCTORLOAN ACADEMY</p>
+                    <p class="font-black text-xl text-on-surface tracking-tight leading-tight italic">Nguyễn Minh Tuấn</p>
+                    <p class="text-xs text-tertiary">đã hoàn thành xuất sắc và xếp top 10% khóa học</p>
+                    <p class="font-bold text-sm text-yellow-700">"Bán hàng y tế hiệu quả — Nâng cao"</p>
+                    <p class="text-[10px] text-tertiary pt-1">Ngày cấp: 01/02/2024 • Mã: DRL-2024-0201-042</p>
+                </div>
+                <div class="flex gap-2 mt-3">
+                    <button class="flex-1 py-2.5 rounded-xl border border-yellow-400 text-yellow-700 text-xs font-bold flex items-center justify-center gap-1 hover:bg-yellow-50 transition-colors active:scale-[0.98]">
+                        <span class="material-symbols-outlined text-sm">download</span> Tải xuống
+                    </button>
+                    <button class="flex-1 py-2.5 rounded-xl border border-outline-variant/30 text-on-surface-variant text-xs font-bold flex items-center justify-center gap-1 hover:bg-surface-container transition-colors active:scale-[0.98]">
+                        <span class="material-symbols-outlined text-sm">share</span> Chia sẻ
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Locked Certificates -->
+        <section class="space-y-4">
+            <h2 class="text-sm font-bold uppercase tracking-widest text-on-surface/40">Chưa đạt được</h2>
+
+            <div class="cert-card-locked rounded-2xl p-4 flex items-center gap-4 cursor-pointer group" onclick="location='learning.html'">
+                <div class="w-12 h-12 bg-surface-container-high rounded-xl flex items-center justify-center flex-shrink-0">
+                    <span class="material-symbols-outlined text-on-surface-variant text-2xl">lock</span>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <h3 class="font-bold text-sm text-on-surface-variant leading-snug">Giải phẫu cột sống — Trung cấp</h3>
+                    <p class="text-xs text-tertiary mt-1">Hoàn thành khóa học để nhận</p>
+                </div>
+                <div class="w-16 h-2 bg-surface-container-high rounded-full overflow-hidden flex-shrink-0">
+                    <div class="h-full bg-outline-variant/40 rounded-full" style="width: 15%"></div>
+                </div>
+            </div>
+
+            <div class="cert-card-locked rounded-2xl p-4 flex items-center gap-4 cursor-pointer group" onclick="location='learning.html'">
+                <div class="w-12 h-12 bg-surface-container-high rounded-xl flex items-center justify-center flex-shrink-0">
+                    <span class="material-symbols-outlined text-on-surface-variant text-2xl">lock</span>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <h3 class="font-bold text-sm text-on-surface-variant leading-snug">Tư vấn Y khoa Lâm sàng</h3>
+                    <p class="text-xs text-tertiary mt-1">Cần đạt Chứng chỉ cột sống trước</p>
+                </div>
+                <span class="material-symbols-outlined text-on-surface-variant/40">chevron_right</span>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

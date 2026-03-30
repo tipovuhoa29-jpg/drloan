@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Bằng sáng chế | DOCTORLOAN</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script src="js/tailwind-config.js"></script>
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/app.js"></script>
+</head>
+<body class="bg-surface text-on-surface min-h-screen pb-28">
+<main class="space-y-8">
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pt-4">
+        <div>
+            <p class="text-xs font-bold uppercase tracking-widest text-tertiary">Pháp lý & Sở hữu trí tuệ</p>
+            <h1 class="font-extrabold text-2xl lg:text-3xl tracking-tight mt-1">Bằng sáng chế</h1>
+        </div>
+        <button class="flex items-center gap-2 px-4 py-2.5 rounded-xl brand-gradient text-white text-sm font-bold shadow-md hover:opacity-90 transition-all self-start">
+            <span class="material-symbols-outlined text-lg">add</span>Thêm bằng mới
+        </button>
+    </div>
+
+    <!-- Stats -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+        <div class="bg-white rounded-2xl p-5 border border-outline-variant/10 shadow-sm text-center hover:-translate-y-1 transition-transform">
+            <p class="text-3xl font-black">62</p><p class="text-xs text-tertiary mt-1 font-medium">Quốc gia</p>
+        </div>
+        <div class="bg-white rounded-2xl p-5 border border-green-100 shadow-sm text-center hover:-translate-y-1 transition-transform">
+            <p class="text-3xl font-black text-green-700">59</p><p class="text-xs text-tertiary mt-1 font-medium">Còn hiệu lực</p>
+        </div>
+        <div class="bg-white rounded-2xl p-5 border border-orange-200 shadow-sm text-center hover:-translate-y-1 transition-transform">
+            <p class="text-3xl font-black text-orange-600">2</p><p class="text-xs text-tertiary mt-1 font-medium">Sắp hết hạn</p>
+        </div>
+        <div class="bg-white rounded-2xl p-5 border border-red-200 shadow-sm text-center hover:-translate-y-1 transition-transform">
+            <p class="text-3xl font-black text-red-600">1</p><p class="text-xs text-tertiary mt-1 font-medium">Cần gia hạn ngay</p>
+        </div>
+    </div>
+
+    <!-- Alert -->
+    <div class="bg-red-50 border border-red-200 rounded-2xl p-4 flex items-start gap-3">
+        <span class="material-symbols-outlined text-red-500 flex-shrink-0 mt-0.5 text-2xl" style="font-variation-settings:'FILL' 1;">notification_important</span>
+        <div class="flex-1">
+            <p class="font-bold text-sm text-red-800">Cần gia hạn khẩn — Châu Âu</p>
+            <p class="text-xs text-red-700 mt-1">Bằng <strong>EP2847315</strong> hết hạn <strong>15/05/2026</strong> — còn 45 ngày. Phí gia hạn: ~€2,500.</p>
+        </div>
+        <button class="flex-shrink-0 px-3 py-2 bg-red-600 text-white text-xs font-bold rounded-xl hover:bg-red-700 transition-colors">Xử lý ngay</button>
+    </div>
+
+    <!-- Search -->
+    <div class="flex flex-col sm:flex-row gap-3">
+        <div class="flex-1 relative">
+            <span class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant/60 text-xl pointer-events-none">search</span>
+            <input type="text" placeholder="Tìm theo số bằng, quốc gia..." class="w-full pl-11 pr-4 py-3 text-sm bg-white border border-outline-variant/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/30 shadow-sm">
+        </div>
+        <select class="text-sm px-4 py-3 bg-white border border-outline-variant/20 rounded-xl font-medium shadow-sm text-on-surface-variant">
+            <option>Tất cả khu vực</option><option>Châu Á</option><option>Châu Âu</option><option>Bắc Mỹ</option>
+        </select>
+        <select class="text-sm px-4 py-3 bg-white border border-outline-variant/20 rounded-xl font-medium shadow-sm text-on-surface-variant">
+            <option>Tất cả trạng thái</option><option>Còn hạn</option><option>Sắp hết</option>
+        </select>
+    </div>
+
+    <!-- Patent List -->
+    <section class="space-y-3">
+        <p class="text-[10px] font-black uppercase tracking-[0.15em] text-red-500/80 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>Cần xử lý ngay</p>
+        <div class="bg-white rounded-2xl p-4 md:p-5 border border-red-200 shadow-sm hover:-translate-y-1 transition-transform cursor-pointer">
+            <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+                <div class="w-12 h-12 rounded-2xl bg-red-100 flex items-center justify-center flex-shrink-0">
+                    <span class="material-symbols-outlined text-red-600 text-xl" style="font-variation-settings:'FILL' 1;">gavel</span>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <div class="flex flex-wrap gap-2 mb-1">
+                        <span class="text-[10px] font-bold bg-red-100 text-red-700 px-2 py-0.5 rounded-full flex items-center gap-1"><span class="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse"></span>Còn 45 ngày</span>
+                        <span class="text-[10px] text-tertiary font-mono">EP2847315</span>
+                        <span class="text-[10px]">🇪🇺 Châu Âu</span>
+                    </div>
+                    <p class="font-bold text-sm">Ghế chỉnh hình cột sống tự động — Cơ chế cân bằng áp lực đĩa đệm</p>
+                    <p class="text-xs text-tertiary mt-1">Cấp: 15/05/2016 • Hết hạn: 15/05/2026 • Phí: €2,500</p>
+                </div>
+                <div class="flex gap-2 flex-shrink-0">
+                    <button class="px-3 py-2 bg-red-600 text-white text-xs font-bold rounded-xl hover:bg-red-700 transition-colors">Gia hạn</button>
+                    <button class="px-3 py-2 border border-outline-variant/30 text-on-surface-variant text-xs font-bold rounded-xl hover:bg-surface-container transition-colors">Chi tiết</button>
+                </div>
+            </div>
+        </div>
+
+        <p class="text-[10px] font-black uppercase tracking-[0.15em] text-orange-500/80 flex items-center gap-2 mt-5"><span class="w-2 h-2 rounded-full bg-orange-500"></span>Sắp hết hạn</p>
+        <div class="bg-white rounded-2xl p-4 md:p-5 border border-orange-200 shadow-sm hover:-translate-y-1 transition-transform cursor-pointer">
+            <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+                <div class="w-12 h-12 rounded-2xl bg-orange-100 flex items-center justify-center flex-shrink-0">
+                    <span class="material-symbols-outlined text-orange-600 text-xl" style="font-variation-settings:'FILL' 1;">gavel</span>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <div class="flex flex-wrap gap-2 mb-1">
+                        <span class="text-[10px] font-bold bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full">Còn 5 tháng</span>
+                        <span class="text-[10px] text-tertiary font-mono">US10234567</span>
+                        <span class="text-[10px]">🇺🇸 Hoa Kỳ</span>
+                    </div>
+                    <p class="font-bold text-sm">Gối cổ định hình đa vùng — Vật liệu ghi nhớ nhiệt</p>
+                    <p class="text-xs text-tertiary mt-1">Cấp: 10/08/2016 • Hết hạn: 10/08/2026 • Phí: $1,800</p>
+                </div>
+                <div class="flex gap-2 flex-shrink-0">
+                    <button class="px-3 py-2 border border-primary text-primary text-xs font-bold rounded-xl hover:bg-primary/5 transition-colors">Lên kế hoạch</button>
+                    <button class="px-3 py-2 border border-outline-variant/30 text-on-surface-variant text-xs font-bold rounded-xl hover:bg-surface-container transition-colors">Chi tiết</button>
+                </div>
+            </div>
+        </div>
+
+        <p class="text-[10px] font-black uppercase tracking-[0.15em] text-green-600/80 flex items-center gap-2 mt-5"><span class="w-2 h-2 rounded-full bg-green-500"></span>Đang hiệu lực</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div class="bg-white rounded-2xl p-4 border border-outline-variant/10 shadow-sm hover:-translate-y-1 transition-transform cursor-pointer">
+                <div class="flex gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-green-100 flex items-center justify-center flex-shrink-0">
+                        <span class="material-symbols-outlined text-green-700 text-lg" style="font-variation-settings:'FILL' 1;">gavel</span>
+                    </div>
+                    <div>
+                        <div class="flex flex-wrap gap-1.5 mb-1">
+                            <span class="text-[10px] font-bold bg-green-100 text-green-700 px-1.5 py-0.5 rounded-full">Còn 8 năm</span>
+                            <span class="text-[10px] text-tertiary font-mono">VN1-2014-03821</span><span class="text-[10px]">🇻🇳</span>
+                        </div>
+                        <p class="text-sm font-bold">Ghế 135 — Cấu trúc nắn xương tự nhiên</p>
+                        <p class="text-[10px] text-tertiary mt-1">Hết hạn: 12/03/2034 • Toàn quốc</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-2xl p-4 border border-outline-variant/10 shadow-sm hover:-translate-y-1 transition-transform cursor-pointer">
+                <div class="flex gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-green-100 flex items-center justify-center flex-shrink-0">
+                        <span class="material-symbols-outlined text-green-700 text-lg" style="font-variation-settings:'FILL' 1;">gavel</span>
+                    </div>
+                    <div>
+                        <div class="flex flex-wrap gap-1.5 mb-1">
+                            <span class="text-[10px] font-bold bg-green-100 text-green-700 px-1.5 py-0.5 rounded-full">Còn 7 năm</span>
+                            <span class="text-[10px] text-tertiary font-mono">CN201710823456</span><span class="text-[10px]">🇨🇳</span>
+                        </div>
+                        <p class="text-sm font-bold">Ghế 95 — Cơ chế nâng hạ thông minh</p>
+                        <p class="text-[10px] text-tertiary mt-1">Hết hạn: 05/09/2033 • Trung Quốc</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-2xl p-4 border border-outline-variant/10 shadow-sm hover:-translate-y-1 transition-transform cursor-pointer">
+                <div class="flex gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-green-100 flex items-center justify-center flex-shrink-0">
+                        <span class="material-symbols-outlined text-green-700 text-lg" style="font-variation-settings:'FILL' 1;">gavel</span>
+                    </div>
+                    <div>
+                        <div class="flex flex-wrap gap-1.5 mb-1">
+                            <span class="text-[10px] font-bold bg-green-100 text-green-700 px-1.5 py-0.5 rounded-full">Còn 10 năm</span>
+                            <span class="text-[10px] text-tertiary font-mono">PCT/VN2016/000045</span><span class="text-[10px]">🌐 WIPO</span>
+                        </div>
+                        <p class="text-sm font-bold">Đệm thiền — Cơ chế phân tán trọng lượng</p>
+                        <p class="text-[10px] text-tertiary mt-1">Hết hạn: 18/06/2036 • 62 quốc gia</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-2xl p-4 border border-outline-variant/10 shadow-sm hover:-translate-y-1 transition-transform cursor-pointer">
+                <div class="flex gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-green-100 flex items-center justify-center flex-shrink-0">
+                        <span class="material-symbols-outlined text-green-700 text-lg" style="font-variation-settings:'FILL' 1;">gavel</span>
+                    </div>
+                    <div>
+                        <div class="flex flex-wrap gap-1.5 mb-1">
+                            <span class="text-[10px] font-bold bg-green-100 text-green-700 px-1.5 py-0.5 rounded-full">Còn 9 năm</span>
+                            <span class="text-[10px] text-tertiary font-mono">JP2015-123456</span><span class="text-[10px]">🇯🇵</span>
+                        </div>
+                        <p class="text-sm font-bold">Gối F5/S — Thiết kế hỗ trợ cột cổ sinh lý</p>
+                        <p class="text-[10px] text-tertiary mt-1">Hết hạn: 22/11/2035 • Nhật Bản</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center pt-2">
+            <button class="text-sm font-bold text-primary px-4 py-2 rounded-xl hover:bg-primary/5 transition-colors inline-flex items-center gap-1">
+                <span class="material-symbols-outlined text-sm">expand_more</span>Xem thêm 55 bằng sáng chế
+            </button>
+        </div>
+    </section>
+</main>
+</body>
+</html>

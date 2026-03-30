@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Hồ sơ | DOCTORLOAN</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script src="js/tailwind-config.js"></script>
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/app.js"></script>
+</head>
+<!-- data-hide-header: sidebar handles itself, but we still want the top bar on mobile -->
+<body class="bg-surface text-on-surface min-h-screen pb-32">
+
+    <main>
+        <!-- Hero Banner (Orange gradient) -->
+        <div class="bg-gradient-to-br from-[#FF7500] to-[#9C4500] lg:pt-4 relative overflow-hidden">
+            <!-- Decorative circles -->
+            <div class="absolute -top-12 -right-12 w-56 h-56 bg-white/10 rounded-full pointer-events-none blur-2xl"></div>
+            <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-black/10 rounded-full pointer-events-none blur-xl"></div>
+
+            <!-- Profile content -->
+            <div class="relative z-10 px-6 pt-24 lg:pt-20 pb-28 flex flex-col items-center lg:flex-row lg:items-end lg:gap-8 max-w-4xl lg:mx-auto">
+                <div class="relative mb-4 lg:mb-0 flex-shrink-0">
+                    <div class="w-24 h-24 md:w-28 md:h-28 rounded-full border-4 border-white shadow-xl overflow-hidden bg-primary-fixed">
+                        <img class="w-full h-full object-cover" src="https://ui-avatars.com/api/?name=Minh+Tuan&background=ff7500&color=fff&size=200" alt="Avatar">
+                    </div>
+                    <div class="absolute bottom-1 right-1 bg-white p-1.5 rounded-full shadow cursor-pointer hover:bg-surface-container-low transition-colors">
+                        <span class="material-symbols-outlined text-primary text-sm leading-none">photo_camera</span>
+                    </div>
+                </div>
+                <div class="text-center lg:text-left pb-2">
+                    <h1 class="text-white font-extrabold text-2xl md:text-3xl tracking-tight">Nguyễn Minh Tuấn</h1>
+                    <p class="text-white/80 text-sm mt-1">minhtsuan@gmail.com • 0901 234 567</p>
+                    <div class="flex items-center justify-center lg:justify-start gap-2 mt-3">
+                        <div class="flex items-center gap-1.5 bg-white/20 backdrop-blur-md px-3 py-1.5 rounded-full">
+                            <span class="material-symbols-outlined text-white text-sm" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+                            <span class="text-white text-xs font-bold uppercase tracking-wider">Đại lý Cấp 2</span>
+                        </div>
+                        <div class="flex items-center gap-1.5 bg-white/20 backdrop-blur-md px-3 py-1.5 rounded-full">
+                            <span class="material-symbols-outlined text-white text-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
+                            <span class="text-white text-xs font-bold">Đã xác minh</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Cards (float on top of hero) -->
+        <div class="max-w-4xl mx-auto px-6 -mt-14 relative z-10 mb-10">
+            <div class="grid grid-cols-3 gap-3 md:gap-4">
+                <div class="bg-white rounded-2xl shadow-[0_8px_32px_rgba(156,69,0,0.10)] p-4 md:p-5 flex flex-col items-center hover:-translate-y-1 transition-transform cursor-pointer">
+                    <span class="text-primary font-black text-2xl md:text-3xl">12</span>
+                    <span class="text-on-surface-variant text-[10px] md:text-xs font-semibold uppercase tracking-tighter mt-1 text-center">Đơn hàng</span>
+                </div>
+                <div class="bg-white rounded-2xl shadow-[0_8px_32px_rgba(156,69,0,0.10)] p-4 md:p-5 flex flex-col items-center hover:-translate-y-1 transition-transform cursor-pointer">
+                    <span class="text-primary font-black text-2xl md:text-3xl">1.24tr</span>
+                    <span class="text-on-surface-variant text-[10px] md:text-xs font-semibold uppercase tracking-tighter mt-1 text-center">Hoa hồng</span>
+                </div>
+                <div class="bg-white rounded-2xl shadow-[0_8px_32px_rgba(156,69,0,0.10)] p-4 md:p-5 flex flex-col items-center hover:-translate-y-1 transition-transform cursor-pointer">
+                    <span class="text-primary font-black text-2xl md:text-3xl">5</span>
+                    <span class="text-on-surface-variant text-[10px] md:text-xs font-semibold uppercase tracking-tighter mt-1 text-center">Chứng chỉ</span>
+                </div>
+            </div>
+        </div>
+
+                <!-- Leaderboard Wrapper -->
+        <div class="max-w-4xl mx-auto px-6 mb-8 w-full">
+            <!-- Leaderboard Widget -->
+            <div class="bg-white rounded-2xl shadow-[0_2px_16px_rgba(156,69,0,0.05)] overflow-hidden border border-outline-variant/10">
+                <div class="p-4 border-b border-outline-variant/10 flex items-center justify-between bg-surface-container-lowest">
+                    <div>
+                        <h3 class="font-extrabold text-sm text-on-surface flex items-center gap-2">
+                            <span class="text-lg">🏆</span> Top Doanh Số Tháng
+                        </h3>
+                    </div>
+                    <a href="rank.html" class="text-[10px] font-bold text-primary bg-primary text-white shadow-sm hover:opacity-90 px-2 py-1 rounded-lg hover:bg-primary/10">Chi tiết</a>
+                </div>
+                <div class="divide-y divide-outline-variant/5">
+                    <!-- Top 1 -->
+                    <div class="flex items-center gap-3 p-3">
+                        <span class="w-6 text-center text-lg">👑</span>
+                        <img src="https://ui-avatars.com/api/?name=Minh+Tuan&background=ffedd5&color=ea580c&size=32" class="w-8 h-8 rounded-full shadow-sm" alt="">
+                        <div class="flex-1 min-w-0">
+                            <p class="text-sm font-bold text-on-surface truncate">Quốc Anh</p>
+                            <p class="text-[10px] text-tertiary">Tổng Đại Lý</p>
+                        </div>
+                        <span class="text-sm font-black text-yellow-600">850tr</span>
+                    </div>
+                    <!-- Top 2 -->
+                    <div class="flex items-center gap-3 p-3 bg-surface-container-lowest/50">
+                        <span class="w-6 text-center text-xs font-black text-slate-400">2</span>
+                        <img src="https://ui-avatars.com/api/?name=Thu+Hang&background=f1f5f9&color=475569&size=32" class="w-8 h-8 rounded-full" alt="">
+                        <div class="flex-1 min-w-0">
+                            <p class="text-sm font-semibold text-on-surface truncate">Thu Hằng</p>
+                        </div>
+                        <span class="text-xs font-bold text-slate-600">620tr</span>
+                    </div>
+                    <!-- Top 3 -->
+                    <div class="flex items-center gap-3 p-3 bg-surface-container-lowest/50">
+                        <span class="w-6 text-center text-xs font-black text-amber-600">3</span>
+                        <img src="https://ui-avatars.com/api/?name=Duc+Anh&background=fffbeb&color=b45309&size=32" class="w-8 h-8 rounded-full" alt="">
+                        <div class="flex-1 min-w-0">
+                            <p class="text-sm font-semibold text-on-surface truncate">Đức Anh</p>
+                        </div>
+                        <span class="text-xs font-bold text-amber-700">410tr</span>
+                    </div>
+                    
+                    <!-- You -->
+                    <div class="flex items-center gap-3 p-3 brand-gradient relative overflow-hidden">
+                        <div class="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white/20 to-transparent"></div>
+                        <span class="w-6 text-center text-xs font-black text-white">4</span>
+                        <div class="w-8 h-8 rounded-full bg-white/20 border border-white/40 flex items-center justify-center flex-shrink-0">
+                            <span class="material-symbols-outlined text-white text-sm">person</span>
+                        </div>
+                        <div class="flex-1 min-w-0 relative z-10">
+                            <p class="text-sm font-bold text-white truncate">Bạn đang ở đây</p>
+                            <p class="text-[9px] text-white/80">Cần 130tr nữa để lên Top 3</p>
+                        </div>
+                        <span class="text-sm font-black text-white relative z-10">280tr</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<!-- Menu Grid -->
+        <div class="max-w-4xl mx-auto px-6 space-y-8 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+                <!-- Column 1 -->
+                <div class="space-y-6">
+                    <div>
+                        <p class="text-[10px] font-black tracking-[0.15em] uppercase text-on-surface-variant/60 px-1 mb-3">TÀI KHOẢN</p>
+                        <div class="bg-white rounded-2xl shadow-[0_2px_16px_rgba(156,69,0,0.05)] overflow-hidden divide-y divide-outline-variant/10">
+                            <a href="profile-edit.html" class="flex items-center gap-3 p-4 hover:bg-surface-container-low transition-colors group">
+                                <div class="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                                    <span class="material-symbols-outlined text-primary text-lg">person</span>
+                                </div>
+                                <span class="font-semibold text-sm flex-1">Thông tin cá nhân</span>
+                                <span class="material-symbols-outlined text-outline-variant text-lg group-hover:translate-x-0.5 transition-transform">chevron_right</span>
+                            </a>
+                            <a href="wallet.html" class="flex items-center gap-3 p-4 hover:bg-surface-container-low transition-colors group">
+                                <div class="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                                    <span class="material-symbols-outlined text-primary text-lg">account_balance_wallet</span>
+                                </div>
+                                <span class="font-semibold text-sm flex-1">Ví DrLoan & Hoa hồng</span>
+                                <span class="material-symbols-outlined text-outline-variant text-lg group-hover:translate-x-0.5 transition-transform">chevron_right</span>
+                            </a>
+                            <a href="rank.html" class="flex items-center gap-3 p-4 hover:bg-surface-container-low transition-colors group">
+                                <div class="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                                    <span class="material-symbols-outlined text-primary text-lg">military_tech</span>
+                                </div>
+                                <span class="font-semibold text-sm flex-1">Rank & Thăng hạng</span>
+                                <span class="material-symbols-outlined text-outline-variant text-lg group-hover:translate-x-0.5 transition-transform">chevron_right</span>
+                            </a>
+                            <a href="referral.html" class="flex items-center gap-3 p-4 hover:bg-surface-container-low transition-colors group">
+                                <div class="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                                    <span class="material-symbols-outlined text-primary text-lg">link</span>
+                                </div>
+                                <span class="font-semibold text-sm flex-1">Link giới thiệu của tôi</span>
+                                <span class="material-symbols-outlined text-outline-variant text-lg group-hover:translate-x-0.5 transition-transform">chevron_right</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div>
+                        <p class="text-[10px] font-black tracking-[0.15em] uppercase text-on-surface-variant/60 px-1 mb-3">HỖ TRỢ</p>
+                        <div class="bg-white rounded-2xl shadow-[0_2px_16px_rgba(156,69,0,0.05)] overflow-hidden divide-y divide-outline-variant/10">
+                            <a href="chat-ai.html" class="flex items-center gap-3 p-4 hover:bg-surface-container-low transition-colors group">
+                                <div class="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                                    <span class="material-symbols-outlined text-primary text-lg">chat</span>
+                                </div>
+                                <span class="font-semibold text-sm flex-1">Chat tư vấn viên</span>
+                                <span class="material-symbols-outlined text-outline-variant text-lg">open_in_new</span>
+                            </a>
+                            <a href="faq.html" class="flex items-center gap-3 p-4 hover:bg-surface-container-low transition-colors group">
+                                <div class="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                                    <span class="material-symbols-outlined text-primary text-lg">help</span>
+                                </div>
+                                <span class="font-semibold text-sm flex-1">FAQ</span>
+                                <span class="material-symbols-outlined text-outline-variant text-lg group-hover:translate-x-0.5 transition-transform">chevron_right</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Column 2 -->
+                <div class="space-y-6">
+                    <div>
+                        <p class="text-[10px] font-black tracking-[0.15em] uppercase text-on-surface-variant/60 px-1 mb-3">BÁN HÀNG</p>
+                        <div class="bg-white rounded-2xl shadow-[0_2px_16px_rgba(156,69,0,0.05)] overflow-hidden divide-y divide-outline-variant/10">
+                            <a href="analytics.html" class="flex items-center gap-3 p-4 hover:bg-surface-container-low transition-colors group">
+                                <div class="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                                    <span class="material-symbols-outlined text-primary text-lg">analytics</span>
+                                </div>
+                                <span class="font-semibold text-sm flex-1">Báo cáo doanh thu</span>
+                                <span class="material-symbols-outlined text-outline-variant text-lg group-hover:translate-x-0.5 transition-transform">chevron_right</span>
+                            </a>
+                            <a href="network.html" class="flex items-center gap-3 p-4 hover:bg-surface-container-low transition-colors group">
+                                <div class="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                                    <span class="material-symbols-outlined text-primary text-lg">hub</span>
+                                </div>
+                                <span class="font-semibold text-sm flex-1">Mạng lưới cộng tác viên</span>
+                                <span class="material-symbols-outlined text-outline-variant text-lg group-hover:translate-x-0.5 transition-transform">chevron_right</span>
+                            </a>
+                            <a href="content-library.html" class="flex items-center gap-3 p-4 hover:bg-surface-container-low transition-colors group">
+                                <div class="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                                    <span class="material-symbols-outlined text-primary text-lg">library_books</span>
+                                </div>
+                                <span class="font-semibold text-sm flex-1">Thư viện nội dung</span>
+                                <span class="material-symbols-outlined text-outline-variant text-lg group-hover:translate-x-0.5 transition-transform">chevron_right</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div>
+                        <p class="text-[10px] font-black tracking-[0.15em] uppercase text-on-surface-variant/60 px-1 mb-3">CÀI ĐẶT</p>
+                        <div class="bg-white rounded-2xl shadow-[0_2px_16px_rgba(156,69,0,0.05)] overflow-hidden divide-y divide-outline-variant/10">
+                            <div class="flex items-center gap-3 p-4">
+                                <div class="w-9 h-9 rounded-xl bg-surface-container flex items-center justify-center flex-shrink-0">
+                                    <span class="material-symbols-outlined text-on-surface-variant text-lg">notifications</span>
+                                </div>
+                                <span class="font-semibold text-sm flex-1">Thông báo</span>
+                                <div class="w-11 h-6 bg-primary rounded-full relative cursor-pointer flex-shrink-0">
+                                    <div class="absolute right-0.5 top-0.5 w-5 h-5 bg-white rounded-full shadow"></div>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3 p-4">
+                                <div class="w-9 h-9 rounded-xl bg-surface-container flex items-center justify-center flex-shrink-0">
+                                    <span class="material-symbols-outlined text-on-surface-variant text-lg">language</span>
+                                </div>
+                                <span class="font-semibold text-sm flex-1">Ngôn ngữ</span>
+                                <span class="text-primary font-bold text-sm cursor-pointer">Tiếng Việt</span>
+                            </div>
+                            <a href="change-password.html" class="flex items-center gap-3 p-4 hover:bg-surface-container-low transition-colors group">
+                                <div class="w-9 h-9 rounded-xl bg-surface-container flex items-center justify-center flex-shrink-0">
+                                    <span class="material-symbols-outlined text-on-surface-variant text-lg">lock</span>
+                                </div>
+                                <span class="font-semibold text-sm flex-1">Đổi mật khẩu</span>
+                                <span class="material-symbols-outlined text-outline-variant text-lg group-hover:translate-x-0.5 transition-transform">chevron_right</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="py-10 flex flex-col items-center gap-4">
+                <button class="w-full max-w-sm py-3.5 bg-white border border-red-200 text-red-600 font-bold rounded-2xl hover:bg-red-50 active:scale-[0.98] transition-all flex items-center justify-center gap-2 shadow-sm">
+                    <span class="material-symbols-outlined text-xl">logout</span>
+                    Đăng xuất
+                </button>
+                <p class="text-on-surface-variant text-[10px] uppercase font-bold tracking-widest opacity-30">Phiên bản 2.4.0 (MVP)</p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

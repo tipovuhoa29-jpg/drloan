@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Rank & Thăng hạng | DOCTORLOAN</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script src="js/tailwind-config.js"></script>
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/app.js"></script>
+</head>
+<body class="bg-surface text-on-surface min-h-screen pb-28">
+<main class="space-y-6">
+    <div class="flex items-center gap-3 pt-4">
+        <a href="profile.html" class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center hover:bg-surface-container-high transition-colors">
+            <span class="material-symbols-outlined">arrow_back</span>
+        </a>
+        <h1 class="font-extrabold text-xl tracking-tight">Rank & Thăng hạng</h1>
+    </div>
+
+    <!-- Current Rank -->
+    <div class="brand-gradient rounded-2xl p-6 text-white relative overflow-hidden">
+        <div class="absolute -top-10 -right-10 w-48 h-48 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
+        <div class="flex items-center gap-4 relative">
+            <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center">
+                <span class="material-symbols-outlined text-white text-4xl" style="font-variation-settings:'FILL' 1;">workspace_premium</span>
+            </div>
+            <div>
+                <p class="text-white/70 text-xs font-bold uppercase tracking-widest">Hạng hiện tại</p>
+                <p class="text-2xl font-black mt-0.5">Đại lý Cấp 2</p>
+                <p class="text-white/80 text-sm mt-0.5">Tích lũy: 4.2B / 5B để lên Cấp 3</p>
+            </div>
+        </div>
+        <div class="mt-5">
+            <div class="flex justify-between text-xs text-white/70 mb-2">
+                <span>Tiến trình lên Cấp 3</span>
+                <span class="font-bold text-white">84%</span>
+            </div>
+            <div class="h-2.5 bg-white/20 rounded-full overflow-hidden">
+                <div class="h-full bg-white rounded-full" style="width:84%"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rank Table -->
+    <div class="bg-white rounded-2xl border border-outline-variant/10 shadow-sm overflow-hidden">
+        <div class="p-4 border-b border-outline-variant/10">
+            <h2 class="font-bold text-sm">Hệ thống cấp bậc</h2>
+        </div>
+        <div class="divide-y divide-outline-variant/10">
+            <div class="flex items-center gap-4 p-4">
+                <div class="w-10 h-10 bg-surface-container rounded-xl flex items-center justify-center flex-shrink-0">
+                    <span class="material-symbols-outlined text-on-surface-variant" style="font-variation-settings:'FILL' 1;">military_tech</span>
+                </div>
+                <div class="flex-1">
+                    <p class="font-bold text-sm">Cộng tác viên</p>
+                    <p class="text-xs text-tertiary">Doanh số 0 – 500tr/tháng</p>
+                </div>
+                <span class="text-[10px] font-bold text-on-surface-variant/50">Đã qua</span>
+            </div>
+            <div class="flex items-center gap-4 p-4">
+                <div class="w-10 h-10 bg-amber-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <span class="material-symbols-outlined text-amber-700" style="font-variation-settings:'FILL' 1;">military_tech</span>
+                </div>
+                <div class="flex-1">
+                    <p class="font-bold text-sm">Đại lý Cấp 1</p>
+                    <p class="text-xs text-tertiary">Doanh số 500tr – 2B/tháng</p>
+                </div>
+                <span class="text-[10px] font-bold text-on-surface-variant/50">Đã qua</span>
+            </div>
+            <div class="flex items-center gap-4 p-4 bg-primary/5">
+                <div class="w-10 h-10 brand-gradient rounded-xl flex items-center justify-center flex-shrink-0">
+                    <span class="material-symbols-outlined text-white" style="font-variation-settings:'FILL' 1;">workspace_premium</span>
+                </div>
+                <div class="flex-1">
+                    <p class="font-bold text-sm">Đại lý Cấp 2 <span class="text-[10px] font-black text-primary ml-1">← Bạn đang ở đây</span></p>
+                    <p class="text-xs text-tertiary">Doanh số 2B – 5B/tháng • HH: 5%</p>
+                </div>
+                <span class="text-[10px] font-bold text-primary bg-primary/10 px-2 py-1 rounded-full">Hiện tại</span>
+            </div>
+            <div class="flex items-center gap-4 p-4 opacity-50">
+                <div class="w-10 h-10 bg-surface-container rounded-xl flex items-center justify-center flex-shrink-0">
+                    <span class="material-symbols-outlined text-on-surface-variant" style="font-variation-settings:'FILL' 1;">diamond</span>
+                </div>
+                <div class="flex-1">
+                    <p class="font-bold text-sm">Đại lý Cấp 3</p>
+                    <p class="text-xs text-tertiary">Doanh số 5B – 15B/tháng • HH: 7%</p>
+                </div>
+                <span class="text-[10px] font-bold bg-surface-container text-on-surface-variant px-2 py-1 rounded-full">Cần 800tr nữa</span>
+            </div>
+            <div class="flex items-center gap-4 p-4 opacity-30">
+                <div class="w-10 h-10 bg-surface-container rounded-xl flex items-center justify-center flex-shrink-0">
+                    <span class="material-symbols-outlined text-on-surface-variant" style="font-variation-settings:'FILL' 1;">stars</span>
+                </div>
+                <div class="flex-1">
+                    <p class="font-bold text-sm">Master Agent</p>
+                    <p class="text-xs text-tertiary">Doanh số 15B+/tháng • HH: 10%</p>
+                </div>
+                <span class="text-[10px] text-on-surface-variant/50">Khóa</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Benefits -->
+    <div class="bg-white rounded-2xl p-5 border border-outline-variant/10 shadow-sm space-y-3">
+        <h2 class="font-bold text-sm">Quyền lợi Cấp 2 của bạn</h2>
+        <div class="grid grid-cols-2 gap-3">
+            <div class="p-3 bg-primary/5 rounded-xl flex items-center gap-3">
+                <span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings:'FILL' 1;">percent</span>
+                <div><p class="text-xs font-bold">Hoa hồng 5%</p><p class="text-[10px] text-tertiary">/ Mỗi đơn hàng</p></div>
+            </div>
+            <div class="p-3 bg-primary/5 rounded-xl flex items-center gap-3">
+                <span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings:'FILL' 1;">support_agent</span>
+                <div><p class="text-xs font-bold">Hỗ trợ ưu tiên</p><p class="text-[10px] text-tertiary">Đường dây riêng</p></div>
+            </div>
+            <div class="p-3 bg-primary/5 rounded-xl flex items-center gap-3">
+                <span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings:'FILL' 1;">event</span>
+                <div><p class="text-xs font-bold">Sự kiện VIP</p><p class="text-[10px] text-tertiary">Ưu tiên tham dự</p></div>
+            </div>
+            <div class="p-3 bg-primary/5 rounded-xl flex items-center gap-3">
+                <span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings:'FILL' 1;">local_shipping</span>
+                <div><p class="text-xs font-bold">Vận chuyển ưu tiên</p><p class="text-[10px] text-tertiary">Giao hàng nhanh</p></div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>
