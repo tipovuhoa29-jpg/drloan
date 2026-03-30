@@ -54,9 +54,6 @@
         <button id="tab-consult" onclick="switchTab('consult')" class="tab-btn flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold bg-surface-container text-on-surface-variant hover:bg-surface-container-high transition-all">
             <span class="material-symbols-outlined text-base">shopping_bag</span>Tư Vấn Sản Phẩm
         </button>
-        <button id="tab-patent" onclick="switchTab('patent')" class="tab-btn flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold bg-surface-container text-on-surface-variant hover:bg-surface-container-high transition-all">
-            <span class="material-symbols-outlined text-base">public</span>Chiến Lược Patent
-        </button>
     </div>
 
     <!-- ===== SCREEN: TỔNG QUAN ===== -->
@@ -432,97 +429,7 @@
         </div>
     </div>
 
-    <!-- ===== SCREEN: CHIẾN LƯỢC PATENT ===== -->
-    <div id="screen-patent" class="screen space-y-5">
-        <div class="bg-white rounded-2xl p-5 md:p-8 border border-primary/20 shadow-[0_12px_24px_rgba(156,69,0,0.06)] relative overflow-hidden">
-            <!-- Background decoration -->
-            <div class="absolute -right-10 -top-10 text-primary/5 pointer-events-none">
-                <span class="material-symbols-outlined text-[200px]" style="font-variation-settings:'FILL' 1;">gavel</span>
-            </div>
-            
-            <div class="relative z-10 flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between mb-8">
-                <div>
-                    <h2 class="font-black text-xl md:text-2xl flex items-center gap-2">
-                        <span class="material-symbols-outlined text-primary text-3xl">public</span>
-                        Chiến Lược Patent Theo Địa Lý
-                    </h2>
-                    <p class="text-sm text-tertiary mt-1">AI phân tích phạm vi bảo hộ cấp phép cho các sản phẩm tại thị trường mục tiêu.</p>
-                </div>
-                <div class="text-right flex-shrink-0 mt-2 sm:mt-0">
-                    <span class="text-xs font-black text-blue-700 bg-blue-100 border border-blue-200 shadow-sm px-4 py-2 rounded-xl flex items-center gap-1">
-                        <span class="material-symbols-outlined text-base">verified</span>
-                        Bảo hộ 62 Quốc gia
-                    </span>
-                </div>
-            </div>
-
-            <!-- Context -->
-            <div class="relative z-10 flex flex-wrap items-center justify-between gap-3 p-4 bg-surface-container-low border border-outline-variant/10 rounded-xl mb-8">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-lg bg-white flex items-center justify-center shadow-sm">
-                        <span class="material-symbols-outlined text-primary">inventory_2</span>
-                    </div>
-                    <div>
-                        <p class="text-xs text-tertiary font-medium">Sản phẩm điều trị:</p>
-                        <p class="text-sm font-bold text-on-surface">Ghế DOCTORLOAN 135 & Gối F4/09</p>
-                    </div>
-                </div>
-                <button onclick="switchTab('consult')" class="text-xs font-bold text-primary hover:underline px-2">Xem lại phác đồ</button>
-            </div>
-
-            <!-- Regions -->
-            <div class="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-5">
-                <!-- Region 1 -->
-                <div class="bg-white border text-center md:text-left border-outline-variant/20 rounded-2xl p-5 shadow-sm hover:border-primary/40 hover:shadow-md transition-all">
-                    <div class="flex flex-col md:flex-row items-center gap-3 mb-4">
-                        <img src="https://flagcdn.com/w40/us.png" class="w-8 h-auto shadow-sm rounded-sm" alt="US">
-                        <h3 class="font-extrabold text-base">Bắc Mỹ (USPTO)</h3>
-                    </div>
-                    <p class="text-sm text-on-surface-variant leading-relaxed mb-4">Đã cấp bằng sáng chế độc quyền. Giai đoạn thương mại hóa hoàn toàn an toàn về sở hữu trí tuệ.</p>
-                    <span class="text-xs font-bold text-green-700 bg-green-50 border border-green-100 px-3 py-1 rounded-lg">Active (Hiệu lực: Tới 2040)</span>
-                </div>
-                <!-- Region 2 -->
-                <div class="bg-white border text-center md:text-left border-outline-variant/20 rounded-2xl p-5 shadow-sm hover:border-primary/40 hover:shadow-md transition-all">
-                    <div class="flex flex-col md:flex-row items-center gap-3 mb-4">
-                        <img src="https://flagcdn.com/w40/eu.png" class="w-8 h-auto shadow-sm rounded-sm" alt="EU">
-                        <h3 class="font-extrabold text-base">Châu Âu (EPO)</h3>
-                    </div>
-                    <p class="text-sm text-on-surface-variant leading-relaxed mb-4">Bảo hộ toàn diện tại các quốc gia thành viên. Tránh rủi ro hàng giả từ các nhà cung cấp y tế khác.</p>
-                    <span class="text-xs font-bold text-green-700 bg-green-50 border border-green-100 px-3 py-1 rounded-lg">Active (Đã cấp văn bằng)</span>
-                </div>
-                <!-- Region 3 -->
-                <div class="bg-white border text-center md:text-left border-outline-variant/20 rounded-2xl p-5 shadow-sm hover:border-primary/40 hover:shadow-md transition-all">
-                    <div class="flex flex-col md:flex-row items-center gap-3 mb-4">
-                        <div class="flex -space-x-2 justify-center md:justify-start">
-                            <img src="https://flagcdn.com/w40/vn.png" class="w-8 h-auto shadow-sm rounded-full border border-white" alt="VN">
-                            <img src="https://flagcdn.com/w40/jp.png" class="w-8 h-auto shadow-sm rounded-full border border-white" alt="JP">
-                        </div>
-                        <h3 class="font-extrabold text-base">Châu Á Thái Bình Dương</h3>
-                    </div>
-                    <p class="text-sm text-on-surface-variant leading-relaxed mb-4">Đã cấp tại VN, Nhật Bản, Hàn Quốc, Úc. Thị trường nội địa và xuất khẩu châu Á được bảo vệ 100%.</p>
-                    <span class="text-xs font-bold text-green-700 bg-green-50 border border-green-100 px-3 py-1 rounded-lg">Active (Khu vực chính)</span>
-                </div>
-            </div>
-
-            <!-- AI Advice -->
-            <div class="relative z-10 mt-8 p-5 bg-gradient-to-r from-primary/10 to-transparent border-l-4 border-primary rounded-r-2xl flex items-start gap-4">
-                <div class="w-10 h-10 brand-gradient rounded-full flex items-center justify-center flex-shrink-0 shadow-md">
-                    <span class="material-symbols-outlined text-white" style="font-variation-settings:'FILL' 1;">lightbulb</span>
-                </div>
-                <div>
-                    <p class="font-black text-sm md:text-base text-primary mb-1">AI Đề xuất chiến lược định vị:</p>
-                    <p class="text-sm text-on-surface-variant leading-relaxed">Căn cứ vào dữ liệu địa lý hiện tại, bệnh nhân/đối tác này nằm trong vùng bảo hộ thương mại an toàn. Đề xuất bác sĩ/phòng khám cung cấp <a href="patent-manager.html" class="font-bold text-primary underline hover:text-primary-container">Chứng nhận Bằng Sáng Chế 62 Quốc Gia</a> đính kèm hồ sơ điều trị để tăng <strong>niềm tin tuyệt đối</strong> và <strong>khẳng định tính độc quyền y khoa toàn cầu</strong>.</p>
-                </div>
-            </div>
-            
-            <div class="relative z-10 flex justify-end gap-3 mt-6">
-                <button class="flex items-center gap-2 px-5 py-2.5 brand-gradient text-white text-sm font-bold rounded-xl shadow-md hover:opacity-90 transition-opacity">
-                    <span class="material-symbols-outlined text-[18px]">print</span>
-                    In báo cáo chiến lược
-                </button>
-            </div>
-        </div>
-    </div>
+    
 
 </main>
 
